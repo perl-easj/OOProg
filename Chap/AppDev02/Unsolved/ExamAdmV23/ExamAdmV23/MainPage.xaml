@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="ExamAdmV23.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:domainClasses="using:ExamAdmV23.DomainClasses"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <domainClasses:StudentPageViewModel/>
+    </Page.DataContext>
+
+    <StackPanel>
+        <ListView ItemsSource="{Binding StudentDataViewModelCollection}"
+                  SelectedItem="{Binding StudentSelected, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="10,10,10,10">
+                            <Image Source="{Binding ImageSource}" Height="80" Width="80"/>
+                            <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Margin="10,10,10,10">
+                            <TextBlock FontSize="24" Text="{Binding CountryStr}"/>
+                            <TextBlock FontSize="24" Text="{Binding BirthStr}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Content="Delete" Margin="10,10,10,10" FontSize ="24"
+                Command="{Binding DeletionCommand}"/>
+    </StackPanel>
+    
+</Page>

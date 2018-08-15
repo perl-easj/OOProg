@@ -1,0 +1,94 @@
+﻿SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+DROP TABLE [dbo].[Car];
+DROP TABLE [dbo].[Customer];
+DROP TABLE [dbo].[Employee];
+DROP TABLE [dbo].[Sale];
+
+GO
+CREATE TABLE [dbo].[Car] (
+    [Id]           INT        NOT NULL 	PRIMARY KEY,
+    [LicensePlate] NCHAR (20) NOT NULL,
+    [Brand]        NCHAR (30) NOT NULL,
+    [Model]        NCHAR (30) NOT NULL,
+    [Year]         INT        NOT NULL,
+    [EngineSize]   INT        NOT NULL,
+    [HorsePower]   INT        NOT NULL,
+    [Seats]        INT        NOT NULL,
+    [Price]        INT        NOT NULL,
+    [ImageKey]     INT        NOT NULL
+);
+
+GO
+CREATE TABLE [dbo].[Customer] (
+    [Id]         INT        NOT NULL 		PRIMARY KEY,
+    [FullName]   NCHAR (50) NOT NULL,
+    [Address]    NCHAR (50) NOT NULL,
+    [City]       NCHAR (50) NOT NULL,
+    [ZipCode]    INT        NOT NULL,
+    [Email]      NCHAR (50) NOT NULL,
+    [Phone]      NCHAR (20) NOT NULL,
+    [ImageKey]   INT        NOT NULL,
+    [MinPrice]   INT        NOT NULL,
+    [MaxPrice]   INT        NOT NULL,
+    [NewsLetter] BIT        NOT NULL
+);
+
+GO
+CREATE TABLE [dbo].[Employee] (
+    [Id]           INT        NOT NULL 	PRIMARY KEY,
+    [FullName]     NCHAR (50) NOT NULL,
+    [Title]        NCHAR (30) NOT NULL,
+    [Phone]        NCHAR (20) NOT NULL,
+    [Email]        NCHAR (30) NOT NULL,
+    [EmployedDate] DATETIME   NOT NULL,
+    [ImageKey]     INT        NOT NULL,
+    [CarsSold]     INT        NOT NULL
+);
+
+GO
+CREATE TABLE [dbo].[Sale] (
+    [Id]          INT      NOT NULL 		PRIMARY KEY,
+    [CarKey]      INT      NOT NULL,
+    [CustomerKey] INT      NOT NULL,
+    [EmployeeKey] INT      NOT NULL,
+    [SalesDate]   DATETIME NOT NULL,
+    [FinalPrice]  INT      NOT NULL
+);
+
+INSERT INTO [dbo].[Car] ([Id], [LicensePlate], [Brand], [Model], [Year], [EngineSize], [HorsePower], [Seats], [Price], [ImageKey]) VALUES (0, N'AB 23 456           ', N'BMW                           ', N'318i                          ', 2011, 1800, 115, 4, 80000, 6)
+INSERT INTO [dbo].[Car] ([Id], [LicensePlate], [Brand], [Model], [Year], [EngineSize], [HorsePower], [Seats], [Price], [ImageKey]) VALUES (1, N'BC 34 567           ', N'Ford                          ', N'Mondeo                        ', 2008, 1600, 105, 5, 55000, 1)
+INSERT INTO [dbo].[Car] ([Id], [LicensePlate], [Brand], [Model], [Year], [EngineSize], [HorsePower], [Seats], [Price], [ImageKey]) VALUES (2, N'CD 45 678           ', N'VW                            ', N'Beetle                        ', 2012, 1400, 85, 2, 110000, 4)
+INSERT INTO [dbo].[Car] ([Id], [LicensePlate], [Brand], [Model], [Year], [EngineSize], [HorsePower], [Seats], [Price], [ImageKey]) VALUES (3, N'DE 32 121           ', N'Ford                          ', N'Pickup                        ', 2009, 2000, 110, 2, 70000, 2)
+INSERT INTO [dbo].[Car] ([Id], [LicensePlate], [Brand], [Model], [Year], [EngineSize], [HorsePower], [Seats], [Price], [ImageKey]) VALUES (4, N'EF 76 123           ', N'Alfa Romeo                    ', N'Ellos                         ', 2010, 2200, 160, 2, 140000, 0)
+INSERT INTO [dbo].[Car] ([Id], [LicensePlate], [Brand], [Model], [Year], [EngineSize], [HorsePower], [Seats], [Price], [ImageKey]) VALUES (5, N'FG 70 776           ', N'Fiat                          ', N'Panda                         ', 2008, 1200, 65, 4, 35000, 2)
+INSERT INTO [dbo].[Car] ([Id], [LicensePlate], [Brand], [Model], [Year], [EngineSize], [HorsePower], [Seats], [Price], [ImageKey]) VALUES (6, N'GH 93 338           ', N'Skoda                         ', N'Fabia                         ', 2014, 1400, 90, 5, 86000, 3)
+INSERT INTO [dbo].[Car] ([Id], [LicensePlate], [Brand], [Model], [Year], [EngineSize], [HorsePower], [Seats], [Price], [ImageKey]) VALUES (7, N'HI 80 634           ', N'Porsche                       ', N'928                           ', 2003, 2800, 260, 2, 340000, 5)
+INSERT INTO [dbo].[Car] ([Id], [LicensePlate], [Brand], [Model], [Year], [EngineSize], [HorsePower], [Seats], [Price], [ImageKey]) VALUES (8, N'IJ 22 983           ', N'Skoda                         ', N'Fabia                         ', 2011, 1600, 105, 5, 90000, 7)
+
+INSERT INTO [dbo].[Customer] ([Id], [FullName], [Address], [City], [ZipCode], [Email], [Phone], [ImageKey], [MinPrice], [MaxPrice], [NewsLetter]) VALUES (0, N'Allan Jensen                                      ', N'Skolevej 6                                        ', N'Roskilde                                          ', 4000, N'allan@mail.dk                                     ', N'51244229            ', 14, 20000, 60000, 0)
+INSERT INTO [dbo].[Customer] ([Id], [FullName], [Address], [City], [ZipCode], [Email], [Phone], [ImageKey], [MinPrice], [MaxPrice], [NewsLetter]) VALUES (1, N'Betty Svendsen                                    ', N'Kirkevej 12                                       ', N'Ballerup                                          ', 2750, N'betty@live.dk                                     ', N'31120086            ', 15, 50000, 120000, 1)
+INSERT INTO [dbo].[Customer] ([Id], [FullName], [Address], [City], [ZipCode], [Email], [Phone], [ImageKey], [MinPrice], [MaxPrice], [NewsLetter]) VALUES (2, N'Carsten Holm                                      ', N'Broen 34                                          ', N'Stege                                             ', 4780, N'ch@mail.dk                                        ', N'52317083            ', 16, 60000, 150000, 1)
+INSERT INTO [dbo].[Customer] ([Id], [FullName], [Address], [City], [ZipCode], [Email], [Phone], [ImageKey], [MinPrice], [MaxPrice], [NewsLetter]) VALUES (3, N'Diana Cederberg                                   ', N'Blommestien 45                                    ', N'Hellerup                                          ', 2900, N'ceder@live.dk                                     ', N'34009816            ', 17, 100000, 300000, 0)
+INSERT INTO [dbo].[Customer] ([Id], [FullName], [Address], [City], [ZipCode], [Email], [Phone], [ImageKey], [MinPrice], [MaxPrice], [NewsLetter]) VALUES (4, N'Elias Hansen                                      ', N'Stationsvej 102                                   ', N'Måløv                                             ', 2760, N'eh@live.dk                                        ', N'50872455            ', 18, 20000, 60000, 0)
+INSERT INTO [dbo].[Customer] ([Id], [FullName], [Address], [City], [ZipCode], [Email], [Phone], [ImageKey], [MinPrice], [MaxPrice], [NewsLetter]) VALUES (5, N'Frida Poulsen                                     ', N'Marklodden 12                                     ', N'Helsingør                                         ', 3000, N'frida@live.dk                                     ', N'44096231            ', 19, 50000, 120000, 1)
+
+
+INSERT INTO [dbo].[Employee] ([Id], [FullName], [Title], [Phone], [Email], [EmployedDate], [ImageKey], [CarsSold]) VALUES (2, N'Alfred                                            ', N'Salesperson                   ', N'32321109            ', N'alfred@carsRus.dk             ', N'2012-04-05 00:00:00', 10, 0)
+INSERT INTO [dbo].[Employee] ([Id], [FullName], [Title], [Phone], [Email], [EmployedDate], [ImageKey], [CarsSold]) VALUES (3, N'Britta                                            ', N'Salesperson                   ', N'33229876            ', N'britta@carsRus.dk             ', N'2011-10-19 00:00:00', 11, 0)
+INSERT INTO [dbo].[Employee] ([Id], [FullName], [Title], [Phone], [Email], [EmployedDate], [ImageKey], [CarsSold]) VALUES (4, N'Carl                                              ', N'Salesperson                   ', N'40912200            ', N'carl@carsRus.dk               ', N'2016-05-02 00:00:00', 12, 0)
+INSERT INTO [dbo].[Employee] ([Id], [FullName], [Title], [Phone], [Email], [EmployedDate], [ImageKey], [CarsSold]) VALUES (5, N'Dorthe                                            ', N'Salesperson                   ', N'50663410            ', N'dorthe@carsRus.dk             ', N'2015-01-05 00:00:00', 9, 0)
+
+INSERT INTO [dbo].[Sale] ([Id], [CarKey], [CustomerKey], [EmployeeKey], [SalesDate], [FinalPrice]) VALUES (0, 3, 0, 2, N'2017-05-02 00:00:00', 75000)
+INSERT INTO [dbo].[Sale] ([Id], [CarKey], [CustomerKey], [EmployeeKey], [SalesDate], [FinalPrice]) VALUES (1, 2, 1, 5, N'2016-12-05 00:00:00', 150000)
+INSERT INTO [dbo].[Sale] ([Id], [CarKey], [CustomerKey], [EmployeeKey], [SalesDate], [FinalPrice]) VALUES (2, 5, 2, 2, N'2017-01-21 00:00:00', 30000)
+INSERT INTO [dbo].[Sale] ([Id], [CarKey], [CustomerKey], [EmployeeKey], [SalesDate], [FinalPrice]) VALUES (3, 7, 3, 4, N'2017-02-26 00:00:00', 250000)
+INSERT INTO [dbo].[Sale] ([Id], [CarKey], [CustomerKey], [EmployeeKey], [SalesDate], [FinalPrice]) VALUES (4, 0, 5, 5, N'2016-08-16 00:00:00', 130000)
+INSERT INTO [dbo].[Sale] ([Id], [CarKey], [CustomerKey], [EmployeeKey], [SalesDate], [FinalPrice]) VALUES (5, 6, 4, 3, N'2017-04-16 00:00:00', 85000)
+INSERT INTO [dbo].[Sale] ([Id], [CarKey], [CustomerKey], [EmployeeKey], [SalesDate], [FinalPrice]) VALUES (6, 1, 3, 2, N'2016-09-02 00:00:00', 110000)
+INSERT INTO [dbo].[Sale] ([Id], [CarKey], [CustomerKey], [EmployeeKey], [SalesDate], [FinalPrice]) VALUES (7, 4, 1, 4, N'2017-02-15 00:00:00', 155000)
+INSERT INTO [dbo].[Sale] ([Id], [CarKey], [CustomerKey], [EmployeeKey], [SalesDate], [FinalPrice]) VALUES (8, 8, 4, 2, N'2017-03-29 00:00:00', 90000)

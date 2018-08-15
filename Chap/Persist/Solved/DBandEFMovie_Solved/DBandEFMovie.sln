@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBandEFMovie", "DBandEFMovie\DBandEFMovie.csproj", "{EA6ACD9F-6E9D-4D8C-92BF-D5B4CEAB3C6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA6ACD9F-6E9D-4D8C-92BF-D5B4CEAB3C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA6ACD9F-6E9D-4D8C-92BF-D5B4CEAB3C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA6ACD9F-6E9D-4D8C-92BF-D5B4CEAB3C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6ACD9F-6E9D-4D8C-92BF-D5B4CEAB3C6D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B122C630-00BB-4C6D-B973-175772AF1262}
+	EndGlobalSection
+EndGlobal
