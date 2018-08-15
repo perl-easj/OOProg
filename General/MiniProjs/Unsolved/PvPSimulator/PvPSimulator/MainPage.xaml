@@ -1,0 +1,254 @@
+﻿<Page
+    x:Class="PvPSimulator.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:PvPSimulator.ViewModel"
+    mc:Ignorable="d">
+    
+    <Page.DataContext>
+        <viewModel:BattleViewModel/>
+    </Page.DataContext>
+    
+    <Page.Resources>
+        <!--Grid Styles-->
+        <Style x:Key="GridOuterStyle" TargetType="Grid">
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="BorderThickness" Value="3,3,3,3"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+        </Style>
+
+        <!--Image Styles-->
+        <Style x:Key="ImageStyle" TargetType="Image">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="350"/>
+            <Setter Property="Margin" Value="10,10,10,10"/>
+        </Style>
+
+        <!--ListView Styles-->
+        <Style x:Key="ListViewLogStyle" TargetType="ListView">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="BorderThickness" Value="3,3,3,3"/>
+            <Setter Property="BorderBrush" Value="Gainsboro"/>
+        </Style>
+
+        <!--TextBlock Styles-->
+        <Style x:Key="TextBlockHeadingStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="10,10,10,10"/>
+        </Style>
+        <Style x:Key="TextBlockFieldStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="10,3,3,3"/>
+        </Style>
+        <Style x:Key="TextBlockStatsStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="CornflowerBlue"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="10,3,3,3"/>
+        </Style>
+
+        <!--Button/ToggleSwitch Styles-->
+        <Style x:Key="ButtonResetStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10,10,10,10"/>
+        </Style>
+        <Style x:Key="ButtonAttackStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10,10,10,10"/>
+        </Style>
+        <Style x:Key="ToggleSwitchStyle" TargetType="ToggleSwitch">
+            <Setter Property="Margin" Value="10,10,10,10"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Page.Resources>
+
+    <!-- Outermost Grid: Top row for Player info, bottom row for Battle Log -->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Grid: Player information -->
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Grid: Player A information -->
+            <Grid Grid.Row="0" Grid.Column="0" 
+                  Style="{StaticResource GridOuterStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Player A image and Attack Button -->
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <Image Source="{Binding PlayerInfo[PlayerA].ImageSource}"
+                           Style="{StaticResource ImageStyle}" />
+                    <Button Content="ATTACK!" 
+                            Command="{Binding Commands[AttackPlayerA]}" 
+                            IsEnabled="{Binding EnabledState[AttackPlayerA]}"
+                            Style="{StaticResource ButtonAttackStyle}" />
+                </StackPanel>
+
+                <!-- Player A information and Tactics control -->
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text ="Stats" 
+                                   Style="{StaticResource TextBlockHeadingStyle}"/>
+
+                        <!-- Player A information -->
+                        <Grid Grid.Row="1" Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Row="0" Grid.Column="0">
+                                <TextBlock Text ="Name" Style="{StaticResource TextBlockFieldStyle}"/>
+                                <TextBlock Text ="Type" Style="{StaticResource TextBlockFieldStyle}"/>
+                                <TextBlock Text ="AttackFactor" Style="{StaticResource TextBlockFieldStyle}"/>
+                                <TextBlock Text ="DefenseFactor" Style="{StaticResource TextBlockFieldStyle}"/>
+                                <TextBlock Text ="HitPoints" Style="{StaticResource TextBlockFieldStyle}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock Text ="{Binding PlayerInfo[PlayerA].Name}" Style="{StaticResource TextBlockStatsStyle}"/>
+                                <TextBlock Text ="{Binding PlayerInfo[PlayerA].Type}" Style="{StaticResource TextBlockStatsStyle}"/>
+                                <TextBlock Text ="{Binding PlayerInfo[PlayerA].AttackFactor}" Style="{StaticResource TextBlockStatsStyle}"/>
+                                <TextBlock Text ="{Binding PlayerInfo[PlayerA].DefenseFactor}" Style="{StaticResource TextBlockStatsStyle}"/>
+                                <TextBlock Text ="{Binding PlayerInfo[PlayerA].HitPoints}" Style="{StaticResource TextBlockStatsStyle}"
+                                           Foreground="{Binding PlayerInfo[PlayerA].HitPointsColor}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text ="Tactics" Margin="10,50,0,0"
+                                   Style="{StaticResource TextBlockHeadingStyle}"/>
+
+                        <StackPanel Grid.Row="3" Grid.Column="0">
+                            <ToggleSwitch OffContent="Defensive" OnContent="Offensive" 
+                                          IsOn="{Binding TacticsSettingPlayerA, Mode=TwoWay}"
+                                          IsEnabled="{Binding EnabledState[PlayerATactics]}"
+                                          Style="{StaticResource ToggleSwitchStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+
+            <!-- Grid: Player B information -->
+            <Grid Grid.Row="0" Grid.Column="1" 
+                  Style="{StaticResource GridOuterStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Player B image and Attack Button -->
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <Image Source="{Binding PlayerInfo[PlayerB].ImageSource}"
+                           Style="{StaticResource ImageStyle}" />
+                    <Button Content="ATTACK!"
+                            Command="{Binding Commands[AttackPlayerB]}" 
+                            IsEnabled="{Binding EnabledState[AttackPlayerB]}"
+                            Style="{StaticResource ButtonAttackStyle}" />
+                </StackPanel>
+
+                <!-- Player B information and Tactics control -->
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text ="Stats" 
+                               Style="{StaticResource TextBlockHeadingStyle}"/>
+
+                        <!-- Player B information -->
+                        <Grid Grid.Row="1" Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Row="0" Grid.Column="0">
+                                <TextBlock Text ="Name" Style="{StaticResource TextBlockFieldStyle}"/>
+                                <TextBlock Text ="Type" Style="{StaticResource TextBlockFieldStyle}"/>
+                                <TextBlock Text ="AttackFactor" Style="{StaticResource TextBlockFieldStyle}"/>
+                                <TextBlock Text ="DefenseFactor" Style="{StaticResource TextBlockFieldStyle}"/>
+                                <TextBlock Text ="HitPoints" Style="{StaticResource TextBlockFieldStyle}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock Text ="{Binding PlayerInfo[PlayerB].Name}" Style="{StaticResource TextBlockStatsStyle}"/>
+                                <TextBlock Text ="{Binding PlayerInfo[PlayerB].Type}" Style="{StaticResource TextBlockStatsStyle}"/>
+                                <TextBlock Text ="{Binding PlayerInfo[PlayerB].AttackFactor}" Style="{StaticResource TextBlockStatsStyle}"/>
+                                <TextBlock Text ="{Binding PlayerInfo[PlayerB].DefenseFactor}" Style="{StaticResource TextBlockStatsStyle}"/>
+                                <TextBlock Text ="{Binding PlayerInfo[PlayerB].HitPoints}" Style="{StaticResource TextBlockStatsStyle}"
+                                           Foreground="{Binding PlayerInfo[PlayerB].HitPointsColor}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text ="Tactics" Margin="10,50,0,0"
+                               Style="{StaticResource TextBlockHeadingStyle}"/>
+
+                        <StackPanel Grid.Row="3" Grid.Column="0">
+                            <ToggleSwitch OffContent="Defensive" OnContent="Offensive" 
+                                          IsOn="{Binding TacticsSettingPlayerB, Mode=TwoWay}"
+                                          IsEnabled="{Binding EnabledState[PlayerBTactics]}"
+                                          Style="{StaticResource ToggleSwitchStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <!-- Grid: First column for Reset button, second column for Battle Log -->
+        <Grid Grid.Row="1" Grid.Column="0" Style="{StaticResource GridOuterStyle}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <TextBlock Text="Battle Log:"
+                           Style="{StaticResource TextBlockHeadingStyle}"/>
+                <Button Command="{Binding Commands[Reset]}" IsEnabled="{Binding EnabledState[Reset]}"
+                        Style="{StaticResource ButtonResetStyle}">
+                    <TextBlock TextWrapping="Wrap">RESET GAME</TextBlock>
+                </Button>
+            </StackPanel>
+
+            <ListView Grid.Row="0" Grid.Column="1"
+                      ItemsSource="{Binding LogEntries}" 
+                      Style="{StaticResource ListViewLogStyle}"/>
+        </Grid>
+    </Grid>
+</Page>
