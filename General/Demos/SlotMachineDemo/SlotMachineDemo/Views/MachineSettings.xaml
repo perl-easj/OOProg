@@ -1,0 +1,73 @@
+﻿<Page
+    x:Class="SlotMachineDemo.Views.MachineSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:SlotMachineDemo.Implementations.ViewModels"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <viewModels:ViewModelFacade/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <Style x:Key="TextBlockHeaderStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="20,20,20,10"/>
+        </Style>
+        <Style x:Key="ImageStyle" TargetType="Image">
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="60"/>
+        </Style>
+        <Style x:Key="ToggleSwitchStyle" TargetType="ToggleSwitch">
+            <Setter Property="Margin" Value="10,5,5,5"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Width="640" Height="480" 
+              VerticalAlignment="Top" Margin="60,60,60,0"
+              BorderThickness="2" BorderBrush="DarkGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <TextBlock Style="{StaticResource TextBlockHeaderStyle}" Text="Language" />
+            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle}"
+                          IsOn="{Binding UILanguage, Mode=TwoWay}"
+                          OffContent="Danish" OnContent="English" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" >
+            <TextBlock Style="{StaticResource TextBlockHeaderStyle}" Text="Graphics" />
+            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle}"
+                          IsOn="{Binding UIImageSet, Mode=TwoWay}"
+                          OffContent="" OnContent="" />
+            <StackPanel Orientation="Horizontal" Margin="10,20,0,0">
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Bell]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Cherry]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Clover]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Melon]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Seven]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Shoe]}" />
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+    
+</Page>

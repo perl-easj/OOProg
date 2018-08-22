@@ -1,0 +1,224 @@
+﻿<Page
+    x:Class="SlotMachineDemo.Views.AutoPlay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:SlotMachineDemo.Implementations.ViewModels"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <viewModels:ViewModelFacade/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="TextWrapping" Value="WrapWholeWords"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="30,10,10,10"/>
+        </Style>
+        <Style x:Key="TextBlockResultStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="60,0,60,0"/>
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Margin" Value="10,10,10,10"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="SliderStyle" TargetType="Slider">
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Margin" Value="30,20,10,10"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="ImageStyle" TargetType="Image">
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Width="960" Height="720" VerticalAlignment="Top" Margin="0,60,0,0"
+          BorderThickness="2" BorderBrush="DarkGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" >
+
+            <StackPanel Width="480">
+                <Slider Minimum="0" Maximum="7"
+                        Style="{StaticResource SliderStyle}"
+                        Value="{Binding NoOfRunsTick, Mode=TwoWay}" />
+                <TextBlock Style="{StaticResource TextBlockStyle}"
+                           Text="{Binding NoOfRunsText}" />
+            </StackPanel>
+            
+            <Button Style="{StaticResource ButtonStyle}" 
+                    Command="{Binding AutoCommand}">
+                <TextBlock Text="{Binding AutoPlayGoText}" FontSize="60" />
+            </Button>
+            
+        </StackPanel>
+        
+        <ProgressBar Grid.Row="1" Margin="20,0,20,0" Height="50" 
+                     Foreground="LightGray" Background="WhiteSmoke"
+                     Minimum="0" Maximum="100" Visibility="{Binding AutoPlayProgressBarVisibility}"
+                     Value="{Binding AutoPlayPercentCompleted}"/>
+
+        <TextBlock Style="{StaticResource TextBlockStyle}"
+                   Text="{Binding AutoPlayStatusText}"
+                   HorizontalAlignment="Center"
+                   Grid.Row="1"/>
+
+        <Grid Width="960" Height="360" Grid.Row="2"
+              VerticalAlignment="Top"
+              BorderThickness="2" BorderBrush="DarkGray">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Bell]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Bell]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Bell]}" />
+                <TextBlock Style="{StaticResource TextBlockResultStyle}"
+                           Text="{Binding AutoRunDataText[Bell3]}"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Cherry]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Cherry]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Cherry]}" />
+                <TextBlock Style="{StaticResource TextBlockResultStyle}"
+                           Text="{Binding AutoRunDataText[Cherry3]}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Clover]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Clover]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Clover]}" />
+                <TextBlock Style="{StaticResource TextBlockResultStyle}"
+                           Text="{Binding AutoRunDataText[Clover3]}"/>                
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Melon]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Melon]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Melon]}" />
+                <TextBlock Style="{StaticResource TextBlockResultStyle}"
+                           Text="{Binding AutoRunDataText[Melon3]}"/>                
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="4">
+                <Image Style="{StaticResource ImageStyle}"
+                       Source="{Binding WheelSymbolImages[Seven]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                       Source="{Binding WheelSymbolImages[Seven]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                       Source="{Binding WheelSymbolImages[Seven]}" />
+                <TextBlock Style="{StaticResource TextBlockResultStyle}"
+                           Text="{Binding AutoRunDataText[Seven3]}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="5">
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Shoe]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Shoe]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Shoe]}" />
+                <TextBlock Style="{StaticResource TextBlockResultStyle}"
+                           Text="{Binding AutoRunDataText[Shoe3]}"/>                
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Bell]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Bell]}" />
+                <TextBlock Style="{StaticResource TextBlockResultStyle}"
+                           Text="{Binding AutoRunDataText[Bell2]}"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Cherry]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Cherry]}" />
+                <TextBlock Style="{StaticResource TextBlockResultStyle}"
+                           Text="{Binding AutoRunDataText[Cherry2]}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Clover]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Clover]}" />
+                <TextBlock Style="{StaticResource TextBlockResultStyle}"
+                           Text="{Binding AutoRunDataText[Clover2]}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Melon]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Melon]}" />
+                <TextBlock Style="{StaticResource TextBlockResultStyle}"
+                           Text="{Binding AutoRunDataText[Melon2]}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Seven]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Seven]}" />
+                <TextBlock Style="{StaticResource TextBlockResultStyle}"
+                           Text="{Binding AutoRunDataText[Seven2]}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="5">
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Shoe]}" />
+                <Image Style="{StaticResource ImageStyle}"
+                   Source="{Binding WheelSymbolImages[Shoe]}" />
+                <TextBlock Style="{StaticResource TextBlockResultStyle}"
+                           Text="{Binding AutoRunDataText[Shoe2]}"/>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+
+</Page>
+

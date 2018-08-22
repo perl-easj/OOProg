@@ -1,0 +1,168 @@
+﻿<Page
+    x:Class="SlotMachineDemo.Views.NumericSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:SlotMachineDemo.Implementations.ViewModels"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <viewModels:ViewModelFacade/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="48"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10,10,10,10"/>
+        </Style>
+        <Style x:Key="SliderStyle" TargetType="Slider">
+            <Setter Property="Margin" Value="15,5,5,5"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="SliderProbabilityStyle" TargetType="Slider">
+            <Setter Property="Margin" Value="15,5,15,5"/>
+            <Setter Property="Width" Value="240"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ImageProbabilityStyle" TargetType="Image">
+            <Setter Property="Margin" Value="40,5,5,5"/>
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="60"/>
+        </Style>
+    </Page.Resources>
+
+    <StackPanel>
+
+        <StackPanel HorizontalAlignment="Center">
+
+            <Grid Width="960" Height="540" 
+              VerticalAlignment="Top" Margin="120,60,60,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="6*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="0"
+                            BorderThickness="2" BorderBrush="DarkGray">
+                    
+                    <ListView ItemsSource="{Binding WinningsListCopy}"
+                              SelectedItem="{Binding WinningsSelected, Mode=TwoWay}"
+                              Width="125">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <Image Width="30" Height="30" Margin="0,5,5,5"
+                                       Source="{Binding Image1Source}" />
+                                    <Image Width="30" Height="30" Margin="0,5,5,5"
+                                       Source="{Binding Image2Source}" />
+                                    <Image Width="30" Height="30" Margin="0,5,5,5"
+                                       Source="{Binding Image3Source}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <ListView ItemsSource="{Binding WinningsList}"
+                              Width="115">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <TextBlock FontSize="24" VerticalAlignment="Center"
+                                           Text="{Binding WinningsAmount}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <StackPanel VerticalAlignment="Center" Width="150" Margin="0,0,5,0">
+                        <TextBlock Style="{StaticResource TextBlockStyle}" Margin="10,0,10,30" FontSize="36"
+                       Text="{Binding WinningsAmount}" />
+                        <Slider Orientation="Vertical" Height="300" TickPlacement="Inline"
+                                Minimum="0" Maximum="16" Style="{StaticResource SliderStyle}"
+                                Value="{Binding WinningsTick, Mode=TwoWay}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <Grid Grid.Column="2" Height="540"
+                      VerticalAlignment="Top"
+                      BorderThickness="2" BorderBrush="DarkGray">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                        <Image Style="{StaticResource ImageProbabilityStyle}"
+                               Source="{Binding WheelSymbolImages[Bell]}" />
+                        <Slider Minimum="0" Maximum="100" Style="{StaticResource SliderProbabilityStyle}"
+                                Value="{Binding ProbBell, Mode=TwoWay}" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}"
+                                   Text="{Binding ProbBell}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                        <Image Style="{StaticResource ImageProbabilityStyle}"
+                               Source="{Binding WheelSymbolImages[Cherry]}" />
+                        <Slider Minimum="0" Maximum="100" Style="{StaticResource SliderProbabilityStyle}"
+                                Value="{Binding ProbCherry, Mode=TwoWay}" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}"
+                                   Text="{Binding ProbCherry, Mode=TwoWay}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
+                        <Image Style="{StaticResource ImageProbabilityStyle}"
+                               Source="{Binding WheelSymbolImages[Clover]}" />
+                        <Slider Minimum="0" Maximum="100" Style="{StaticResource SliderProbabilityStyle}"
+                                Value="{Binding ProbClover, Mode=TwoWay}" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}"
+                                   Text="{Binding ProbClover, Mode=TwoWay}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
+                        <Image Style="{StaticResource ImageProbabilityStyle}"
+                               Source="{Binding WheelSymbolImages[Melon]}" />
+                        <Slider Minimum="0" Maximum="100" Style="{StaticResource SliderProbabilityStyle}"
+                                Value="{Binding ProbMelon, Mode=TwoWay}" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}"
+                                   Text="{Binding ProbMelon, Mode=TwoWay}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="4">
+                        <Image Style="{StaticResource ImageProbabilityStyle}"
+                               Source="{Binding WheelSymbolImages[Seven]}" />
+                        <Slider Minimum="0" Maximum="100" Style="{StaticResource SliderProbabilityStyle}"
+                                Value="{Binding ProbSeven, Mode=TwoWay}" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}"
+                                   Text="{Binding ProbSeven, Mode=TwoWay}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="5">
+                        <Image Style="{StaticResource ImageProbabilityStyle}"
+                               Source="{Binding WheelSymbolImages[Shoe]}" />
+                        <Slider Minimum="0" Maximum="100" Style="{StaticResource SliderProbabilityStyle}"
+                                Value="{Binding ProbShoe, Mode=TwoWay}" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}"
+                                   Text="{Binding ProbShoe, Mode=TwoWay}" />
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+
+
+        </StackPanel>
+
+        <TextBlock Style="{StaticResource TextBlockStyle}" 
+                   Margin="30,30,30,30"
+                   Text="{Binding TheoreticalWinningsPercentageText}"/>
+    </StackPanel>
+</Page>

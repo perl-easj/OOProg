@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="BioDemo.Views.Domain.BuyTicketViewStart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BioDemo.ViewModels.Flow"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Page.DataContext>
+        <local:BuyTicketFlowViewModelStart/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../App/AppResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Page.BottomAppBar>
+        <CommandBar Style="{StaticResource CommandBarStyle}">
+            <AppBarButton Icon="Back" Label="Back" Command="{Binding NavigateBackCmd}"/>
+            <AppBarButton Icon="Forward" Label="Next" Command="{Binding NavigateForwardCmd}"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Collection view -->
+        <ListView Grid.Row="0" Grid.Column="0" Style="{StaticResource ListViewStyle}"
+                  ItemsSource="{Binding MovieList}"
+                  SelectedItem="{Binding MovieSelected, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Style="{StaticResource StackPanelItemTemplateStyle}">
+                        <TextBlock Style="{StaticResource TextBlockItemHeaderStyle}" Text="{Binding HeaderText}" />
+                        <TextBlock Style="{StaticResource TextBlockItemContentStyle}" Text="{Binding ContentText}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" 
+                   Style="{StaticResource TextBlockItemHeaderStyle}"
+                   Margin="50,50,50,50"
+                   Text="{Binding StatusText}"/>
+
+    </Grid>
+</Page>

@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="BioDemo.Views.App.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BioDemo.ViewModels.App"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <local:AppViewModel/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../App/AppResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <!--The Main View essentially consists of a NavigationView control, through which all 
+        application navigation is done. Each NavigationViewItem element defines a navigation
+        option, e.g. opening a specific view. The Frame element contained in the control 
+        is filled with the content of the selected view 
+        NB: Also note the (single line of) code added in MainPage.xaml.cs -->
+    <NavigationView Header="Bio Demo"
+                    Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+                    OpenPaneLength="150"
+                    SelectedItem ="{Binding SelectedMenuItem, Mode=TwoWay}">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="Stop" Content="Quit" Tag="Quit"/>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="Sync" Content="Load" Tag="Load"/>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="Save" Content="Save" Tag="Save"/>
+            <NavigationViewItemSeparator/>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="Memo" Content="Movies" Tag="OpenMovieView"/>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="People" Content="Theaters" Tag="OpenTheaterView"/>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="OtherUser" Content="Shows" Tag="OpenShowView"/>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="Document" Content="Tickets" Tag="OpenTicketView"/>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="Shop" Content="Buy Ticket" Tag="OpenBuyTicketFlow"/>
+        </NavigationView.MenuItems>
+
+        <Frame x:Name="AppFrame">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <NavigationThemeTransition/>
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
+    </NavigationView>
+</Page>

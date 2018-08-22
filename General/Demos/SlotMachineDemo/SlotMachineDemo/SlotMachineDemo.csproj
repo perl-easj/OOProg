@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{0AC88BD5-72EC-42B2-B06E-7D3CE35E2500}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SlotMachineDemo</RootNamespace>
+    <AssemblyName>SlotMachineDemo</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>SlotMachineDemo_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>8129D5B9D4EE8C925A7EB5576D2A2A78B1EC524D</PackageCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Implementations\Settings\DefaultSettings.cs" />
+    <Compile Include="Configuration\DependencyInjector.cs" />
+    <Compile Include="Configuration\Constants.cs" />
+    <Compile Include="Configuration\Setup.cs" />
+    <Compile Include="Implementations\Controllers\AutoPlayControllerCommand.cs" />
+    <Compile Include="Implementations\Settings\RunTimeSettings.cs" />
+    <Compile Include="Implementations\ViewModels\ItemViewModelWinningsEntry.cs" />
+    <Compile Include="Interfaces\Controllers\ICommandExtended.cs" />
+    <Compile Include="Implementations\Controllers\AddCreditsControllerCommand.cs" />
+    <Compile Include="Implementations\Controllers\SpinControllerCommand.cs" />
+    <Compile Include="Implementations\Settings\CompileTimeSettings.cs" />
+    <Compile Include="Types\TickScale.cs" />
+    <Compile Include="Implementations\Logic\LogicAnalyticalCalculation.cs" />
+    <Compile Include="Implementations\Logic\LogicCalculateWinnings.cs" />
+    <Compile Include="Implementations\Logic\LogicProbabilitySetup.cs" />
+    <Compile Include="Implementations\Logic\LogicSymbolGenerator.cs" />
+    <Compile Include="Implementations\Logic\LogicWinningsSetup.cs" />
+    <Compile Include="Implementations\Messages\MessagesBase.cs" />
+    <Compile Include="Implementations\Messages\MessagesDanish.cs" />
+    <Compile Include="Implementations\Models\ModelAutoPlay.cs" />
+    <Compile Include="Implementations\Properties\PropertySink.cs" />
+    <Compile Include="Implementations\Properties\PropertySource.cs" />
+    <Compile Include="Implementations\Properties\PropertySourceSink.cs" />
+    <Compile Include="Implementations\ViewModels\ViewModelAnalyticalCalculation.cs" />
+    <Compile Include="Implementations\ViewModels\ViewModelAutoPlay.cs" />
+    <Compile Include="Implementations\ViewModels\ViewModelMachineSettings.cs" />
+    <Compile Include="Implementations\ViewModels\ViewModelProbabilitySetup.cs" />
+    <Compile Include="Implementations\ViewModels\ViewModelWinningsSetup.cs" />
+    <Compile Include="Implementations\WheelImages\WheelImageA.cs" />
+    <Compile Include="Implementations\WheelImages\WheelImageB.cs" />
+    <Compile Include="Implementations\WheelImages\WheelImageBase.cs" />
+    <Compile Include="Implementations\Messages\MessagesEnglish.cs" />
+    <Compile Include="Interfaces\Settings\IRunTimeSettings.cs" />
+    <Compile Include="Interfaces\Properties\IPropertySink.cs" />
+    <Compile Include="Interfaces\Settings\ICompileTimeSettings.cs" />
+    <Compile Include="Interfaces\Settings\ICompileTimeSettingsReadOnly.cs" />
+    <Compile Include="Interfaces\Logic\ILogicAnalyticalCalculation.cs" />
+    <Compile Include="Interfaces\Logic\ILogicCalculateWinnings.cs" />
+    <Compile Include="Interfaces\Logic\ILogicProbabilitySetup.cs" />
+    <Compile Include="Interfaces\Logic\ILogicSymbolGenerator.cs" />
+    <Compile Include="Interfaces\Logic\ILogicWinningsSetup.cs" />
+    <Compile Include="Interfaces\Models\IModelAutoPlay.cs" />
+    <Compile Include="Interfaces\Messages\IMessages.cs" />
+    <Compile Include="Interfaces\Models\IModelNormalPlay.cs" />
+    <Compile Include="Interfaces\Properties\IPropertySource.cs" />
+    <Compile Include="Interfaces\Settings\IRunTimeSettingsReadOnly.cs" />
+    <Compile Include="Interfaces\ViewModels\IViewModelAnalyticalCalculation.cs" />
+    <Compile Include="Interfaces\ViewModels\IViewModelAutoPlay.cs" />
+    <Compile Include="Interfaces\ViewModels\IViewModelMachineSettings.cs" />
+    <Compile Include="Interfaces\ViewModels\IViewModelNormalPlay.cs" />
+    <Compile Include="Interfaces\ViewModels\IViewModelProbabilitySetup.cs" />
+    <Compile Include="Interfaces\ViewModels\IViewModelWinningsSetup.cs" />
+    <Compile Include="Interfaces\WheelImages\IWheelImage.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Implementations\Models\ModelNormalPlay.cs" />
+    <Compile Include="Types\Enums.cs" />
+    <Compile Include="Implementations\ViewModels\ViewModelNormalPlay.cs" />
+    <Compile Include="Implementations\ViewModels\ViewModelFacade.cs" />
+    <Compile Include="Types\WheelSymbolCount.cs" />
+    <Compile Include="Types\WheelSymbolList.cs" />
+    <Compile Include="Views\AutoPlay.xaml.cs">
+      <DependentUpon>AutoPlay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MachineSettings.xaml.cs">
+      <DependentUpon>MachineSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NormalPlay.xaml.cs">
+      <DependentUpon>NormalPlay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NumericSettings.xaml.cs">
+      <DependentUpon>NumericSettings.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="SlotMachineDemo_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\ImageSetA\Bell.jpg" />
+    <Content Include="Assets\ImageSetA\Cherry.jpg" />
+    <Content Include="Assets\ImageSetA\Clover.jpg" />
+    <Content Include="Assets\ImageSetA\Melon.jpg" />
+    <Content Include="Assets\ImageSetA\Seven.jpg" />
+    <Content Include="Assets\ImageSetA\Shoe.jpg" />
+    <Content Include="Assets\ImageSetB\Bell.jpg" />
+    <Content Include="Assets\ImageSetB\Cherry.jpg" />
+    <Content Include="Assets\ImageSetB\Clover.jpg" />
+    <Content Include="Assets\ImageSetB\Melon.jpg" />
+    <Content Include="Assets\ImageSetB\Seven.jpg" />
+    <Content Include="Assets\ImageSetB\Shoe.jpg" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AutoPlay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MachineSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NormalPlay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NumericSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
