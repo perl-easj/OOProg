@@ -1,0 +1,120 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--CalendarDatePicker Styles-->
+    <Style x:Key="CalendarDatePickerDetailsStyle" TargetType="CalendarDatePicker">
+        <Setter Property="Width" Value="Auto"/>
+    </Style>
+    
+    <!--ComboBox Styles-->
+    <Style x:Key="ComboBoxImageSelectStyle" TargetType="ComboBox">
+        <Setter Property="Width" Value="250"/>
+        <Setter Property="Margin" Value="0,10,10,0"/>
+    </Style>
+
+    <!--CommandBar Styles-->
+    <Style x:Key="CommandBarStyle" TargetType="CommandBar">
+        <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicWindowBrush}"/>
+    </Style>
+
+    <!--GridView Styles-->
+    <Style x:Key="GridViewStyle" TargetType="GridView">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Margin" Value="10,10,10,10"/>
+    </Style>
+    
+    <!--Image Styles-->
+    <Style x:Key="ImageItemStyle" TargetType="Image">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="ImageDetailsStyle" TargetType="Image">
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Height" Value="80"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="ImageDetailsSelectStyle" TargetType="Image">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="200"/>
+    </Style>
+    <Style x:Key="ImageComboBoxSelectStyle" TargetType="Image">
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Height" Value="60"/>
+    </Style>
+
+    <!--NavigationViewItem Styles-->
+    <Style x:Key="NavigationViewItemStyle" TargetType="NavigationViewItem">
+    </Style>
+
+    <!--StackPanel Styles-->
+    <Style x:Key="StackPanelItemTemplateStyle" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Vertical"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Background" Value="Snow"/>
+        <Setter Property="Spacing" Value="5"/>
+        <Setter Property="Margin" Value="10,5,10,5"/>
+    </Style>
+    <Style x:Key="StackPanelDetailsOuterStyle" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Background" Value="Gainsboro"/>
+        <Setter Property="Spacing" Value="10"/>
+        <Setter Property="Margin" Value="10,10,10,10"/>
+    </Style>
+    <Style x:Key="StackPanelDetailsMidStyle" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Vertical"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Spacing" Value="10"/>
+        <Setter Property="Margin" Value="10,10,10,10"/>
+    </Style>
+    <Style x:Key="StackPanelDetailsItemStyle" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+    </Style>
+    <Style x:Key="StackPanelDetailsImageSelectStyle" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <!--TextBlock Styles-->
+    <Style x:Key="TextBlockCommandContentStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="Margin" Value="10,10,0,0"/>
+    </Style>    
+    <Style x:Key="TextBlockItemHeaderStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="CornflowerBlue"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="TextBlockItemContentStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="TextBlockDetailsHeaderStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5,0,5,0"/>
+    </Style>
+    <Style x:Key="TextBlockDetailsComboBoxStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Width" Value="120" />
+        <Setter Property="Margin" Value="10,5,5,5" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <!--TextBox Styles-->
+    <Style x:Key="TextBoxDetailsStyle" TargetType="TextBox">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+</ResourceDictionary>

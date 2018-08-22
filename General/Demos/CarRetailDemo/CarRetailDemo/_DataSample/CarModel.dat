@@ -1,0 +1,110 @@
+[
+  {
+    "LicensePlate": "AB 23 456",
+    "Brand": "BMW",
+    "Model": "318i",
+    "Year": 2011,
+    "EngineSizeCm3": 1800,
+    "HorsePower": 115,
+    "Seats": 4,
+    "Price": 80000,
+    "ImageKey": 6,
+    "Key": 0
+  },
+  {
+    "LicensePlate": "BC 34 567",
+    "Brand": "Ford",
+    "Model": "Mondeo",
+    "Year": 2008,
+    "EngineSizeCm3": 1600,
+    "HorsePower": 105,
+    "Seats": 5,
+    "Price": 55000,
+    "ImageKey": 1,
+    "Key": 1
+  },
+  {
+    "LicensePlate": "CD 45 678",
+    "Brand": "VW",
+    "Model": "Beetle",
+    "Year": 2012,
+    "EngineSizeCm3": 1400,
+    "HorsePower": 85,
+    "Seats": 2,
+    "Price": 110000,
+    "ImageKey": 4,
+    "Key": 2
+  },
+  {
+    "LicensePlate": "DE 32 121",
+    "Brand": "Ford",
+    "Model": "Pickup",
+    "Year": 2009,
+    "EngineSizeCm3": 2000,
+    "HorsePower": 110,
+    "Seats": 2,
+    "Price": 70000,
+    "ImageKey": 8,
+    "Key": 3
+  },
+  {
+    "LicensePlate": "EF 76 123",
+    "Brand": "Alfa Romeo",
+    "Model": "Ellos",
+    "Year": 2010,
+    "EngineSizeCm3": 2200,
+    "HorsePower": 160,
+    "Seats": 2,
+    "Price": 140000,
+    "ImageKey": 0,
+    "Key": 4
+  },
+  {
+    "LicensePlate": "FG 70 776",
+    "Brand": "Fiat",
+    "Model": "Panda",
+    "Year": 2008,
+    "EngineSizeCm3": 1200,
+    "HorsePower": 65,
+    "Seats": 4,
+    "Price": 35000,
+    "ImageKey": 2,
+    "Key": 5
+  },
+  {
+    "LicensePlate": "GH 93 338",
+    "Brand": "Skoda",
+    "Model": "Fabia",
+    "Year": 2014,
+    "EngineSizeCm3": 1400,
+    "HorsePower": 90,
+    "Seats": 5,
+    "Price": 86000,
+    "ImageKey": 3,
+    "Key": 6
+  },
+  {
+    "LicensePlate": "HI 80 634",
+    "Brand": "Porsche",
+    "Model": "928",
+    "Year": 2003,
+    "EngineSizeCm3": 2800,
+    "HorsePower": 260,
+    "Seats": 2,
+    "Price": 340000,
+    "ImageKey": 5,
+    "Key": 7
+  },
+  {
+    "LicensePlate": "IJ 22 983",
+    "Brand": "Skoda",
+    "Model": "Fabia",
+    "Year": 2011,
+    "EngineSizeCm3": 1600,
+    "HorsePower": 105,
+    "Seats": 5,
+    "Price": 90000,
+    "ImageKey": 7,
+    "Key": 8
+  }
+]

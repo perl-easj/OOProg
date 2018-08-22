@@ -1,0 +1,74 @@
+[
+  {
+    "CarKey": 3,
+    "CustomerKey": 0,
+    "EmployeeKey": 2,
+    "SalesDate": "2017-02-05T18:23:41.3013072+01:00",
+    "FinalPrice": 75000,
+    "Key": 0
+  },
+  {
+    "CarKey": 0,
+    "CustomerKey": 5,
+    "EmployeeKey": 5,
+    "SalesDate": "2016-08-16T18:25:45.2906802+02:00",
+    "FinalPrice": 130000,
+    "Key": 4
+  },
+  {
+    "CarKey": 7,
+    "CustomerKey": 3,
+    "EmployeeKey": 4,
+    "SalesDate": "2017-02-26T18:25:14.8713182+01:00",
+    "FinalPrice": 250000,
+    "Key": 3
+  },
+  {
+    "CarKey": 5,
+    "CustomerKey": 2,
+    "EmployeeKey": 2,
+    "SalesDate": "2017-01-21T18:24:40.9357784+01:00",
+    "FinalPrice": 30000,
+    "Key": 2
+  },
+  {
+    "CarKey": 2,
+    "CustomerKey": 1,
+    "EmployeeKey": 5,
+    "SalesDate": "2016-12-05T18:24:13.5617676+01:00",
+    "FinalPrice": 150000,
+    "Key": 1
+  },
+  {
+    "CarKey": 6,
+    "CustomerKey": 4,
+    "EmployeeKey": 3,
+    "SalesDate": "2017-04-16T18:26:26.1541739+02:00",
+    "FinalPrice": 85000,
+    "Key": 5
+  },
+  {
+    "CarKey": 1,
+    "CustomerKey": 3,
+    "EmployeeKey": 2,
+    "SalesDate": "2016-09-02T18:27:19.2180757+02:00",
+    "FinalPrice": 110000,
+    "Key": 6
+  },
+  {
+    "CarKey": 4,
+    "CustomerKey": 1,
+    "EmployeeKey": 4,
+    "SalesDate": "2017-02-15T18:28:02.2865381+01:00",
+    "FinalPrice": 155000,
+    "Key": 7
+  },
+  {
+    "CarKey": 8,
+    "CustomerKey": 4,
+    "EmployeeKey": 2,
+    "SalesDate": "2017-03-29T18:29:24.8213423+02:00",
+    "FinalPrice": 90000,
+    "Key": 8
+  }
+]

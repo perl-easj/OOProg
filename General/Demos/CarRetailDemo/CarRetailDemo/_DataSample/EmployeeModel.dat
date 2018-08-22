@@ -1,0 +1,42 @@
+[
+  {
+    "Title": "Salesperson",
+    "CarsSold": 0,
+    "EmployedDate": "2012-05-04T12:00:00.6616658+02:00",
+    "FullName": "Alfred",
+    "Phone": "32321109",
+    "Email": "alfred@carsRus.dk",
+    "ImageKey": 10,
+    "Key": 2
+  },
+  {
+    "Title": "Salesperson",
+    "CarsSold": 1,
+    "EmployedDate": "2011-10-19T12:00:00.6616658+02:00",
+    "FullName": "Britta",
+    "Phone": "33229876",
+    "Email": "britta@carsRus.dk",
+    "ImageKey": 11,
+    "Key": 3
+  },
+  {
+    "Title": "Salesperson",
+    "CarsSold": 2,
+    "EmployedDate": "2016-02-05T18:19:41.6646658+01:00",
+    "FullName": "Carl",
+    "Phone": "40912200",
+    "Email": "carl@carsRus.dk",
+    "ImageKey": 12,
+    "Key": 4
+  },
+  {
+    "Title": "Salesperson",
+    "CarsSold": 2,
+    "EmployedDate": "2015-05-01T18:20:22.2170393+02:00",
+    "FullName": "Dorthe",
+    "Phone": "50663410",
+    "Email": "dorthe@carsRus.dk",
+    "ImageKey": 9,
+    "Key": 5
+  }
+]

@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="CarRetailDemo.Views.App.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:CarRetailDemo.ViewModels.App"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:AppViewModel/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../App/AppResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <NavigationView Header="Car Retail"
+                    Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+                    OpenPaneLength="150"
+                    CompactModeThresholdWidth="1280"
+                    SelectedItem ="{Binding SelectedMenuItem, Mode=TwoWay}"
+                    ExpandedModeThresholdWidth="3840">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="Globe" Content="File" Tag="File"/>
+            <NavigationViewItemSeparator/>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="Memo" Content="Cars" Tag="OpenCarView"/>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="People" Content="Customers" Tag="OpenCustomerView"/>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="OtherUser" Content="Employees" Tag="OpenEmployeeView"/>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Icon="Shop" Content="Sales" Tag="OpenSaleView"/>
+        </NavigationView.MenuItems>
+        
+        <Frame x:Name="AppFrame">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <NavigationThemeTransition/>
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
+    </NavigationView>
+</Page>

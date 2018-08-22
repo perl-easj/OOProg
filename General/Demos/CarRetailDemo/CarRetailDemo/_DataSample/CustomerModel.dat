@@ -1,0 +1,80 @@
+[
+  {
+    "Address": "Kirkevej 12",
+    "ZipCode": 2750,
+    "City": "Ballerup",
+    "MinPrice": 50000,
+    "MaxPrice": 120000,
+    "NewsLetter": true,
+    "FullName": "Betty Svendsen",
+    "Phone": "31120086",
+    "Email": "betty@live.dk",
+    "ImageKey": 15,
+    "Key": 1
+  },
+  {
+    "Address": "Skolevej 6",
+    "ZipCode": 4000,
+    "City": "Roskilde",
+    "MinPrice": 20000,
+    "MaxPrice": 60000,
+    "NewsLetter": false,
+    "FullName": "Allan Jensen",
+    "Phone": "51244229",
+    "Email": "allan@mail.dk",
+    "ImageKey": 14,
+    "Key": 0
+  },
+  {
+    "Address": "Broen 34",
+    "ZipCode": 4780,
+    "City": "Stege",
+    "MinPrice": 60000,
+    "MaxPrice": 150000,
+    "NewsLetter": true,
+    "FullName": "Carsten Holm",
+    "Phone": "52317083",
+    "Email": "ch@mail.dk",
+    "ImageKey": 16,
+    "Key": 2
+  },
+  {
+    "Address": "Blommestien 45",
+    "ZipCode": 2900,
+    "City": "Hellerup",
+    "MinPrice": 100000,
+    "MaxPrice": 300000,
+    "NewsLetter": false,
+    "FullName": "Diana Cederberg",
+    "Phone": "34009816",
+    "Email": "ceder@live.dk",
+    "ImageKey": 17,
+    "Key": 3
+  },
+  {
+    "Address": "Stationsvej 102",
+    "ZipCode": 2760,
+    "City": "Måløv",
+    "MinPrice": 20000,
+    "MaxPrice": 60000,
+    "NewsLetter": false,
+    "FullName": "Elias Hansen",
+    "Phone": "50872455",
+    "Email": "eh@live.dk",
+    "ImageKey": 18,
+    "Key": 4
+  },
+  {
+    "Address": "Marklodden 12",
+    "ZipCode": 3000,
+    "City": "Helsingør",
+    "MinPrice": 50000,
+    "MaxPrice": 120000,
+    "NewsLetter": true,
+    "FullName": "Frida Poulsen",
+    "Phone": "44096231",
+    "Email": "frida@live.dk",
+    "ImageKey": 19,
+    "Key": 5
+  }
+]
