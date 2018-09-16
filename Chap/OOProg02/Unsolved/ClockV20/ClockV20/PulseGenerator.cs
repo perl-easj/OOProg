@@ -34,7 +34,6 @@ namespace ClockV20
         /// <param name="noOfPulses">
         /// Number of Pulse events generated in this session
         /// </param>
-        /// <returns></returns>
         public async Task Start(int intervalInMilliSecs, int noOfPulses = 1000)
         {
             while (noOfPulses > 0)
