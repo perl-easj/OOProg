@@ -24,19 +24,12 @@ namespace Palindrome
                 bool isPalindrome = checker.IsPalindrome(testItem.Key);
                 bool testOK = isPalindrome == testItem.Value;
                 string notText = isPalindrome ? "" : " not";
+                string okFailText = testOK ? "OK" : "FAIL";
 
-                if (testOK)
-                {
-                    Console.WriteLine($"\"{testItem.Key}\" is{notText} a palindrome (TEST OK)");
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"\"{testItem.Key}\" is{notText} a palindrome (TEST FAIL)");
-                    Console.ResetColor();
-                }
+                Console.ForegroundColor = testOK ? ConsoleColor.Green : ConsoleColor.Red;                   
+                Console.WriteLine($"\"{testItem.Key}\" is{notText} a palindrome (TEST {okFailText})");                   
+                Console.ResetColor();
             }
-
 
             KeepConsoleWindowOpen();
         }

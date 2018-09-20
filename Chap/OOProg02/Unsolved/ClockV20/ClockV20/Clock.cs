@@ -66,7 +66,7 @@ namespace ClockV20
         /// </summary>
         public override string ToString()
         {
-            int hours = _secondsSinceMidnight / 3600;
+            int hours = (_secondsSinceMidnight / 3600) % 24;
             int minutes = (_secondsSinceMidnight - 3600 * hours) / 60;
             int seconds = (_secondsSinceMidnight - 3600 * hours - 60 * minutes);
             return $"{_text} {hours:00}:{minutes:00}:{seconds:00}";

@@ -26,14 +26,5 @@ namespace DataStructureCompare
 
             return _watch.ElapsedMilliseconds;
         }
-
-        /// <summary>
-        /// Measures the execution time for a single invocation
-        /// of the given method
-        /// </summary>
-        public static long MeasureRunTime(Action functionToTest)
-        {
-            return MeasureRunTimeLoop(functionToTest, 1);
-        }
     }
 }
