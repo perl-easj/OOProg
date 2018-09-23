@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using SlicesOfPiUI.Calculation;
 using SlicesOfPiUI.Commands;
 
 namespace SlicesOfPiUI.ViewModels
@@ -11,10 +10,14 @@ namespace SlicesOfPiUI.ViewModels
     /// calcuation view model. It thus serves as a base
     /// class for sync/async-specific view model classes
     /// </summary>
-    public class CalcViewModelBase : INotifyPropertyChanged 
+    public abstract class CalcViewModelBase : INotifyPropertyChanged 
     {
         #region Instance fields
-        protected PiCalcData _calcData;
+        protected const long IterationsRequested = 100000000;
+        protected const double PiUndefined = -1.0;
+
+        protected long _iterationsDone;
+        protected double _piCalculated;
         protected bool _calcIsRunning;
 
         protected CommandBase _calcStartCmd;
@@ -24,8 +27,9 @@ namespace SlicesOfPiUI.ViewModels
         #region Constructor
         public CalcViewModelBase()
         {
-            _calcData = new PiCalcData();
             _calcIsRunning = false;
+            _iterationsDone = 0;
+            _piCalculated = PiUndefined;
 
             _calcStartCmd = new StartCalcCmd(this);
             _calcStopCmd = new StopCalcCmd(this);
@@ -40,8 +44,8 @@ namespace SlicesOfPiUI.ViewModels
         {
             get
             {
-                return $"Iterations  {((_calcData.Iterations) / 1000000):0000}  mio." +
-                       $"\nPi  {_calcData.Pi:F6}   (Actual Pi: 3.141593)";
+                return $"Iterations:  {((_iterationsDone) / 1000000):0000}  mio." +
+                     $"\nPi: {PiToString(_piCalculated)}";
             }
         }
 
@@ -64,10 +68,10 @@ namespace SlicesOfPiUI.ViewModels
         #region Methods
         public virtual void StartCalc()
         {
+            _piCalculated = PiUndefined;
             _calcIsRunning = true;
             _calcStartCmd.RaiseCanExecuteChanged();
             _calcStopCmd.RaiseCanExecuteChanged();
-            _calcData = new PiCalcData();
         }
 
         public virtual void StopCalc()
@@ -75,6 +79,7 @@ namespace SlicesOfPiUI.ViewModels
             _calcIsRunning = false;
             _calcStartCmd.RaiseCanExecuteChanged();
             _calcStopCmd.RaiseCanExecuteChanged();
+            OnPropertyChanged(nameof(StatusCalc));
         }
 
         protected IProgress<long> CreateProgressObject()
@@ -84,8 +89,14 @@ namespace SlicesOfPiUI.ViewModels
 
         private void OnPiCalcDataUpdated(long iterations)
         {
+            _iterationsDone = iterations;
             OnPropertyChanged(nameof(StatusCalc));
-        } 
+        }
+
+        private string PiToString(double pi)
+        {
+            return pi < 0.0 ? "(undefined)" : $"{pi:F6}";
+        }
         #endregion
 
         #region INotifyPropertyChanged code

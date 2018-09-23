@@ -10,6 +10,8 @@ namespace SlicesOfPiUI.Calculation
     /// </summary>
     public class PiCalcAsync : PiCalcBase
     {
+        private CancellationToken _token;
+
         public PiCalcAsync(IProgress<long> progressCallback) 
             : base(progressCallback)
         {
@@ -19,11 +21,31 @@ namespace SlicesOfPiUI.Calculation
         /// Calculates an approximate value of Pi.
         /// Note that this version of the algorithm is async.
         /// </summary>
-        public async Task CalculateAsync(PiCalcData data, CancellationToken token)
+        public async Task<double> CalculateAsync(long iterationsRequested, CancellationToken token)
         {
-            // Main loop in algorithm (started as a new Task, is cancellable).
-            //
-            await Task.Run(() => Calculate(data, () => !token.IsCancellationRequested), token);
+            _iterationsRequested = iterationsRequested;
+            _token = token;
+
+            // Wrap the call of Calculate into a Task object,
+            // and start the task
+            Task<double> calcTask = new Task<double>(Calculate);   
+            calcTask.Start();
+
+            // Await the completion of the calculation
+            await calcTask;
+
+            // Return the result of the calculation
+            return calcTask.Result;
+        }
+
+        /// <summary>
+        /// In this case, the calculation stops when the requested
+        /// number of iterations have been performed, OR a cancellation
+        /// request has been issued. 
+        /// </summary>
+        protected override bool StopCondition()
+        {
+            return _iterationsDone >= _iterationsRequested || _token.IsCancellationRequested;
         }
     }
 }

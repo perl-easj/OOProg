@@ -6,21 +6,24 @@ namespace SlicesOfPiUI.Calculation
     /// This class contains the general algorithm for
     /// calculation of an approximate value of pi.
     /// </summary>
-    public class PiCalcBase
+    public abstract class PiCalcBase
     {
         #region Instance fields
         private IProgress<long> _progress;
         private Random _generator;
-        protected long _iterations;
+        protected long _iterationsDone;
+        protected long _iterationsRequested;
         protected long _insideUnitCircle;
         #endregion
 
         #region Constructor
-        public PiCalcBase(IProgress<long> progressCallback)
+
+        protected PiCalcBase(IProgress<long> progressCallback)
         {
             _progress = progressCallback;
             _generator = new Random(Guid.NewGuid().GetHashCode());
-            _iterations = 0;
+            _iterationsRequested = 0;
+            _iterationsDone = 0;
             _insideUnitCircle = 0;
         }
         #endregion
@@ -28,32 +31,31 @@ namespace SlicesOfPiUI.Calculation
         #region Methods
         /// <summary>
         /// Contains the main algorithm. Note that the algorithm
-        /// is parameterised with a continuation condition.
+        /// uses the (abstract) method StopCondition.
         /// </summary>
-        protected void Calculate(PiCalcData data, Func<bool> continueCondition)
+        protected double Calculate()
         {
-            _iterations = 0;
+            _iterationsDone = 0;
             _insideUnitCircle = 0;
 
-            while (continueCondition())
+            while (!StopCondition())
             {
-                _iterations++;
+                _iterationsDone++;
                 _insideUnitCircle += RandomPointWithinUnitCircle();
-                UpdateDataObject(data);
+                ReportProgress();
             }
+
+            return (_insideUnitCircle * 4.0) / _iterationsDone;
         }
 
         /// <summary>
-        /// Update the data object at regular intervals.
+        /// Report progress at regular intervals.
         /// </summary>
-        private void UpdateDataObject(PiCalcData data)
+        private void ReportProgress()
         {
-            if (_iterations % 1000000 == 0)
+            if (_iterationsDone % 1000000 == 0)
             {
-                data.Pi = _insideUnitCircle * 4.0 / _iterations;
-                data.Iterations = _iterations;
-
-                _progress.Report(_iterations);
+                _progress.Report(_iterationsDone);
             }
         }
 
@@ -69,7 +71,12 @@ namespace SlicesOfPiUI.Calculation
             double y = _generator.NextDouble();
 
             return (x * x + y * y < 1.0) ? 1 : 0;
-        } 
+        }
+
+        /// <summary>
+        /// A derived class must override this method
+        /// </summary>
+        protected abstract bool StopCondition();
         #endregion
     }
 }

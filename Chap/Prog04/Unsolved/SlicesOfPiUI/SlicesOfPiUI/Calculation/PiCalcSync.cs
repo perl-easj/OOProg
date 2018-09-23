@@ -17,11 +17,20 @@ namespace SlicesOfPiUI.Calculation
         /// Calculates an approximate value of Pi.
         /// Note that this version does NOT use async.
         /// </summary>
-        public void CalculateSync(PiCalcData data, int iterationsToPerform)
+        public double CalculateSync(long iterationsRequested)
         {
-            // Main loop in algorithm
-            //
-            Calculate(data, () => _iterations < iterationsToPerform);
+            _iterationsRequested = iterationsRequested;
+
+            return Calculate();
+        }
+
+        /// <summary>
+        /// In this case, the calculation stops when the requested
+        /// number of iterations have been performed. 
+        /// </summary>
+        protected override bool StopCondition()
+        {
+            return _iterationsDone >= _iterationsRequested;
         }
     }
 }

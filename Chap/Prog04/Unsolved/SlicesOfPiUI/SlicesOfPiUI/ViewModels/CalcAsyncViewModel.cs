@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using SlicesOfPiUI.Calculation;
 
 namespace SlicesOfPiUI.ViewModels
@@ -18,7 +19,10 @@ namespace SlicesOfPiUI.ViewModels
             _cancellationTokenSource = new CancellationTokenSource();
 
             PiCalcAsync calcAsync = new PiCalcAsync(CreateProgressObject());
-            await calcAsync.CalculateAsync(_calcData, _cancellationTokenSource.Token);
+            Task<double> calcTask = calcAsync.CalculateAsync(IterationsRequested, _cancellationTokenSource.Token);
+            _piCalculated = await calcTask;
+
+            base.StopCalc();
         }
 
         public override void StopCalc()

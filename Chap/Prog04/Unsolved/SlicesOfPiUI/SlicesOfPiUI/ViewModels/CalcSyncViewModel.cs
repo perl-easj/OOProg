@@ -14,7 +14,7 @@ namespace SlicesOfPiUI.ViewModels
             base.StartCalc();
 
             PiCalcSync calcSync = new PiCalcSync(CreateProgressObject());
-            calcSync.CalculateSync(_calcData, 100000000);
+            _piCalculated = calcSync.CalculateSync(IterationsRequested);
 
             StopCalc();
         }
