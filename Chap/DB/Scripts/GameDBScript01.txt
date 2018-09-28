@@ -1,0 +1,44 @@
+USE [GameDB]
+GO
+
+/****** Object: Table [dbo].[Weapon] Script Date: 25-09-2018 11:17:47 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+DROP TABLE IF EXISTS [dbo].[Weapon];
+
+
+GO
+CREATE TABLE [dbo].[Weapon] (
+    [id]            INT           NOT NULL,
+    [name]          NVARCHAR (50) NOT NULL,
+    [type]          NVARCHAR (50) NOT NULL,
+    [jewel_sockets] INT           NOT NULL,
+    [min_damage]    INT           NOT NULL,
+    [max_damage]    INT           NOT NULL,
+    [rarity]        NVARCHAR (50) NOT NULL,
+    [item_level]    INT           NOT NULL,
+    [two_handed]    BIT           NOT NULL
+);
+
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (1, N'Rookie Club', N'Mace', 0, 5, 12, N'Common', 3, 0)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (2, N'Iron Dagger', N'Sword', 0, 8, 15, N'Rare', 5, 0)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (3, N'Pea Shooter', N'Gun', 1, 10, 20, N'Common', 6, 0)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (4, N'Broad Iron Sword', N'Sword', 0, 15, 30, N'Common', 6, 1)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (5, N'Steel-Studded Mace', N'Mace', 1, 20, 35, N'Rare', 8, 0)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (6, N'Footmans Musket', N'Gun', 0, 25, 40, N'Common', 11, 1)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (7, N'Redeemer', N'Sword', 2, 40, 70, N'Epic', 14, 0)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (8, N'Stinger', N'Sword', 0, 30, 50, N'Common', 14, 0)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (9, N'Skullcrusher', N'Mace', 1, 50, 80, N'Rare', 18, 0)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (10, N'Desert Falcon', N'Gun', 1, 60, 100, N'Rare', 21, 0)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (11, N'Broad Steel Sword', N'Sword', 0, 60, 90, N'Common', 21, 1)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (12, N'Giant Hammer', N'Mace', 2, 100, 160, N'Rare', 23, 1)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (13, N'Titanium Dagger', N'Sword', 0, 75, 110, N'Common', 28, 0)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (14, N'High-Caliber Rifle', N'Gun', 0, 90, 150, N'Common', 29, 1)
+INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (15, N'Lucille', N'Mace', 3, 200, 350, N'Epic', 38, 0)
+
+
+
