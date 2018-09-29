@@ -4,6 +4,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+DROP TABLE IF EXISTS [dbo].[WeaponsOwned];
+DROP TABLE IF EXISTS [dbo].[Character];
 DROP TABLE IF EXISTS [dbo].[Weapon];
 
 
@@ -19,6 +21,29 @@ CREATE TABLE [dbo].[Weapon] (
     [item_level]    INT           NOT NULL,
     [two_handed]    BIT           NOT NULL,
     PRIMARY KEY CLUSTERED ([id] ASC)
+);
+
+GO
+CREATE TABLE [dbo].[Character] (
+    [id]            INT           NOT NULL,
+    [name]          NVARCHAR (50) NOT NULL,
+    [race]          NVARCHAR (50) NOT NULL,
+    [class]         NVARCHAR (50) NOT NULL,
+    [health_points] INT           NOT NULL,
+    [weapon_left]   INT           NULL,
+    [weapon_right]  INT           NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [FK_WeaponRight] FOREIGN KEY ([weapon_right]) REFERENCES [Weapon] ([id]),
+    CONSTRAINT [FK_WeaponLeft] FOREIGN KEY ([weapon_left]) REFERENCES [Weapon] ([id])
+);
+
+GO
+CREATE TABLE [dbo].[WeaponsOwned] (
+    [character_id] INT NOT NULL,
+    [weapon_id]    INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([character_id] ASC, [weapon_id] ASC),
+    CONSTRAINT [FK_CharacterId] FOREIGN KEY ([character_id]) REFERENCES [dbo].[Character] ([id]),
+    CONSTRAINT [FK_WeaponId] FOREIGN KEY ([weapon_id]) REFERENCES [dbo].[Weapon] ([id])
 );
 
 
@@ -38,4 +63,27 @@ INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage],
 INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (14, N'High-Caliber Rifle', N'Gun', 0, 90, 150, N'Common', 29, 1)
 INSERT INTO [dbo].[Weapon] ([id], [name], [type], [jewel_sockets], [min_damage], [max_damage], [rarity], [item_level], [two_handed]) VALUES (15, N'Lucille', N'Mace', 3, 200, 350, N'Epic', 38, 0)
 
+INSERT INTO [dbo].[Character] ([id], [name], [race], [class], [health_points], [weapon_left], [weapon_right]) VALUES (1, N'Axlan', N'Human', N'Warrior', 550, 11, 11)
+INSERT INTO [dbo].[Character] ([id], [name], [race], [class], [health_points], [weapon_left], [weapon_right]) VALUES (2, N'Fridolph', N'Human', N'Hunter', 450, 6, 6)
+INSERT INTO [dbo].[Character] ([id], [name], [race], [class], [health_points], [weapon_left], [weapon_right]) VALUES (3, N'Elizah', N'Elf', N'Wizard', 400, 13, NULL)
+INSERT INTO [dbo].[Character] ([id], [name], [race], [class], [health_points], [weapon_left], [weapon_right]) VALUES (4, N'Romanov', N'Human', N'Warrior', 620, 7, 8)
+INSERT INTO [dbo].[Character] ([id], [name], [race], [class], [health_points], [weapon_left], [weapon_right]) VALUES (5, N'Olnaar', N'Elf', N'Hunter', 780, 14, 14)
+INSERT INTO [dbo].[Character] ([id], [name], [race], [class], [health_points], [weapon_left], [weapon_right]) VALUES (6, N'Frida', N'Human', N'Warrior', 730, NULL, 15)
+
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (1, 4)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (1, 8)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (1, 11)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (2, 3)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (2, 6)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (3, 9)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (3, 13)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (4, 2)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (4, 5)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (4, 7)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (4, 8)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (5, 6)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (5, 10)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (5, 14)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (6, 9)
+INSERT INTO [dbo].[WeaponsOwned] ([character_id], [weapon_id]) VALUES (6, 15)
 
