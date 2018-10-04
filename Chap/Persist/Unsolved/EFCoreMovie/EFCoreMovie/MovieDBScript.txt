@@ -1,0 +1,41 @@
+﻿
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+DROP TABLE IF EXISTS [dbo].[Movie];
+
+
+GO
+CREATE TABLE [dbo].[Movie] (
+    [id]                INT        NOT NULL PRIMARY KEY,
+    [title]             NCHAR (50) NOT NULL,
+    [year]              INT        NOT NULL,
+    [running_time_mins] INT        NOT NULL,
+    [studio_id]         INT        NOT NULL
+);
+
+DROP TABLE IF EXISTS [dbo].[Studio];
+
+
+GO
+CREATE TABLE [dbo].[Studio] (
+    [id]              INT        NOT NULL PRIMARY KEY,
+    [name]            NCHAR (50) NOT NULL,
+    [hq_city]         NCHAR (30) NOT NULL,
+    [no_of_employees] INT        NOT NULL
+);
+
+INSERT INTO [dbo].[Movie] ([id], [title], [year], [running_time_mins], [studio_id]) VALUES (1, N'Se7en                                             ', 1995, 127, 1)
+INSERT INTO [dbo].[Movie] ([id], [title], [year], [running_time_mins], [studio_id]) VALUES (2, N'Alien                                             ', 1979, 117, 2)
+INSERT INTO [dbo].[Movie] ([id], [title], [year], [running_time_mins], [studio_id]) VALUES (3, N'Forrest Gump                                      ', 1994, 142, 3)
+INSERT INTO [dbo].[Movie] ([id], [title], [year], [running_time_mins], [studio_id]) VALUES (4, N'True Grit                                         ', 2010, 110, 3)
+INSERT INTO [dbo].[Movie] ([id], [title], [year], [running_time_mins], [studio_id]) VALUES (5, N'Dark City                                         ', 1998, 111, 1)
+INSERT INTO [dbo].[Movie] ([id], [title], [year], [running_time_mins], [studio_id]) VALUES (6, N'Terminator                                        ', 1984, 102, 3)
+INSERT INTO [dbo].[Movie] ([id], [title], [year], [running_time_mins], [studio_id]) VALUES (7, N'Home Alone                                        ', 1990, 105, 3)
+
+INSERT INTO [dbo].[Studio] ([id], [name], [hq_city], [no_of_employees]) VALUES (1, N'New Line Cinema                                   ', N'Boston                        ', 4000)
+INSERT INTO [dbo].[Studio] ([id], [name], [hq_city], [no_of_employees]) VALUES (2, N'20th Century Fox                                  ', N'New York                      ', 2500)
+INSERT INTO [dbo].[Studio] ([id], [name], [hq_city], [no_of_employees]) VALUES (3, N'Paramount Pictures                                ', N'New York                      ', 8000)

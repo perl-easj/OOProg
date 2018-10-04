@@ -1,0 +1,1 @@
+﻿{"ContextClassName":"MovieDBContext","DefaultDacpacSchema":null,"IdReplace":false,"IncludeConnectionString":true,"OutputPath":"","ProjectRootNamespace":"EFCoreMovie","SelectedToBeGenerated":0,"Tables":["dbo.Movie","dbo.Studio"],"UseDatabaseNames":false,"UseFluentApiOnly":true,"UseHandleBars":false,"UseInflector":true}

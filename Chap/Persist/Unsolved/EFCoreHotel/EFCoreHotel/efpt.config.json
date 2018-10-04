@@ -1,0 +1,1 @@
+﻿{"ContextClassName":"HotelDBContext","DefaultDacpacSchema":null,"IdReplace":false,"IncludeConnectionString":true,"OutputPath":"","ProjectRootNamespace":"EFCoreHotel","SelectedToBeGenerated":0,"Tables":["dbo.Booking","dbo.Guest","dbo.Hotel","dbo.Room"],"UseDatabaseNames":false,"UseFluentApiOnly":true,"UseHandleBars":false,"UseInflector":true}
