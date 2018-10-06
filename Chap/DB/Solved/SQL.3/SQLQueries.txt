@@ -1,0 +1,66 @@
+-- SQL queries for exercise SQL.3
+
+
+-- 3.a (Full details for all weapons, ordered by name.)
+SELECT *
+FROM Weapon
+ORDER BY name 
+
+-- 3.b (Full details for all weapons, ordered by number of jewel sockets (ascending). 
+--      In case of equal number of jewel sockets, order by item level (ascending) .)
+SELECT *
+FROM Weapon
+ORDER BY jewel_sockets, item_level
+
+
+-- 3.c (Name and type for all weapons, grouped by weapon type, then name.)
+SELECT name, type
+FROM Weapon
+GROUP BY type, name
+
+
+-- 3.d (Number of weapons for each weapon type. Name the column containing the count no_of_weapons.)
+-- Expected result:
+--   Gun     4
+--   Mace    5
+--   Sword   6
+SELECT type, COUNT(*) AS no_of_weapons
+FROM Weapon
+GROUP BY type
+
+-- 3.e (Average item level for weapons in each category of rarity. 
+--      Name the column containing the average item level average_item_level.)
+-- Expected result: 
+--   Common  14
+--   Epic    26
+--   Rare    15
+SELECT rarity, AVG(item_level) AS average_item_level
+FROM Weapon
+GROUP BY rarity
+
+-- 3.f (The number of weapons in each combination of weapon type and rarity (e.g. Common Guns, Epic Maces, etc.).)
+-- Expected result: 
+--   Common  Gun    3
+--   Rare    Gun    1
+--   Common  Mace   1
+--   Epic    Mace   1
+--   Rare    Mace   3
+--   Common  Sword  4
+--   Epic    Sword  1
+--   Rare    Sword  1
+SELECT rarity, type, COUNT(*) AS no_of_weapons
+FROM Weapon
+GROUP BY rarity, type
+
+
+-- 3.g (The number of weapons in each combination of weapon type and rarity (e.g. Common Guns, Epic Maces, etc.), 
+--      but only including combinations containing at least three weapons. 
+-- Expected result:
+--   Common  Gun    3
+--   Rare    Mace   3
+--   Common  Sword  4
+SELECT rarity, type, COUNT(*) AS no_of_weapons
+FROM Weapon
+GROUP BY rarity, type
+HAVING COUNT(*) >= 3
+
