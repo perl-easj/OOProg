@@ -19,6 +19,8 @@ namespace CarRetailDemo.ViewModels.Data
             }
         }
 
+        // More properties with the same structure follow
+
         public string Brand
         {
             get { return DataObject.Brand.TrimEnd(' '); }
@@ -84,8 +86,6 @@ namespace CarRetailDemo.ViewModels.Data
             get { return DataObject.Price; }
             set
             {
-                // Validate value BEFORE =
-
                 DataObject.Price = value;
                 OnPropertyChanged();
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Windows.UI.Xaml.Controls;
+using CarRetailDemo.Views.App;
 using Commands.Implementation;
 using CarRetailDemo.Views.Domain;
 using ViewModel.App.Implementation;
@@ -36,9 +37,9 @@ namespace CarRetailDemo.ViewModels.App
 
         public override void AddCommands()
         {
-            NavigationCommands.Add("File", new RelayCommand(() =>
+            NavigationCommands.Add("OpenFileView", new RelayCommand(() =>
             {
-                AppFrame.Navigate(typeof(Views.App.FileView));
+                AppFrame.Navigate(typeof(FileView));
             }));
 
             NavigationCommands.Add("OpenCarView", new RelayCommand(() =>
