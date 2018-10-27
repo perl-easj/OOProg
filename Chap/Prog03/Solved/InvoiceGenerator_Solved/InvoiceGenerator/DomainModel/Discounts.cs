@@ -30,7 +30,7 @@ namespace InvoiceGenerator.DomainModel
             // Rule #3: 10 % discount on shirts, if total price for order (without tax) is at least 1000 kr.
             AddDiscountRule("Shirt", order => OrderTotalHigherThan(order, 1000, 10));
 
-            // Rule #4: 25 % discount on sunglasses, if total price for order (without tax) is at least 1500 kr.
+            // Rule #3: 25 % discount on sunglasses, if total price for order (without tax) is at least 1500 kr.
             AddDiscountRule("Sunglasses", order => OrderTotalHigherThan(order, 1500, 25));
         }
 
