@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A3CF79E7-E7E8-4853-9851-DBA08452D614}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>NaiveRPG</RootNamespace>
+    <AssemblyName>NaiveRPG</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Factories\ArmorFactoryStandard.cs" />
+    <Compile Include="Factories\ParticipantFactoryStandard.cs" />
+    <Compile Include="Factories\WeaponFactoryStandard.cs" />
+    <Compile Include="GameManagement\GameFactory.cs" />
+    <Compile Include="Helpers\RNG.cs" />
+    <Compile Include="Interfaces\IArmor.cs" />
+    <Compile Include="Interfaces\IArmorFactory.cs" />
+    <Compile Include="Interfaces\IItemFactory.cs" />
+    <Compile Include="Interfaces\IParticipant.cs" />
+    <Compile Include="Interfaces\IParticipantFactory.cs" />
+    <Compile Include="Factories\ItemFactoryStandard.cs" />
+    <Compile Include="Interfaces\IWeapon.cs" />
+    <Compile Include="Interfaces\IWeaponFactory.cs" />
+    <Compile Include="Items\Armor\ArmorBase.cs" />
+    <Compile Include="Items\Armor\ClothGloves.cs" />
+    <Compile Include="Items\Armor\PlateBoots.cs" />
+    <Compile Include="Items\ItemBase.cs" />
+    <Compile Include="Items\Weapons\SteelLance.cs" />
+    <Compile Include="Items\Weapons\WeaponBase.cs" />
+    <Compile Include="Items\Weapons\WoodenMace.cs" />
+    <Compile Include="Participants\Creatures\Bear.cs" />
+    <Compile Include="Items\Armor\LeatherBoots.cs" />
+    <Compile Include="Participants\Character.cs" />
+    <Compile Include="GameManagement\Game.cs" />
+    <Compile Include="Interfaces\IItem.cs" />
+    <Compile Include="Participants\Creatures\CreatureBase.cs" />
+    <Compile Include="Participants\Creatures\Goat.cs" />
+    <Compile Include="Participants\Creatures\Snake.cs" />
+    <Compile Include="Participants\Humanoid\Golem.cs" />
+    <Compile Include="Participants\Humanoid\HumanoidBase.cs" />
+    <Compile Include="Participants\ParticipantBase.cs" />
+    <Compile Include="Participants\Creatures\Wolf.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Items\Armor\WoodenShield.cs" />
+    <Compile Include="Items\Weapons\IronSword.cs" />
+    <Compile Include="Participants\Humanoid\Troll.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
