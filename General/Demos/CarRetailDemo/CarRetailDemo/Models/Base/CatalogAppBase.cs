@@ -16,7 +16,7 @@ namespace CarRetailDemo.Models.Base
 
     // EFCore2.0-based persistency
     //
-    public class CatalogAppBase<T> : EFCoreCatalog<CarRetailDBContext, T>
+    public class CatalogAppBase<T> : EFCoreCatalog<CarRetailDBAzureContext, T>
         where T : class, IStorable, ICopyable, new()
     {
         public CatalogAppBase() : base(KeyManagementStrategyType.CollectionDecides)

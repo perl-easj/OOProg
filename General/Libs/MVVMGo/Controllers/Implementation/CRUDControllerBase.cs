@@ -7,18 +7,17 @@ namespace Controllers.Implementation
     /// <summary>
     /// Base class for controllers performing CRUD 
     /// (Create, Read, Update, Delete) operations.
-    /// It is assumed that the controllers operate
-    /// on view data objects, obtain the source 
-    /// object from a view data object wrapper, 
+    /// It is assumed that the controllers obtain
+    /// the source object from a data wrapper, 
     /// and perform the operation itself on an
     /// ICatalog implementation.
     /// </summary>
-    public abstract class CRUDControllerBase<TViewData> : ISimpleController
+    public abstract class CRUDControllerBase<TData> : ISimpleController
     {
-        protected IDataWrapper<TViewData> Source;
-        protected ICatalog<TViewData> Target;
+        protected IDataWrapper<TData> Source;
+        protected ICatalog<TData> Target;
 
-        protected CRUDControllerBase(IDataWrapper<TViewData> source, ICatalog<TViewData> target)
+        protected CRUDControllerBase(IDataWrapper<TData> source, ICatalog<TData> target)
         {
             Source = source;
             Target = target;

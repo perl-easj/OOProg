@@ -38,7 +38,7 @@ namespace DataAccess.DBToolClasses
         public void ReadFromDB()
         {
             _objects.Clear();
-            foreach (var record in Database.Ínstance.AllRecords)
+            foreach (var record in Database.Instance.AllRecords)
             {
                 if (record.GetType() == typeof(T))
                 {
@@ -55,7 +55,7 @@ namespace DataAccess.DBToolClasses
             List<object> newRecords = new List<object>();
 
             // Pick up all non-T records from database
-            foreach (var record in Database.Ínstance.AllRecords)
+            foreach (var record in Database.Instance.AllRecords)
             {
                 if (record.GetType() != typeof(T))
                 {
@@ -71,7 +71,7 @@ namespace DataAccess.DBToolClasses
 
             // Now call Replace, with the "sum" of existing non-T
             // objects, and the new objects of type T.
-            Database.Ínstance.Replace(newRecords);
+            Database.Instance.Replace(newRecords);
         }
 
         /// <summary>

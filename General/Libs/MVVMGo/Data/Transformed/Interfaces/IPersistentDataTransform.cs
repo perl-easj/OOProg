@@ -4,9 +4,9 @@
     /// Interface for converting between domain data representation
     /// and persistent data representation.
     /// </summary>
-    public interface IPersistentDataTransform<TDomainData, TPersistentData>
+    public interface IPersistentDataTransform<T, TPersistentData>
     {
-        TDomainData CreateDomainObjectFromPersistentDataObject(TPersistentData pdObj);
-        TPersistentData CreatePersistentDataObject(TDomainData obj);
+        T CreateDomainObjectFromPersistentDataObject(TPersistentData pdObj);
+        TPersistentData CreatePersistentDataObject(T obj);
     }
 }

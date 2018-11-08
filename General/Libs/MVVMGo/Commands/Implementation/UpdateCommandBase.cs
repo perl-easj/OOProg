@@ -8,11 +8,11 @@ namespace Commands.Implementation
     /// <summary>
     /// Implementation of a generic Update command.
     /// </summary>
-    public class UpdateCommandBase<TViewData> : ControllerCommandBase
-        where TViewData : class, ICopyable, IStorable
+    public class UpdateCommandBase<TData> : ControllerCommandBase
+        where TData : class, ICopyable, IStorable
     {
-        public UpdateCommandBase(IDataWrapper<TViewData> source, ICatalog<TViewData> target, Func<bool> condition)
-            : base(new UpdateControllerBase<TViewData>(source, target), condition)
+        public UpdateCommandBase(IDataWrapper<TData> source, ICatalog<TData> target, Func<bool> condition)
+            : base(new UpdateControllerBase<TData>(source, target), condition)
         {
         }
     }

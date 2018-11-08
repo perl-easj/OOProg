@@ -10,12 +10,12 @@ namespace Extensions.ViewModel.Implementation
     /// provided by the Images service. The image is thus identified 
     /// by a numeric key (ImageKey).
     /// </summary>
-    public abstract class DataViewModelWithImage<TViewData> : DataViewModelBase<TViewData>
-        where TViewData : class
+    public abstract class DataViewModelWithImage<TData> : DataViewModelBase<TData>
+        where TData : class
     {
         private IImage _notFoundImage;
 
-        protected DataViewModelWithImage(TViewData obj) : base(obj)
+        protected DataViewModelWithImage(TData obj) : base(obj)
         {
             _notFoundImage = new TaggedImage("Image not found", ServiceProvider.Images.GetAppImageSource(AppImageType.NotFound));
         }

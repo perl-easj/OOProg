@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Data.InMemory.Interfaces;
-using CarRetailDemo.Data.Domain;
 using CarRetailDemo.Models.App;
 using CarRetailDemo.ViewModels.Base;
 using CarRetailDemo.ViewModels.Data;
+using MVVMStarterDemoA.Data.Domain;
 
 namespace CarRetailDemo.ViewModels.Page
 {

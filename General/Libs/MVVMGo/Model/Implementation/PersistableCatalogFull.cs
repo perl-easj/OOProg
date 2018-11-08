@@ -14,7 +14,7 @@ namespace Model.Implementation
     /// and thus also contains CRUD methods.
     /// </summary>
     public abstract class PersistableCatalogFull<TDomainData, TViewData, TPersistentData>
-        : CatalogFull<TDomainData, TViewData, TPersistentData>, IPersistableCatalogAsync
+        : CatalogFull<TDomainData, TViewData, TPersistentData>, IPersistableCatalog
           where TViewData : IStorable
           where TDomainData : IStorable
     {

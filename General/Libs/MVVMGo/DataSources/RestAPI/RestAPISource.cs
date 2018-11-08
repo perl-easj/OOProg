@@ -13,9 +13,9 @@ namespace DataSources.RestAPI
     /// RESTful Web API. Original data objects are transformed 
     /// before being provided to the HTTPClient methods.
     /// </summary>
-    /// <typeparam name="TPersistentData">Type of objects to persist</typeparam>
-    public class RestAPISource<TPersistentData> : IDataSourceCRUD<TPersistentData>, IDataSourceLoad<TPersistentData>
-        where TPersistentData : IStorable
+    /// <typeparam name="TData">Type of objects to persist</typeparam>
+    public class RestAPISource<TData> : IDataSourceCRUD<TData>, IDataSourceLoad<TData>
+        where TData : IStorable
     {
         private enum APIMethod { Load, Create, Read, Update, Delete }
 
@@ -44,10 +44,10 @@ namespace DataSources.RestAPI
         /// <summary>
         /// Implementation of Load method
         /// </summary>
-        /// <returns>List of domain objects</returns>
-        public async Task<List<TPersistentData>> Load()
+        /// <returns>List of data objects</returns>
+        public async Task<List<TData>> Load()
         {
-            return await InvokeHTTPClientMethodWithReturnValueAsync<List<TPersistentData>>(() => _httpClient.GetAsync(BuildRequestURI(APIMethod.Load)));
+            return await InvokeHTTPClientMethodWithReturnValueAsync<List<TData>>(() => _httpClient.GetAsync(BuildRequestURI(APIMethod.Load)));
         }
 
         /// <summary>
@@ -57,11 +57,11 @@ namespace DataSources.RestAPI
         /// in a database table, where the table itself chooses the next
         /// key for the object (e.g. an auto-increment setting)
         /// </summary>
-        /// <param name="obj">Persistent data object to create</param>
-        public async Task<int> Create(TPersistentData obj)
+        /// <param name="obj">Data object to create</param>
+        public async Task<int> Create(TData obj)
         {
             HttpResponseMessage response = await InvokeHTTPClientMethodAsync((() => _httpClient.PostAsJsonAsync(BuildRequestURI(APIMethod.Create), obj)));
-            TPersistentData createdObj = await response.Content.ReadAsAsync<TPersistentData>();
+            TData createdObj = await response.Content.ReadAsAsync<TData>();
             return createdObj.Key;
         }
 
@@ -69,18 +69,18 @@ namespace DataSources.RestAPI
         /// Implementation of Read method
         /// </summary>
         /// <param name="key">Key for object to read</param>
-        /// <returns>Persistent data object matching key</returns>
-        public async Task<TPersistentData> Read(int key)
+        /// <returns>Data object matching key</returns>
+        public async Task<TData> Read(int key)
         {
-            return await InvokeHTTPClientMethodWithReturnValueAsync<TPersistentData>(() => _httpClient.GetAsync(BuildRequestURI(APIMethod.Read, key)));
+            return await InvokeHTTPClientMethodWithReturnValueAsync<TData>(() => _httpClient.GetAsync(BuildRequestURI(APIMethod.Read, key)));
         }
 
         /// <summary>
         /// Implementation of Update method
         /// </summary>
         /// <param name="key">Key for object to update</param>
-        /// <param name="obj">Persistent data object to update</param>
-        public async Task Update(int key, TPersistentData obj)
+        /// <param name="obj">Data object to update</param>
+        public async Task Update(int key, TData obj)
         {
             await InvokeHTTPClientMethodNoReturnValueAsync(() => _httpClient.PutAsJsonAsync(BuildRequestURI(APIMethod.Update, key), obj));
         }
@@ -88,7 +88,7 @@ namespace DataSources.RestAPI
         /// <summary>
         /// Implementation of Delete method
         /// </summary>
-        /// <param name="key">Key for persistent data object to delete</param>
+        /// <param name="key">Key for data object to delete</param>
         public async Task Delete(int key)
         {
             await InvokeHTTPClientMethodNoReturnValueAsync(() => _httpClient.DeleteAsync(BuildRequestURI(APIMethod.Update, key)));

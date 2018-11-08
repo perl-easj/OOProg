@@ -6,10 +6,10 @@ namespace Controllers.Implementation
     /// <summary>
     /// Implementation of a generic Update operation.
     /// </summary>
-    public class UpdateControllerBase<TViewData> : CRUDControllerBase<TViewData>
-        where TViewData : class, ICopyable, IStorable
+    public class UpdateControllerBase<TData> : CRUDControllerBase<TData>
+        where TData : class, ICopyable, IStorable
     {
-        public UpdateControllerBase(IDataWrapper<TViewData> source, ICatalog<TViewData> target)
+        public UpdateControllerBase(IDataWrapper<TData> source, ICatalog<TData> target)
             : base(source, target)
         {
         }
@@ -21,7 +21,7 @@ namespace Controllers.Implementation
         /// </summary>
         public override void Run()
         {
-            TViewData updateObj = Source.DataObject.Copy() as TViewData;
+            TData updateObj = Source.DataObject.Copy() as TData;
             Target.Update(updateObj, Source.DataObject.Key);
         }
     }

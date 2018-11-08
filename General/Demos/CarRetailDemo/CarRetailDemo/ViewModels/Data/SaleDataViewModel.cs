@@ -5,8 +5,8 @@ using AddOns.Images.Interfaces;
 using Data.InMemory.Implementation;
 using Data.InMemory.Interfaces;
 using Extensions.AddOns.Implementation;
-using CarRetailDemo.Data.Domain;
 using CarRetailDemo.Models.App;
+using MVVMStarterDemoA.Data.Domain;
 using ViewModel.Data.Implementation;
 
 namespace CarRetailDemo.ViewModels.Data

@@ -16,8 +16,8 @@ namespace Extensions.ViewModel.Implementation
     /// 4) State commands (commands for setting the view in a specific view state)
     /// Note that the class does not itself choose specific services/commands
     /// </summary>
-    public abstract class PageViewModelWithState<TViewData> : PageViewModelBase<TViewData>, IHasViewState
-        where TViewData : class, ICopyable, new()
+    public abstract class PageViewModelWithState<TData> : PageViewModelBase<TData>, IHasViewState
+        where TData : class, ICopyable, new()
     {
         #region Instance fields
         private IControlStateService _controlStateService;
@@ -28,7 +28,7 @@ namespace Extensions.ViewModel.Implementation
         #endregion
 
         #region Constructor
-        protected PageViewModelWithState(ICatalog<TViewData> catalog)
+        protected PageViewModelWithState(ICatalog<TData> catalog)
             : base(catalog)
         {
             // These will be initialised in sub-classes,

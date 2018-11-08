@@ -15,12 +15,12 @@ namespace Extensions.Model.Implementation
     /// 3) The string is on JSON format.
     /// 4) The InMemoryCollection implementation is used.
     /// </summary>
-    public abstract class FileCatalogFull<TDomainData, TViewData, TPersistentData> : PersistableCatalogFull<TDomainData, TViewData, TPersistentData>
-        where TDomainData : class, IStorable
+    public abstract class FileCatalogFull<T, TViewData, TPersistentData> : PersistableCatalogFull<T, TViewData, TPersistentData>
+        where T : class, IStorable
         where TViewData : IStorable
     {
         protected FileCatalogFull(bool saveOnChanges = false)
-            : base(new InMemoryCollection<TDomainData>(),
+            : base(new InMemoryCollection<T>(),
                 new ConfiguredFileSource<TPersistentData>(new FileStringPersistence(), new JSONConverter<TPersistentData>()),
                 new List<PersistencyOperations> { PersistencyOperations.Load, PersistencyOperations.Save })
         {

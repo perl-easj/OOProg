@@ -10,7 +10,7 @@ namespace Model.Interfaces
     public interface ICatalogChangedEvent
     {
         /// <summary>
-        /// The returned value is the key for
+        /// The event argument is the key for
         /// the object which the change concerns.
         /// </summary>
         event Action<int> CatalogChanged;

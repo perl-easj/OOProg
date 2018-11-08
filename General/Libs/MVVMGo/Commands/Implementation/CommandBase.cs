@@ -3,7 +3,11 @@ using Commands.Interfaces;
 
 namespace Commands.Implementation
 {
-    public abstract class CommandBase : ICommandBase
+    /// <summary>
+    /// Simple base class for commands invoked without
+    /// parameters to Execute and CanExecute.
+    /// </summary>
+    public abstract class CommandBase : INotifiableCommand
     {
         public bool CanExecute(object parameter)
         {

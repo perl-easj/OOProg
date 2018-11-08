@@ -99,8 +99,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\Domain\Car.cs" />
+    <Compile Include="Data\Persistent\CarRetailDBAzureContext.cs" />
     <Compile Include="Configuration\App\AppConfig.cs" />
+    <Compile Include="Data\Domain\Customer.cs" />
     <Compile Include="Data\Persistent\CarRetailDBContext.cs" />
+    <Compile Include="Data\Domain\Employee.cs" />
     <Compile Include="Models\App\DomainModel.cs" />
     <Compile Include="Models\Base\CatalogAppBase.cs" />
     <Compile Include="Data\Base\DomainClassAppBase.cs" />
@@ -108,6 +112,7 @@
     <Compile Include="Models\Catalog\CustomerCatalog.cs" />
     <Compile Include="Models\Catalog\EmployeeCatalog.cs" />
     <Compile Include="Models\Catalog\SaleCatalog.cs" />
+    <Compile Include="Data\Domain\Sale.cs" />
     <Compile Include="ViewModels\App\FileViewModel.cs" />
     <Compile Include="ViewModels\Base\DataViewModelAppBase.cs" />
     <Compile Include="ViewModels\Base\PageViewModelAppBase.cs" />
@@ -125,10 +130,10 @@
     <Compile Include="Views\App\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Data\Domain\Car.cs" />
-    <Compile Include="Data\Domain\Customer.cs" />
-    <Compile Include="Data\Domain\Employee.cs" />
-    <Compile Include="Data\Domain\Sale.cs" />
+    <Compile Include="Data\Domain\CarLogic.cs" />
+    <Compile Include="Data\Domain\CustomerLogic.cs" />
+    <Compile Include="Data\Domain\EmployeeLogic.cs" />
+    <Compile Include="Data\Domain\SaleLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\App\AppViewModel.cs" />
     <Compile Include="Views\App\OpeningView.xaml.cs">
@@ -152,6 +157,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="CarRetailDemo_TemporaryKey.pfx" />
+    <None Include="efpt.config.json" />
     <None Include="_DataSample\CarModel.dat" />
     <None Include="_DataSample\CustomerModel.dat" />
     <None Include="_DataSample\EmployeeModel.dat" />

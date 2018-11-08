@@ -9,23 +9,23 @@ namespace Commands.Implementation
     /// Specific implementation of criteria for command execution
     /// are deferred to sub-classes.
     /// </summary>
-    public abstract class CRUDCommandManager<TViewData> : CommandManager
-        where TViewData : class, ICopyable, IStorable
+    public abstract class CRUDCommandManager<TData> : CommandManager
+        where TData : class, ICopyable, IStorable
     {
-        private IDataWrapper<TViewData> _source;
+        private IDataWrapper<TData> _source;
 
         /// <summary>
         /// Constructor. Registers commands for Create, Update and Delete.
         /// </summary>
         /// <param name="source">Data source for commands</param>
         /// <param name="target">Target collection for commands</param>
-        protected CRUDCommandManager(IDataWrapper<TViewData> source, ICatalog<TViewData> target)
+        protected CRUDCommandManager(IDataWrapper<TData> source, ICatalog<TData> target)
         {
             _source = source;
 
-            AddCommand(CRUDCommands.CreateCommand, new CreateCommandBase<TViewData>(source, target, CanDoCreate));
-            AddCommand(CRUDCommands.UpdateCommand, new UpdateCommandBase<TViewData>(source, target, CanDoUpdate));
-            AddCommand(CRUDCommands.DeleteCommand, new DeleteCommandBase<TViewData>(source, target, CanDoDelete));
+            AddCommand(CRUDCommands.CreateCommand, new CreateCommandBase<TData>(source, target, CanDoCreate));
+            AddCommand(CRUDCommands.UpdateCommand, new UpdateCommandBase<TData>(source, target, CanDoUpdate));
+            AddCommand(CRUDCommands.DeleteCommand, new DeleteCommandBase<TData>(source, target, CanDoDelete));
         }
 
         /// <summary>

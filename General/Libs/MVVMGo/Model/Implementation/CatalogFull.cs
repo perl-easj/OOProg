@@ -9,19 +9,20 @@ namespace Model.Implementation
 {
     /// <summary>
     /// Main implementation of the ICatalog interface,
-    /// which contains CRUD operations.
+    /// which contains CRUD operations. This version of
+    /// a catalog supports data transformations.
     /// </summary>
-    /// <typeparam name="TDomainData">Domain class</typeparam>
+    /// <typeparam name="T">Domain class</typeparam>
     /// <typeparam name="TViewData">View data type</typeparam>
     /// <typeparam name="TPersistentData">Persistent data type</typeparam>
-    public abstract class CatalogFull<TDomainData, TViewData, TPersistentData> :
+    public abstract class CatalogFull<T, TViewData, TPersistentData> :
         ICatalog<TViewData>,
-        IViewDataTransform<TDomainData, TViewData>,
-        IPersistentDataTransform<TDomainData, TPersistentData>
-        where TDomainData : IStorable
+        IViewDataTransform<T, TViewData>,
+        IPersistentDataTransform<T, TPersistentData>
+        where T : IStorable
         where TViewData : IStorable
     {
-        protected IInMemoryCollection<TDomainData> _collection;
+        protected IInMemoryCollection<T> _collection;
         protected IDataSourceCRUD<TPersistentData> _source;
         protected List<PersistencyOperations> _supportedOperations;
         protected KeyManagementStrategyType _keyManagementStrategy;
@@ -29,7 +30,7 @@ namespace Model.Implementation
         public event Action<int> CatalogChanged;
 
         protected CatalogFull(
-            IInMemoryCollection<TDomainData> collection,
+            IInMemoryCollection<T> collection,
             IDataSourceCRUD<TPersistentData> source,
             List<PersistencyOperations> supportedOperations,
             KeyManagementStrategyType keyManagementStrategy = KeyManagementStrategyType.CollectionDecides)
@@ -46,7 +47,7 @@ namespace Model.Implementation
             get
             {
                 List<TViewData> vdAll = new List<TViewData>();
-                foreach (TDomainData obj in _collection.All)
+                foreach (T obj in _collection.All)
                 {
                     vdAll.Add(CreateViewDataObject(obj));
                 }
@@ -58,7 +59,7 @@ namespace Model.Implementation
         public void Create(TViewData vdObj)
         {
             // Create the new domain object (this is where it happens :-)).
-            TDomainData obj = CreateDomainObjectFromViewDataObject(vdObj);
+            T obj = CreateDomainObjectFromViewDataObject(vdObj);
 
             // Strategy for key selection (DataSource decides)
             // 1) Throw exception if Create operation is not supported,
@@ -150,9 +151,9 @@ namespace Model.Implementation
         /// Override these methods in domain-specific catalog class, 
         /// to define transformation from/to domain object.
         /// </summary>
-        public abstract TDomainData CreateDomainObjectFromViewDataObject(TViewData vmObj);
-        public abstract TPersistentData CreatePersistentDataObject(TDomainData obj);
-        public abstract TDomainData CreateDomainObjectFromPersistentDataObject(TPersistentData vmObj);
-        public abstract TViewData CreateViewDataObject(TDomainData obj);
+        public abstract T CreateDomainObjectFromViewDataObject(TViewData vmObj);
+        public abstract TPersistentData CreatePersistentDataObject(T obj);
+        public abstract T CreateDomainObjectFromPersistentDataObject(TPersistentData vmObj);
+        public abstract TViewData CreateViewDataObject(T obj);
     }
 }

@@ -6,10 +6,10 @@ namespace Controllers.Implementation
     /// <summary>
     /// Implementation of a generic Delete operation.
     /// </summary>
-    public class DeleteControllerBase<TViewData> : CRUDControllerBase<TViewData>
-        where TViewData : class, IStorable
+    public class DeleteControllerBase<TData> : CRUDControllerBase<TData>
+        where TData : class, IStorable
     {
-        public DeleteControllerBase(IDataWrapper<TViewData> source, ICatalog<TViewData> target)
+        public DeleteControllerBase(IDataWrapper<TData> source, ICatalog<TData> target)
             : base(source, target)
         {
         }

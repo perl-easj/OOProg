@@ -8,8 +8,8 @@ namespace ViewModel.Page.Interfaces
     /// interesting in knowing about changes in the selection of an item, 
     /// typically in a collection-oriented GUI control, e.g. a ListView.
     /// </summary>
-    public interface IItemSelectionChangedEvent<out TViewData>
+    public interface IItemSelectionChangedEvent<out TData>
     {
-        event Action<IDataWrapper<TViewData>> ItemSelectionChanged;
+        event Action<IDataWrapper<TData>> ItemSelectionChanged;
     }
 }

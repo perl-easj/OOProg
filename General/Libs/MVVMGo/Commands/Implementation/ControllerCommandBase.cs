@@ -9,7 +9,7 @@ namespace Commands.Implementation
     /// Base class for any command which operates by
     /// calling Run on a simple controller.
     /// </summary>
-    public abstract class ControllerCommandBase : INotifiableCommand
+    public abstract class ControllerCommandBase : CommandBase
     {
         protected ISimpleController Controller;
         protected Func<bool> Condition;
@@ -23,7 +23,7 @@ namespace Commands.Implementation
         /// <summary>
         /// Invoke the controller corresponding to the command.
         /// </summary>
-        public void Execute()
+        protected override void Execute()
         {
             Controller.Run();
         }
@@ -31,36 +31,9 @@ namespace Commands.Implementation
         /// <summary>
         /// Evaluate if command can be executed.
         /// </summary>
-        public bool CanExecute()
+        protected override bool CanExecute()
         {
             return Condition();
-        }
-
-        /// <inheritdoc />
-        /// <summary>
-        /// Currently not used - forwards to parameterless version.
-        /// </summary>
-        public void Execute(object parameter)
-        {
-            Execute();
-        }
-
-        /// <inheritdoc />
-        /// <summary>
-        /// Currently not used - forwards to parameterless version.
-        /// </summary>
-        public bool CanExecute(object parameter)
-        {
-            return CanExecute();
-        }
-
-        /// <summary>
-        /// Invoke re-evaluation of CanExecuteChanged.
-        /// </summary>
-        public event EventHandler CanExecuteChanged;
-        public void RaiseCanExecuteChanged()
-        {
-            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

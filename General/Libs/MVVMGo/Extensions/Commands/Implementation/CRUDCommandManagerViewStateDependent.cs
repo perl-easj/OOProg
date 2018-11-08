@@ -11,12 +11,12 @@ namespace Extensions.Commands.Implementation
     /// Implements a CRUD command manager, where the conditions for execution
     /// now also depend on the state of the object with view state.
     /// </summary>
-    public class CRUDCommandManagerViewStateDependent<TViewData> : CRUDCommandManager<TViewData>
-        where TViewData : class, ICopyable, IStorable
+    public class CRUDCommandManagerViewStateDependent<TData> : CRUDCommandManager<TData>
+        where TData : class, ICopyable, IStorable
     {
         private IHasViewState _viewStateObject;
 
-        public CRUDCommandManagerViewStateDependent(IDataWrapper<TViewData> source, ICatalog<TViewData> target, IHasViewState viewStateObject)
+        public CRUDCommandManagerViewStateDependent(IDataWrapper<TData> source, ICatalog<TData> target, IHasViewState viewStateObject)
             : base(source, target)
         {
             _viewStateObject = viewStateObject ?? throw new ArgumentException(nameof(_viewStateObject));

@@ -1,6 +1,6 @@
 ﻿using System;
-using CarRetailDemo.Data.Domain;
 using CarRetailDemo.ViewModels.Base;
+using MVVMStarterDemoA.Data.Domain;
 
 namespace CarRetailDemo.ViewModels.Data
 {
@@ -52,7 +52,7 @@ namespace CarRetailDemo.ViewModels.Data
 
         public int CarsSold
         {
-            get { return DataObject.CarsSold; }
+            get { return DataObject.CarsSold(); }
         }
 
         public DateTimeOffset Employed

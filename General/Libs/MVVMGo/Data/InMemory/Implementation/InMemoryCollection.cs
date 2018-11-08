@@ -8,27 +8,27 @@ namespace Data.InMemory.Implementation
     /// Implementation of the interface for an in-memory 
     /// collection, typically of domain objects
     /// </summary>
-    /// <typeparam name="TDomainData">
+    /// <typeparam name="T">
     /// Type of stored objects. Type must inherit from IStorable.
     /// </typeparam>
-    public class InMemoryCollection<TDomainData> : IInMemoryCollection<TDomainData>
-        where TDomainData : class, IStorable
+    public class InMemoryCollection<T> : IInMemoryCollection<T>
+        where T : class, IStorable
     {
-        private Dictionary<int, TDomainData> _collection;
+        private Dictionary<int, T> _collection;
 
         public InMemoryCollection()
         {
-            _collection = new Dictionary<int, TDomainData>();
+            _collection = new Dictionary<int, T>();
         }
 
         /// <inheritdoc />
-        public List<TDomainData> All
+        public List<T> All
         {
             get { return _collection.Values.ToList(); }
         }
 
         /// <inheritdoc />
-        public int Insert(TDomainData obj, KeyManagementStrategyType keyManagement = KeyManagementStrategyType.CollectionDecides)
+        public int Insert(T obj, KeyManagementStrategyType keyManagement = KeyManagementStrategyType.CollectionDecides)
         {
             if (keyManagement == KeyManagementStrategyType.CollectionDecides)
             {
@@ -40,13 +40,13 @@ namespace Data.InMemory.Implementation
         }
 
         /// <inheritdoc />
-        public TDomainData Get(int key)
+        public T Get(int key)
         {
             return _collection.ContainsKey(key) ? _collection[key] : null;
         }
 
         /// <inheritdoc />
-        public TDomainData this[int key]
+        public T this[int key]
         {
             get { return Get(key); }
         }
@@ -58,7 +58,7 @@ namespace Data.InMemory.Implementation
         }
 
         /// <inheritdoc />
-        public void InsertAll(List<TDomainData> objects, KeyManagementStrategyType keyManagement = KeyManagementStrategyType.CollectionDecides)
+        public void InsertAll(List<T> objects, KeyManagementStrategyType keyManagement = KeyManagementStrategyType.CollectionDecides)
         {
             foreach (var obj in objects)
             {
@@ -67,7 +67,7 @@ namespace Data.InMemory.Implementation
         }
 
         /// <inheritdoc />
-        public void ReplaceAll(List<TDomainData> objects, KeyManagementStrategyType keyManagement = KeyManagementStrategyType.CollectionDecides)
+        public void ReplaceAll(List<T> objects, KeyManagementStrategyType keyManagement = KeyManagementStrategyType.CollectionDecides)
         {
             RemoveAll();
             foreach (var obj in objects)

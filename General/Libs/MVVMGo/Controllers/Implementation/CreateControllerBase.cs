@@ -6,9 +6,9 @@ namespace Controllers.Implementation
     /// <summary>
     /// Implementation of a generic Insert operation.
     /// </summary>
-    public class CreateControllerBase<TViewData> : CRUDControllerBase<TViewData>
+    public class CreateControllerBase<TData> : CRUDControllerBase<TData>
     {
-        public CreateControllerBase(IDataWrapper<TViewData> source, ICatalog<TViewData> target)
+        public CreateControllerBase(IDataWrapper<TData> source, ICatalog<TData> target)
             : base(source, target)
         {
         }

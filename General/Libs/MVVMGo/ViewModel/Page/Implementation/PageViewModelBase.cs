@@ -13,20 +13,20 @@ namespace ViewModel.Page.Implementation
     /// Implementation of the IPageViewModel interface. Will refer to a Catalog instance,
     /// from which data is retrieved and made available to a view using this view model.
     /// </summary>
-    /// <typeparam name="TViewData"></typeparam>
-    public abstract class PageViewModelBase<TViewData> : 
-        IDataWrapper<TViewData>, 
-        IPageViewModel<TViewData>
-        where TViewData : class, ICopyable, new()
+    /// <typeparam name="TData"></typeparam>
+    public abstract class PageViewModelBase<TData> : 
+        IDataWrapper<TData>, 
+        IPageViewModel<TData>
+        where TData : class, ICopyable, new()
     {
         #region Instance fields
-        protected ICatalog<TViewData> Catalog;
-        private IDataWrapper<TViewData> _itemSelected;
-        private IDataWrapper<TViewData> _itemDetails;
+        protected ICatalog<TData> Catalog;
+        private IDataWrapper<TData> _itemSelected;
+        private IDataWrapper<TData> _itemDetails;
         #endregion
 
         #region Initialisation
-        protected PageViewModelBase(ICatalog<TViewData> catalog)
+        protected PageViewModelBase(ICatalog<TData> catalog)
         {
             Catalog = catalog ?? throw new ArgumentNullException(nameof(catalog));
             _itemSelected = null;
@@ -39,14 +39,14 @@ namespace ViewModel.Page.Implementation
         /// The object referred to by ItemDetails is considered to be the "wrapped" 
         /// view data object. This can be changed in a sub-class, if needed.
         /// </summary>
-        public virtual TViewData DataObject
+        public virtual TData DataObject
         {
             get { return ItemDetails?.DataObject; }
         }
         #endregion
 
         #region IPageViewModel implementation
-        public virtual ObservableCollection<IDataWrapper<TViewData>> ItemCollection
+        public virtual ObservableCollection<IDataWrapper<TData>> ItemCollection
         {
             get { return CreateDataViewModelCollection(Catalog.All); }
         }
@@ -57,7 +57,7 @@ namespace ViewModel.Page.Implementation
         /// Clients interested in knowing about selection
         /// changes get notified about this change.
         /// </summary>
-        public virtual IDataWrapper<TViewData> ItemSelected
+        public virtual IDataWrapper<TData> ItemSelected
         {
             get { return _itemSelected; }
             set
@@ -71,7 +71,7 @@ namespace ViewModel.Page.Implementation
         /// <summary>
         /// Standard implementation of bindable property
         /// </summary>
-        public IDataWrapper<TViewData> ItemDetails
+        public IDataWrapper<TData> ItemDetails
         {
             get { return _itemDetails; }
             set
@@ -83,20 +83,20 @@ namespace ViewModel.Page.Implementation
         #endregion
 
         #region ViewData creation
-        public IDataWrapper<TViewData> CreateDataViewModelFromNewViewData()
+        public IDataWrapper<TData> CreateDataViewModelFromNewViewData()
         {
-            return CreateDataViewModel(new TViewData());
+            return CreateDataViewModel(new TData());
         }
 
-        public IDataWrapper<TViewData> CreateDataViewModelFromClonedViewData(TViewData obj)
+        public IDataWrapper<TData> CreateDataViewModelFromClonedViewData(TData obj)
         {
-            return CreateDataViewModel(obj.Copy() as TViewData);
+            return CreateDataViewModel(obj.Copy() as TData);
         }
 
-        private ObservableCollection<IDataWrapper<TViewData>> CreateDataViewModelCollection(List<TViewData> dataObjects)
+        private ObservableCollection<IDataWrapper<TData>> CreateDataViewModelCollection(List<TData> dataObjects)
         {
-            var itemViewModels = new ObservableCollection<IDataWrapper<TViewData>>();
-            foreach (TViewData obj in dataObjects)
+            var itemViewModels = new ObservableCollection<IDataWrapper<TData>>();
+            foreach (TData obj in dataObjects)
             {
                 itemViewModels.Add(CreateDataViewModel(obj));
             }
@@ -110,7 +110,7 @@ namespace ViewModel.Page.Implementation
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public abstract IDataWrapper<TViewData> CreateDataViewModel(TViewData obj);
+        public abstract IDataWrapper<TData> CreateDataViewModel(TData obj);
         #endregion
 
         #region Event implementation
@@ -118,8 +118,8 @@ namespace ViewModel.Page.Implementation
         /// Clients interested in knowing about changes in item 
         /// selection can register at this event.
         /// </summary>
-        public event Action<IDataWrapper<TViewData>> ItemSelectionChanged;
-        public virtual void OnItemSelectionChanged(IDataWrapper<TViewData> vmoWrapper)
+        public event Action<IDataWrapper<TData>> ItemSelectionChanged;
+        public virtual void OnItemSelectionChanged(IDataWrapper<TData> vmoWrapper)
         {
             ItemSelectionChanged?.Invoke(vmoWrapper);
         }

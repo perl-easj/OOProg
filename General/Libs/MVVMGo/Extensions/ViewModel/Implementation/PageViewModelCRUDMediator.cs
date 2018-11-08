@@ -10,15 +10,15 @@ namespace Extensions.ViewModel.Implementation
     /// This class implements a specific strategy for mediation between  
     /// elements in a Page with CRUD view state and CRUD operation support.
     /// </summary>
-    public class PageViewModelCRUDMediator<TViewData> : PageViewModelMediatorBase<TViewData>, IViewStateMediator
-        where TViewData : class, ICopyable, IStorable, new()
+    public class PageViewModelCRUDMediator<TData> : PageViewModelMediatorBase<TData>, IViewStateMediator
+        where TData : class, ICopyable, IStorable, new()
     {
         #region Instance fields
-        private PageViewModelCRUD<TViewData> _pageViewModelCRUD;
+        private PageViewModelCRUD<TData> _pageViewModelCRUD;
         #endregion
 
         #region Constructor
-        public PageViewModelCRUDMediator(PageViewModelCRUD<TViewData> pageViewModelCrud, ICatalog<TViewData> catalog)
+        public PageViewModelCRUDMediator(PageViewModelCRUD<TData> pageViewModelCrud, ICatalog<TData> catalog)
             : base(pageViewModelCrud, catalog)
         {
             _pageViewModelCRUD = pageViewModelCrud;
@@ -57,7 +57,7 @@ namespace Extensions.ViewModel.Implementation
         #endregion
 
         #region Base class overrides
-        public override void SetItemDetailsOnItemSelectionChanged(TViewData vdObjSelected)
+        public override void SetItemDetailsOnItemSelectionChanged(TData vdObjSelected)
         {
             // If new selection is null, we set Details to null as well,
             // except in Create state. In Create state, the selection is

@@ -11,12 +11,12 @@ namespace Extensions.ViewModel.Implementation
     /// The image objects are provided by the Images service. 
     /// The image is identified by a numeric key (ImageKey).
     /// </summary>
-    public abstract class DataViewModelWithSelectableImage<TViewData> : DataViewModelBase<TViewData>
-        where TViewData : class
+    public abstract class DataViewModelWithSelectableImage<TData> : DataViewModelBase<TData>
+        where TData : class
     {
         private string _tag;
 
-        protected DataViewModelWithSelectableImage(TViewData obj, string tag)
+        protected DataViewModelWithSelectableImage(TData obj, string tag)
             : base(obj)
         {
             _tag = tag;

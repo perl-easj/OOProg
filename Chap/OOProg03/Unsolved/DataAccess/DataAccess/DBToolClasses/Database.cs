@@ -12,7 +12,7 @@ namespace DataAccess.DBToolClasses
     {
         #region Singleton implementation
         private static Database _instance;
-        public static Database Ínstance
+        public static Database Instance
         {
             get
             {

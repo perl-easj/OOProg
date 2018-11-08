@@ -1,10 +1,9 @@
-﻿using CarRetailDemo.Data.Domain;
-using CarRetailDemo.Models.Base;
+﻿using CarRetailDemo.Models.Base;
+using MVVMStarterDemoA.Data.Domain;
 
 namespace CarRetailDemo.Models.Catalog
 {
     public class CarCatalog : CatalogAppBase<Car>
     {
-
     }
 }

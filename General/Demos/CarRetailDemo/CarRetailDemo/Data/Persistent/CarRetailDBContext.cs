@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using CarRetailDemo.Data.Domain;
+using MVVMStarterDemoA.Data.Domain;
 
 namespace CarRetailDemo.Data.Persistent
 {
@@ -32,7 +32,7 @@ namespace CarRetailDemo.Data.Persistent
             modelBuilder.Entity<Car>().Ignore(item => item.Key);
             modelBuilder.Entity<Customer>().Ignore(item => item.Key);
             modelBuilder.Entity<Employee>().Ignore(item => item.Key);
-            modelBuilder.Entity<Sale>().Ignore(item => item.Key).Ignore(item => item.ImageKey);
+            modelBuilder.Entity<Sale>().Ignore(item => item.Key);
         }
     }
 }

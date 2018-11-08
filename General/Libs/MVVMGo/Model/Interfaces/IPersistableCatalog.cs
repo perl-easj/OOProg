@@ -2,7 +2,7 @@
 
 namespace Model.Interfaces
 {
-    public interface IPersistableCatalogAsync
+    public interface IPersistableCatalog
     {
         /// <summary>
         /// Invoke a Load operation on the catalog,

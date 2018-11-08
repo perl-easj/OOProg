@@ -8,16 +8,16 @@ namespace DataSources.EFCore.Implementation
     /// Since an EFCore data source does not support the Save operation,
     /// that source is configured with a "Not Supported" strategy object.
     /// </summary>
-    public class ConfiguredEFCoreSource<TDbContext, TPersistentData> : ConfiguredPersistentSource<TPersistentData>
-        where TPersistentData : class, IStorable
+    public class ConfiguredEFCoreSource<TDbContext, TData> : ConfiguredPersistentSource<TData>
+        where TData : class, IStorable
         where TDbContext : DbContext, new()
     {
         public ConfiguredEFCoreSource()
         {
-            EFCoreSource<TDbContext, TPersistentData> efCoreSource = new EFCoreSource<TDbContext, TPersistentData>();
+            EFCoreSource<TDbContext, TData> efCoreSource = new EFCoreSource<TDbContext, TData>();
 
             DataSourceLoad = efCoreSource;
-            DataSourceSave = new DataSourceSaveNotSupported<TPersistentData>();
+            DataSourceSave = new DataSourceSaveNotSupported<TData>();
             DataSourceCRUD = efCoreSource;
         }
     }

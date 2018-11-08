@@ -5,12 +5,15 @@ using Data.InMemory.Implementation;
 namespace ViewModel.Data.Implementation
 {
     /// <summary>
-    /// Base class for data view model classes. Just adds INotifyPropertyChanged
-    /// functionality to the DataWrapper class.
+    /// Base class for data view model classes.
+    /// Just adds INotifyPropertyChanged functionality
+    /// to the DataWrapper class.
+    /// No specific assumption is made about the kind
+    /// of the wrapped object (domain or transformed).
     /// </summary>
-    public class DataViewModelBase<TViewData> : DataWrapper<TViewData>, INotifyPropertyChanged
+    public class DataViewModelBase<TData> : DataWrapper<TData>, INotifyPropertyChanged
     {
-        protected DataViewModelBase(TViewData obj) : base(obj)
+        protected DataViewModelBase(TData obj) : base(obj)
         {
         }
 

@@ -1,6 +1,6 @@
 ﻿using System;
-using CarRetailDemo.Data.Domain;
 using CarRetailDemo.ViewModels.Base;
+using MVVMStarterDemoA.Data.Domain;
 
 namespace CarRetailDemo.ViewModels.Data
 {

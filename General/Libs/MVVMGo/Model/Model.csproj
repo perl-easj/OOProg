@@ -113,7 +113,7 @@
     <Compile Include="Interfaces\ICatalog.cs" />
     <Compile Include="Interfaces\ICatalogChangedEvent.cs" />
     <Compile Include="Interfaces\ICatalogMediator.cs" />
-    <Compile Include="Interfaces\IPersistableCatalogAsync.cs" />
+    <Compile Include="Interfaces\IPersistableCatalog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Model.rd.xml" />
   </ItemGroup>

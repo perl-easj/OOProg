@@ -120,6 +120,7 @@
     <Compile Include="Model\Implementation\RestApiCatalog.cs" />
     <Compile Include="Model\Implementation\RestApiCatalogFull.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Implementation\AppViewModelMenu.cs" />
     <Compile Include="ViewModel\Implementation\CRUDControlStateService.cs" />
     <Compile Include="ViewModel\Implementation\CRUDViewStateService.cs" />
     <Compile Include="ViewModel\Implementation\DataViewModelWithImage.cs" />

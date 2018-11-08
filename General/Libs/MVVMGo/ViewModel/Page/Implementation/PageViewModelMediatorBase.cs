@@ -9,18 +9,18 @@ namespace ViewModel.Page.Implementation
     /// Implementation of the IPageViewModelMediator class. Provides template 
     /// strategies for handling changes to catalog and item selection.
     /// </summary>
-    public abstract class PageViewModelMediatorBase<TViewData> : 
+    public abstract class PageViewModelMediatorBase<TData> : 
         ICatalogMediator, 
-        IPageViewModelMediator<TViewData>
-        where TViewData : class, ICopyable, new()
+        IPageViewModelMediator<TData>
+        where TData : class, ICopyable, new()
     {
         #region Instance fields
-        private IPageViewModel<TViewData> _pageViewModel;
-        private ICatalog<TViewData> _catalog;
+        private IPageViewModel<TData> _pageViewModel;
+        private ICatalog<TData> _catalog;
         #endregion
 
         #region Constructor
-        protected PageViewModelMediatorBase(IPageViewModel<TViewData> pageViewModel, ICatalog<TViewData> catalog)
+        protected PageViewModelMediatorBase(IPageViewModel<TData> pageViewModel, ICatalog<TData> catalog)
         {
             _catalog = catalog ?? throw new ArgumentNullException(nameof(catalog));
             _pageViewModel = pageViewModel ?? throw new ArgumentNullException(nameof(pageViewModel));
@@ -41,7 +41,7 @@ namespace ViewModel.Page.Implementation
         /// 2)  Notify all commands, by calling abstract method (subclasses
         ///     must specify commands to notify.
         /// </summary>
-        public virtual void OnItemSelectionChanged(IDataWrapper<TViewData> vdWrapper)
+        public virtual void OnItemSelectionChanged(IDataWrapper<TData> vdWrapper)
         {
             SetItemDetailsOnItemSelectionChanged(vdWrapper?.DataObject);
             NotifyCommands();
@@ -67,7 +67,7 @@ namespace ViewModel.Page.Implementation
         /// Item Details when Item selection changes.
         /// </summary>
         /// <param name="vdObjSelected">New selection</param>
-        public abstract void SetItemDetailsOnItemSelectionChanged(TViewData vdObjSelected);
+        public abstract void SetItemDetailsOnItemSelectionChanged(TData vdObjSelected);
 
         /// <summary>
         /// Override this method to notify a specific set

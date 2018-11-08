@@ -4,15 +4,35 @@ using Data.Persistent.Interfaces;
 
 namespace Model.Implementation
 {
-    public abstract class Catalog<T> : CatalogFull<T,T,T> where T : IStorable
+    public class Catalog<T> : CatalogFull<T,T,T> where T : IStorable
     {
-        protected Catalog(
+        public Catalog(
             IInMemoryCollection<T> collection, 
             IDataSourceCRUD<T> source, 
             List<PersistencyOperations> supportedOperations, 
             KeyManagementStrategyType keyManagementStrategy = KeyManagementStrategyType.CollectionDecides) 
             : base(collection, source, supportedOperations, keyManagementStrategy)
         {
+        }
+
+        public override T CreateDomainObjectFromViewDataObject(T obj)
+        {
+            return obj;
+        }
+
+        public override T CreateViewDataObject(T obj)
+        {
+            return obj;
+        }
+
+        public override T CreatePersistentDataObject(T obj)
+        {
+            return obj;
+        }
+
+        public override T CreateDomainObjectFromPersistentDataObject(T obj)
+        {
+            return obj;
         }
     }
 }

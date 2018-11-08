@@ -1,0 +1,1 @@
+﻿{"ContextClassName":"CarRetailDBAzureContext","DefaultDacpacSchema":null,"IdReplace":false,"IncludeConnectionString":true,"OutputPath":"","ProjectRootNamespace":"CarRetailDemo","SelectedToBeGenerated":0,"Tables":["dbo.Car","dbo.Customer","dbo.Employee","dbo.Sale"],"UseDatabaseNames":false,"UseFluentApiOnly":true,"UseHandleBars":false,"UseInflector":true}

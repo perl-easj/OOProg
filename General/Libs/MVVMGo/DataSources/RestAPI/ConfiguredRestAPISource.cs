@@ -7,15 +7,15 @@ namespace DataSources.RestAPI
     /// Since a RestAPI data source does not support the Save operation,
     /// that source is configured with a "Not Supported" strategy object.
     /// </summary>
-    public class ConfiguredRestAPISource<TPersistentData> : ConfiguredPersistentSource<TPersistentData> 
-        where TPersistentData : IStorable
+    public class ConfiguredRestAPISource<TData> : ConfiguredPersistentSource<TData> 
+        where TData : IStorable
     {
         public ConfiguredRestAPISource(string serverURL, string apiID, string apiPrefix = "api")
         {
-            RestAPISource<TPersistentData> webAPISource = new RestAPISource<TPersistentData>(serverURL, apiID, apiPrefix);
+            RestAPISource<TData> webAPISource = new RestAPISource<TData>(serverURL, apiID, apiPrefix);
 
             DataSourceLoad = webAPISource;
-            DataSourceSave = new DataSourceSaveNotSupported<TPersistentData>();
+            DataSourceSave = new DataSourceSaveNotSupported<TData>();
             DataSourceCRUD = webAPISource;
         }
     }
