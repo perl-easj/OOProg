@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="SimpleRPGDemo.View.App.FileView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:SimpleRPGDemo.ViewModel.App"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:FileViewModel/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../App/AppResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Page.BottomAppBar>
+        <CommandBar Style="{StaticResource CommandBarStyle}">
+            <AppBarButton Icon="Stop" Label="Quit" Command="{Binding NavigationCommands[Quit]}"/>
+            <AppBarButton Icon="Sync" Label="Load" Command="{Binding NavigationCommands[Load]}"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+        <ProgressRing Width="300" Height="300"
+                      HorizontalAlignment="Center" VerticalAlignment="Center"
+                      IsActive="{Binding IsWorking}" />
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="24" Text="{Binding LoadingText}" />
+    </Grid>
+</Page>

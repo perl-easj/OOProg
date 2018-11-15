@@ -1,0 +1,10 @@
+﻿dbo.Character
+dbo.CharacterConfig
+dbo.Jewel
+dbo.JewelCutQuality
+dbo.JewelModel
+dbo.RarityTier
+dbo.Weapon
+dbo.WeaponJewelMatch
+dbo.WeaponModel
+dbo.WeaponType

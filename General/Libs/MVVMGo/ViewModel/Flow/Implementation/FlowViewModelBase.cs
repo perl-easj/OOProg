@@ -9,9 +9,9 @@ using Commands.Implementation;
 
 namespace ViewModel.Flow.Implementation
 {
-    public class FlowViewModelBase<T> : INotifyPropertyChanged where T : new()
+    public class FlowViewModelBase<TData> : INotifyPropertyChanged where TData : new()
     {
-        public static T FlowDataObject = new T();
+        public static TData FlowDataObject = new TData();
 
         private NavigationCommand _navigateBackCmd;
         private NavigationCommand _navigateForwardCmd;
@@ -39,7 +39,7 @@ namespace ViewModel.Flow.Implementation
 
         public static void ResetFlowDataObject()
         {
-            FlowDataObject = new T();
+            FlowDataObject = new TData();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

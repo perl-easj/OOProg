@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{71A9209F-AD81-4D82-BA79-AE701C3D0A4B}</ProjectGuid>
+    <ProjectGuid>{5F654F29-8396-4962-AEB3-9D5CD12DFC43}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PvPSimulator</RootNamespace>
-    <AssemblyName>PvPSimulator</AssemblyName>
+    <RootNamespace>SimpleRPGDemo</RootNamespace>
+    <AssemblyName>SimpleRPGDemo</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>
@@ -17,7 +17,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
-    <PackageCertificateKeyFile>PvPSimulator_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>SimpleRPGDemo_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -95,42 +95,70 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commands\AttackCommand.cs" />
-    <Compile Include="PlayerFactory\RandomisedPlayerFactory.cs" />
-    <Compile Include="Players\IPlayerInfo.cs" />
-    <Compile Include="Tactics\ITacticsInfo.cs" />
-    <Compile Include="Tactics\TacticsData.cs" />
-    <Compile Include="Tactics\TacticsInfo.cs" />
-    <Compile Include="Tactics\TacticsType.cs" />
-    <Compile Include="Utility\BattleLog.cs" />
-    <Compile Include="Model\BattleModel.cs" />
-    <Compile Include="ViewModel\BattleViewModel.cs" />
-    <Compile Include="Commands\CommandBase.cs" />
-    <Compile Include="Config\GameConfiguration.cs" />
-    <Compile Include="Players\IPlayer.cs" />
-    <Compile Include="PlayerFactory\IPlayerFactory.cs" />
+    <Compile Include="Data\Base\IHasID.cs" />
+    <Compile Include="Data\Generated\Character.cs" />
+    <Compile Include="Data\Generated\CharacterConfig.cs" />
+    <Compile Include="Configuration\App\AppConfig.cs" />
+    <Compile Include="Data\Base\DomainClassAppBase.cs" />
+    <Compile Include="Data\Logic\CharacterConfigLogic.cs" />
+    <Compile Include="Data\Logic\CharacterLogic.cs" />
+    <Compile Include="Data\Logic\JewelCutQualityLogic.cs" />
+    <Compile Include="Data\Logic\JewelLogic.cs" />
+    <Compile Include="Data\Logic\JewelModelLogic.cs" />
+    <Compile Include="Data\Logic\RarityTierLogic.cs" />
+    <Compile Include="Data\Validators\RarityTierValidator.cs" />
+    <Compile Include="Data\Generated\Jewel.cs" />
+    <Compile Include="Data\Generated\JewelCutQuality.cs" />
+    <Compile Include="Data\Generated\JewelModel.cs" />
+    <Compile Include="Data\Logic\WeaponJewelMatchLogic.cs" />
+    <Compile Include="Data\Logic\WeaponLogic.cs" />
+    <Compile Include="Data\Logic\WeaponModelLogic.cs" />
+    <Compile Include="Data\Logic\WeaponTypeLogic.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utility\NumberGenerator.cs" />
-    <Compile Include="Players\Player.cs" />
-    <Compile Include="Players\PlayerInfo.cs" />
-    <Compile Include="ViewModel\PlayerViewModel.cs" />
+    <Compile Include="Model\App\DomainModel.cs" />
+    <Compile Include="Model\Base\CatalogAppBase.cs" />
+    <Compile Include="Data\Base\ValidatorBase.cs" />
+    <Compile Include="Model\Catalog\RarityTierCatalog.cs" />
+    <Compile Include="Model\Interfaces\IValidate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Commands\ResetCommand.cs" />
-    <Compile Include="Config\Setup.cs" />
+    <Compile Include="Data\Generated\RarityTier.cs" />
+    <Compile Include="Data\Persistent\SimpleRPGDBContext.cs" />
+    <Compile Include="ViewModel\App\FileViewModel.cs" />
+    <Compile Include="ViewModel\App\MainPageViewModel.cs" />
+    <Compile Include="ViewModel\Base\DataViewModelAppBase.cs" />
+    <Compile Include="ViewModel\Base\PageViewModelAppBase.cs" />
+    <Compile Include="ViewModel\Data\RarityTierDataViewModel.cs" />
+    <Compile Include="ViewModel\Page\RarityTierPageViewModel.cs" />
+    <Compile Include="View\App\FileView.xaml.cs">
+      <DependentUpon>FileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Domain\RarityTierView.xaml.cs">
+      <DependentUpon>RarityTierView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Generated\Weapon.cs" />
+    <Compile Include="Data\Generated\WeaponJewelMatch.cs" />
+    <Compile Include="Data\Generated\WeaponModel.cs" />
+    <Compile Include="Data\Generated\WeaponType.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="PvPSimulator_TemporaryKey.pfx" />
+    <None Include="efpt.config.json" />
+    <None Include="SimpleRPGDemo_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Knight.jpg" />
-    <Content Include="Assets\Paladin.jpg" />
-    <Content Include="Assets\Warrior.jpg" />
-    <Content Include="Assets\Wizard.jpg" />
+    <Content Include="Data\Persistent\DBScript.txt" />
+    <Content Include="Libs\AddOns.dll" />
+    <Content Include="Libs\Commands.dll" />
+    <Content Include="Libs\Controllers.dll" />
+    <Content Include="Libs\Data.dll" />
+    <Content Include="Libs\DataSources.dll" />
+    <Content Include="Libs\Extensions.dll" />
+    <Content Include="Libs\Model.dll" />
+    <Content Include="Libs\ViewModel.dll" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -149,11 +177,52 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\App\AppResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\App\FileView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Domain\RarityTierView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer">
+      <Version>2.1.4</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.2</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AddOns">
+      <HintPath>Libs\AddOns.dll</HintPath>
+    </Reference>
+    <Reference Include="Commands">
+      <HintPath>Libs\Commands.dll</HintPath>
+    </Reference>
+    <Reference Include="Controllers">
+      <HintPath>Libs\Controllers.dll</HintPath>
+    </Reference>
+    <Reference Include="Data">
+      <HintPath>Libs\Data.dll</HintPath>
+    </Reference>
+    <Reference Include="DataSources">
+      <HintPath>Libs\DataSources.dll</HintPath>
+    </Reference>
+    <Reference Include="Extensions">
+      <HintPath>Libs\Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Model">
+      <HintPath>Libs\Model.dll</HintPath>
+    </Reference>
+    <Reference Include="ViewModel">
+      <HintPath>Libs\ViewModel.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

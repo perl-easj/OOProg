@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="SimpleRPGDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SimpleRPGDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:vm="using:SimpleRPGDemo.ViewModel.App"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Page.DataContext>
+        <vm:MainPageViewModel/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View/App/AppResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <NavigationView Header="RPG Demo"
+                    Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+                    OpenPaneLength="150"
+                    CompactModeThresholdWidth="1280"
+                    SelectedItem ="{Binding SelectedMenuItem, Mode=TwoWay}"
+                    ExpandedModeThresholdWidth="3840">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Content="File" Tag="OpenFileView"/>
+            <NavigationViewItemSeparator/>
+            <NavigationViewItem Style="{StaticResource NavigationViewItemStyle}" Content="Rarity Tiers" Tag="OpenRarityTierView"/>
+        </NavigationView.MenuItems>
+
+        <Frame x:Name="AppFrame">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <NavigationThemeTransition/>
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
+    </NavigationView>
+</Page>

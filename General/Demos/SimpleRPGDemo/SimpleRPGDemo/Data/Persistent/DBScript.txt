@@ -1,0 +1,124 @@
+﻿SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+DROP TABLE IF EXISTS [dbo].[CharacterConfig];
+DROP TABLE IF EXISTS [dbo].[Jewel];
+DROP TABLE IF EXISTS [dbo].[WeaponJewelMatch];
+DROP TABLE IF EXISTS [dbo].[Weapon];
+DROP TABLE IF EXISTS [dbo].[JewelModel];
+DROP TABLE IF EXISTS [dbo].[WeaponModel];
+DROP TABLE IF EXISTS [dbo].[Character];
+DROP TABLE IF EXISTS [dbo].[WeaponType];
+DROP TABLE IF EXISTS [dbo].[JewelCutQuality];
+DROP TABLE IF EXISTS [dbo].[RarityTier];
+
+
+CREATE TABLE [dbo].[RarityTier] (
+    [id]          INT           NOT NULL,
+    [description] NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
+GO
+
+CREATE TABLE [dbo].[JewelCutQuality] (
+    [id]          INT           NOT NULL,
+    [description] NVARCHAR (50) NOT NULL,
+    [factor]      FLOAT (53)    NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
+GO
+
+CREATE TABLE [dbo].[WeaponType] (
+    [id]             INT           NOT NULL,
+    [description]    NVARCHAR (50) NOT NULL,
+    [hands_required] INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
+GO
+
+CREATE TABLE [dbo].[Character] (
+    [id]            INT           NOT NULL,
+    [name]          NVARCHAR (50) NOT NULL,
+    [health_points] INT           NOT NULL,
+    [level]         INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
+
+CREATE TABLE [dbo].[JewelModel] (
+    [id]             INT           NOT NULL,
+    [description]    NVARCHAR (50) NOT NULL,
+    [rarity_tier_id] INT           NOT NULL,
+    [base_damage]    INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [FK_JewelModelRarityTier] FOREIGN KEY ([rarity_tier_id]) REFERENCES [dbo].[RarityTier] ([id])
+);
+GO
+
+CREATE TABLE [dbo].[WeaponModel] (
+    [id]             INT           NOT NULL,
+    [description]    NVARCHAR (50) NOT NULL,
+    [weapon_type_id] INT           NOT NULL,
+    [rarity_tier_id] INT           NOT NULL,
+    [jewel_sockets]  INT           NOT NULL,
+    [min_damage]     INT           NOT NULL,
+    [max_damage]     INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [FK_WeaponModelWeaponType] FOREIGN KEY ([weapon_type_id]) REFERENCES [dbo].[WeaponType] ([id]),
+    CONSTRAINT [FK_WeaponModelRarityTier] FOREIGN KEY ([rarity_tier_id]) REFERENCES [dbo].[RarityTier] ([id])
+);
+GO
+
+CREATE TABLE [dbo].[WeaponJewelMatch] (
+    [id]              INT        NOT NULL,
+    [jewel_model_id]  INT        NOT NULL,
+    [weapon_model_id] INT        NOT NULL,
+    [factor]          FLOAT (53) NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [FK_WeaponJewelMatchJewelModel] FOREIGN KEY ([jewel_model_id]) REFERENCES [dbo].[JewelModel] ([id]),
+    CONSTRAINT [FK_WeaponJewelMatchWeaponModel] FOREIGN KEY ([weapon_model_id]) REFERENCES [dbo].[WeaponModel] ([id])
+);
+GO
+
+CREATE TABLE [dbo].[Weapon] (
+    [id]              INT NOT NULL,
+    [weapon_model_id] INT NOT NULL,
+    [character_id]    INT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [FK_WeaponWeaponModel] FOREIGN KEY ([weapon_model_id]) REFERENCES [dbo].[WeaponModel] ([id]),
+    CONSTRAINT [FK_WeaponCharacter] FOREIGN KEY ([character_id]) REFERENCES [dbo].[Character] ([id])
+);
+GO
+
+CREATE TABLE [dbo].[Jewel] (
+    [id]             INT NOT NULL,
+    [jewel_model_id] INT NOT NULL,
+    [weapon_id]      INT NULL,
+    [cut_quality_id] INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [FK_JewelJewelModel] FOREIGN KEY ([jewel_model_id]) REFERENCES [dbo].[JewelModel] ([id]),
+    CONSTRAINT [FK_JewelWeapon] FOREIGN KEY ([weapon_id]) REFERENCES [dbo].[Weapon] ([id]),
+    CONSTRAINT [FK_JewelJewelCutQuality] FOREIGN KEY ([cut_quality_id]) REFERENCES [dbo].[JewelCutQuality] ([id])
+);
+GO
+
+CREATE TABLE [dbo].[CharacterConfig] (
+    [id]              INT NOT NULL,
+    [character_id]    INT NOT NULL,
+    [weapon_id_left]  INT NULL,
+    [weapon_id_right] INT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [FK_CharacterConfigCharacter] FOREIGN KEY ([character_id]) REFERENCES [dbo].[Character] ([id]),
+    CONSTRAINT [FK_CharacterConfigWeaponRight] FOREIGN KEY ([weapon_id_right]) REFERENCES [dbo].[Weapon] ([id]),
+    CONSTRAINT [FK_CharacterConfigWeaponLeft] FOREIGN KEY ([weapon_id_left]) REFERENCES [dbo].[Weapon] ([id])
+);
+GO
+
+
+
+
+
+
+
