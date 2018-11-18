@@ -1,0 +1,96 @@
+﻿<!--HISTORIK-->
+<!-- v.1.0 : Oprettet, kun ListView-del -->
+<!-- v.2.0 : Omskrevet til Master/Details view (binding til Weapon i Details-del) -->
+<!-- v.3.0 : Omskrevet til at binde til WeaponDataViewModel i Details-del -->
+<!-- v.4.0 : Omskrevet til at Data Binde til ItemCollection og ItemSelected -->
+<!---->
+    
+<Page
+    x:Class="SimpleRPGFromScratch.View.Domain.WeaponView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SimpleRPGFromScratch.ViewModel.Page"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <local:WeaponPageViewModel/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <Style x:Key="TextBlockDetailsStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10,10,10,10"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Column="0" Grid.Row="0"
+            ItemsSource="{Binding ItemCollection}"
+            SelectedItem="{Binding ItemSelected, Mode=TwoWay}">
+        </ListView>
+
+        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
+            <TextBlock Text="{Binding ItemSelected.WeaponTypeDesc}" Style="{StaticResource TextBlockDetailsStyle}"/>
+            <TextBlock Text="{Binding ItemSelected.WeaponModelDesc}" Style="{StaticResource TextBlockDetailsStyle}"/>
+            <TextBlock Text="{Binding ItemSelected.WeaponDamageDesc}" Style="{StaticResource TextBlockDetailsStyle}"/>
+            <TextBlock Text="{Binding ItemSelected.WeaponOwner}" Style="{StaticResource TextBlockDetailsStyle}"/>
+        </StackPanel>
+    </Grid>
+</Page>
+
+
+<!-- Kode fra v.3.0  -->
+<!--<Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="2*"/>
+    </Grid.ColumnDefinitions>
+
+    <ListView Grid.Column="0" Grid.Row="0"
+              ItemsSource="{Binding WeaponCollection}"
+              SelectedItem="{Binding WeaponSelected, Mode=TwoWay}">
+    </ListView>
+
+    <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
+        <TextBlock Text="{Binding WeaponSelected.WeaponTypeDesc}" Style="{StaticResource TextBlockDetailsStyle}"/>
+        <TextBlock Text="{Binding WeaponSelected.WeaponModelDesc}" Style="{StaticResource TextBlockDetailsStyle}"/>
+        <TextBlock Text="{Binding WeaponSelected.WeaponDamageDesc}" Style="{StaticResource TextBlockDetailsStyle}"/>
+        <TextBlock Text="{Binding WeaponSelected.WeaponOwner}" Style="{StaticResource TextBlockDetailsStyle}"/>
+    </StackPanel>
+</Grid>-->
+
+<!-- Kode fra v.2.0  -->
+<!--<Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="2*"/>
+    </Grid.ColumnDefinitions>
+
+    <ListView Grid.Column="0" Grid.Row="0"
+              ItemsSource="{Binding WeaponCollection}"
+              SelectedItem="{Binding WeaponSelected, Mode=TwoWay}">
+    </ListView>
+
+    <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
+        <TextBlock Text="{Binding WeaponSelected.Id}" Style="{StaticResource TextBlockDetailsStyle}"/>
+        <TextBlock Text="{Binding WeaponSelected.WeaponModelId}" Style="{StaticResource TextBlockDetailsStyle}"/>
+        <TextBlock Text="{Binding WeaponSelected.CharacterId}" Style="{StaticResource TextBlockDetailsStyle}"/>
+    </StackPanel>
+</Grid>-->
+
+<!-- Kode fra v.1.0  -->    
+<!--<Grid>
+    <ListView Grid.Column="0" Grid.Row="0"
+              ItemsSource="{Binding WeaponCollection}"
+              SelectedItem="{Binding WeaponSelected, Mode=TwoWay}">
+    </ListView>
+</Grid>-->

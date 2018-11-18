@@ -1,0 +1,30 @@
+﻿<!--HISTORIK-->
+<!-- v.1.0 : Oprettet, kun entry for Weapon View -->
+<!-- v.1.1 : Tilføjet entry for WeaponModel View -->
+<!-- v.1.2 : Tilføjet entry for Character View -->
+<!---->
+    
+<Page
+    x:Class="SimpleRPGFromScratch.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SimpleRPGFromScratch.ViewModel.App"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <local:MainPageViewModel/>
+    </Page.DataContext>
+
+    <NavigationView SelectedItem ="{Binding SelectedMenuItem, Mode=TwoWay}">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Content="Weapons" Tag="OpenWeaponView"/>
+            <NavigationViewItem Content="Weapon Models" Tag="OpenWeaponModelView"/>
+            <NavigationViewItem Content="Characters" Tag="OpenCharacterView"/>
+        </NavigationView.MenuItems>
+        <Frame x:Name="AppFrame"/>
+    </NavigationView>
+
+</Page>
