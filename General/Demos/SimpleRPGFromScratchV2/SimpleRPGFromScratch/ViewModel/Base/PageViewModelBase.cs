@@ -34,13 +34,15 @@ namespace SimpleRPGFromScratch.ViewModel.Base
         private CommandBase _deleteCommandObj;
 
         /// <summary>
-        /// I constructoren sker tre ting:
+        /// I constructoren sker fire ting:
         /// 1) Vi sætter _itemSelected = null, d.v.s. vi antager, at der fra start
         ///    ikke er valgt noget i den kontrol, som viser vores collection frem.
         /// 2) Vi sætter _catalog til at referere til en Catalog-objekt, ved hjælp
         ///    af den abstrake metode GenerateCatalog().
         /// 3) Vi laver et nyt DeleteCommand objekt, som får en reference både til
         ///    Catalog-objektet samt PVM-objektet selv.
+        /// 4) Vi beder om at blive notificeret, hvis der sker ændringer i det
+        ///    underliggende Catalog-objekt.
         /// </summary>
         protected PageViewModelBase()
         {
