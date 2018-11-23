@@ -13,7 +13,7 @@ namespace SimpleRPGFromScratch
         public MainPage()
         {
             this.InitializeComponent();
-            MainPageViewModel.AppFrameInstance = AppFrame; // Tilføjet manuelt.
+            MainPageViewModel.SetAppFrame(AppFrame); // Tilføjet manuelt.
         }
     }
 }
