@@ -1,0 +1,207 @@
+// FASE 1 - GRUNDLÆGGENDE APPLIKATION, GLOBAL NAVIGATION, EN DOMÆNE-KLASSE
+// Oprettelse af nyt UWP-projekt, oprettelse af folders
+1.   Lav nyt UWP projekt SimpleRPGFromScratch (HUSK min. build 16299)
+2.   Tilføj folders Data, Model, ViewModel, View
+2a.  Tilføj folders Domain og Context under Data folder.
+
+// Generer domæne-klasser v.h.a. EF Core Power Tools
+3.   Kør EF Core Power Tools på Azure-databasen (vælg kun RPG-tabeller)
+4.   Flyt den genererede DBContext klasse til folderen Data/Context
+5.   Flyt de 10 genererede domæne-klasser til Data/Domain
+
+// Implementation af WeaponCatalog (version 1)
+6.   Tilføj folderen Catalog under Model
+7.   Tilføj klassen WeaponCatalog til Model/Catalog
+8.   Implementer en Weapon-specifik, List-baseret catalog-klasse.
+8a.  Tilføj tre-fire Weapon-objekter direkte til listen i constructoren.
+
+// Implementation af WeaponPageViewModel (version 1)
+9.   Tilføj folderen Page under ViewModel.
+10.  Tilføj klassen WeaponPageViewModel til ViewModel/Page
+11.  Implementer en WeaponCatalog-specifik, pageVM-klasse, med simple properties WeaponCollection (get) og WeaponSelected (get/set).
+
+// Implementation af WeaponView (version 1)
+12.  Tilføj folderen Domain under View.
+13.  Tilføj en XAML-fil (Blank Page) under View/Domain, kaldet WeaponView.xaml
+14.  Tilret namespace xmlns:local til ...ViewModel.Page
+15.  Tilføj DataContext til at være local:WeaponPageViewModel (evt. Rebuild)
+16.  Erstat Grid-kontrollen med en ListView-kontrol
+17.  Lav to Data Bindings på ListView: ItemsSource = "{Binding WeaponCollection}", og SelectedItem="{Binding WeaponSelected, Mode=TwoWay}"
+
+// Implementation af MainPageViewModel (version 1)
+18.  Tilføj folderen App under ViewModel.
+19.  Tilføj klassen MainPageViewModel til ViewModel/App 
+20.  Implementer en SelectedMenuItem property (get/set)
+21.  Implementer en private metode NavigateToView, ved hjælp af static property AppFrameInstance
+
+// Implementation af MainPage (version 1)
+22.  Åbn MainPage.xaml, og tilret namespace xmlns:local til ...ViewModel.App
+23.  Tilføj DataContext til at være local:MainPageViewModel (evt. Rebuild)
+24.  Erstat Grid med NavigationView-kontrol.
+25.  tilføj <NavigationView.MenuItems> og tilføj deri en enkelt NavigationViewItem kontrol (Content="Weapons" Tag="OpenWeaponView")
+26.  Tilføj en Frame-kontrol med x:Name="AppFrame" som elementet i NavigationView-kontrollen.
+27.  Åbn MainPage.xaml.cs, og tilføj linjen MainPageViewModel.AppFrameInstance = AppFrame til constructoren.
+
+// Første kørsel, samt oprettelse af WeaponLogic.cs 
+28.  Kør App, vælg Weapons i menu, og konstater at der vises tre elementer i ListView.
+29.  Under Data/Domain, tilføj filen WeaponLogic.cs, og lad den indeholde en partial definition af klassen Weapon
+30.  Implementer en override af ToString ($"This Weapon has id = {Id}";)
+31.  Kør App igen, og konstater at elementer nu præsenteres anderledes.
+
+PÅ DETTE TIDSPUNKT ER TILFØJET (UD OVER GENEREREDE KLASSER)
+  Data/Domain/WeaponLogic.cs
+  Model/Catalog/WeaponCatalog.cs
+  ViewModel/Page/WeaponPageViewModel.cs
+  ViewModel/App/MainPageViewModel.cs
+  View/Domain/WeaponView.xaml
+DER ER DESUDEN RETTET I
+  MainPage.xaml
+  MainPage.xaml.cs
+
+
+// FASE 2 - KONTAKT MED DB VIA EF (simpel), MASTER/DETAILS VIEW, EN DOMÆNE-KLASSE.
+// Omskrivning af WeaponCatalog 
+32.  Omskriv WeaponCatalog (nu version 2) til at benytte EF, ved at bruge SimpleRPGDBContext.
+33.  Kør App igen, og konstater at elementer nu læses fra Azure-database.
+
+// Omskrivning af WeaponView og WeaponPageViewModel
+34.  Omskriv WeaponView.xaml (nu version 2) til et meget simpelt Master/Details view.
+35.  Kør App, og konstater at Details-delen ikke virker.
+36.  Omskriv WeaponPageViewModel, således at den implementerer INotifyPropertyChanged
+36a. Omskriv WeaponPageViewModel (nu version 2), så den kalder OnPropertyChanged i WeaponSelected
+37.  Kør App, og konstater at Details-delen nu virker.
+
+PÅ DETTE TIDSPUNKT ER TILFØJET (UD OVER GENEREREDE KLASSER)
+  (ingen)
+DER ER DESUDEN RETTET I
+  Model/Catalog/WeaponCatalog.cs
+  ViewModel/Page/WeaponPageViewModel.cs
+  View/Domain/WeaponView.xaml
+  
+
+// FASE 3 - KONTAKT MED DB VIA EF (fuld), DATA VIEW MODEL KLASSE
+// Implementation af WeaponDataViewModel (version 1)
+38.  Konstater, at der kun kan laves Data Binding til (domæne-specifikke) properties til Details-delen
+39.  Tilføj folderen Data under ViewModel.
+40.  Tilføj klassen WeaponDataViewModel til ViewModel/Data
+41.  Implementer klassen med et antal string-properties + INotifyPropertyChanged. Benyt objekt-referencer til navigation.
+42.  Omskriv WeaponPageViewModel (nu version 3) til at arbejde med WeaponDataViewModel i stedet for Weapon
+43.  Omskriv WeaponView (nu version 3) til at benytte de nye properties til Data Binding.
+44.  Kør App, og konstater at Details-delen virker, men kun delvist, idet en del data ikke bliver vist.
+
+// Omskrivning af WeaponCatalog 
+45.  Omskriv WeaponCatalog (nu version 3) til at benytte Include/ThenInclude i flere trin.
+46.  Efter hvert trin; Kør App, og konstater at mere og mere af Details-delen virker.
+
+PÅ DETTE TIDSPUNKT ER YDERLIGERE TILFØJET
+  ViewModel/Data/WeaponDataViewModel.cs
+DER ER DESUDEN RETTET I
+  Model/Catalog/WeaponCatalog.cs
+  ViewModel/Page/WeaponPageViewModel.cs
+  View/Domain/WeaponView.xaml
+
+
+// FASE 4 - FUNKTIONALITET FOR TO DOMÆNEKLASSER.
+// Implementer hele "familien" af klasser/views igen for WeaponModel, ved copy/paste og tilretning.
+47.  Tilføj og implementer klassen WeaponModelLogic.cs (under Data/Domain)
+48.  Tilføj og implementer klassen WeaponModelCatalog.cs (under Model/Catalog)
+49.  Tilføj og implementer klassen WeaponModelPageViewModel.cs (under ViewModel/Page)
+50.  Tilføj og implementer klassen WeaponModelDataViewModel.cs (under ViewModel/Data)
+51.  Tilføj og implementer viewet WeaponModelView.xaml (under View/Domain)
+52.  Tilføj case for det nye view i SelectedMenuItem i MainPageViewModel.cs
+53.  Tilføj et NavigationViewItem for det nye view i MainPage.xaml
+
+PÅ DETTE TIDSPUNKT ER YDERLIGERE TILFØJET
+  Data/Domain/WeaponModelLogic.cs
+  Model/Catalog/WeaponModelCatalog.cs
+  ViewModel/Page/WeaponModelPageViewModel.cs
+  ViewModel/Data/WeaponModelDataViewModel.cs
+  View/Domain/WeaponModelView.xaml
+DER ER DESUDEN RETTET I
+  ViewModel/App/MainPageViewModel.cs
+  MainPage.xaml
+
+
+// FASE 5 - INDFØRSEL OG BRUG AF BASEKLASSER
+// Indførsel af baseklasser og interfaces for Catalog-klasser
+54.  Tilføj folderen Base under Model
+55.  Tilføj og implementer interfacet ICatalog<T>, som definerer et simpelt Catalog-interface
+56.  Tilføj og implementer klassen CatalogEFBase<T, TDbContext>, som implementerer ICatalog.
+56a. Konstater, at der er behov for to abstract metoder i CatalogEFBase (IdMatch og BuildObjects).
+57.  Tilføj og implementer klassen CatalogAppBase<T>, som arver fra CatalogEFBase<T, SimpleRPGDBContext>
+
+// Tilretning af oprindelige Catalog-klasser v.h.a. CatalogAppBase
+58.  Omskriv WeaponCatalog (nu version 4) til at benytte CatalogAppBase.
+59.  Omskriv WeaponModelCatalog (nu version 2) til at benytte CatalogAppBase.
+
+// Indførsel af baseklasser og interfaces for DataViewModel-klasser
+60.  Tilføj folderen Base under DataViewModel
+61.  Tilføj og implementer interfacet IDataViewModel<T>, som kun rummer een property: T DataObject { get; }
+62.  Tilføj og implementer klassen DataViewModelBase<T>, som implementerer IDataViewModel<T> og INotifyPropertyChanged
+
+// Tilretning af oprindelige DataViewModel-klasser v.h.a. DataViewModelBase
+63. Omskriv WeaponDataViewModel (nu version 2) til at benytte DataViewModelBase
+64. Omskriv WeaponModelDataViewModel (nu version 2) til at benytte DataViewModelBase
+
+// Indførsel af baseklasser og interfaces for PageViewModel-klasser
+65.  Tilføj og implementer interfacet IPageViewModel<TDVM>, som rummer properties ItemCollection og ItemSelected
+66.  Tilføj og implementer klassen PageViewModelBase<T>, som implementerer IPageViewModel<T> og INotifyPropertyChanged
+67.  Konstater, at PageViewModelBase<T> rummer to abstract metoder GenerateDataViewModel og GenerateCatalog
+
+// Tilretning af oprindelige DataViewModel-klasser v.h.a. DataViewModelBase
+68. Omskriv WeaponPageViewModel (nu version 4) til at benytte PageViewModelBase
+69. Omskriv WeaponModelPageViewModel (nu version 2) til at benytte PageViewModelBase
+
+// Tilretning af domæne-Views
+70.  Omskriv WeaponView (nu version 4), således at der nu Data Bindes til ItemCollection og ItemSelected.
+71.  Omskriv WeaponModelView (nu version 2), således at der nu Data Bindes til ItemCollection og ItemSelected.
+72.  Kør applikationen, og konstater at alt virker så før.
+
+PÅ DETTE TIDSPUNKT ER YDERLIGERE TILFØJET
+  Model/Base/ICatalog.cs
+  Model/Base/CatalogEFBase.cs
+  Model/Base/CatalogAppBase.cs
+  ViewModel/Base/IDataViewModel.cs
+  ViewModel/Base/DataViewModelBase.cs
+  ViewModel/Base/IPageViewModel.cs
+  ViewModel/Base/PageViewModelBase.cs
+DER ER DESUDEN RETTET I
+  Model/Catalog/WeaponCatalog.cs
+  Model/Catalog/WeaponModelCatalog.cs
+  ViewModel/Data/WeaponDataViewModel.cs
+  ViewModel/Data/WeaponModelDataViewModel.cs
+  ViewModel/Page/WeaponPageViewModel.cs
+  ViewModel/Page/WeaponPageDataViewModel.cs
+  View/Domain/WeaponView.xaml
+  View/Domain/WeaponModelView.xaml
+
+
+// FASE 6 - FUNKTIONALITET FOR TO DOMÆNEKLASSER.
+// Udvikling af tredje familie af klasser (for Character), baseret på base-klasser.
+73.  I folderen Data/Domain, opret og implementer CharacterLogic.cs (override af ToString).
+74.  I folderen Model/Catalog, opret og implementer CharacterCatalog.cs (override af IdMatch og BuildObjects).
+75.  I folderen ViewModel/Data, opret og implementer CharacterDataViewModel.cs (med properties Name, HP, Level).
+76.  I folderen ViewModel/Page, opret og implementer CharacterPageViewModel.cs (override af GenerateDataViewModel og GenerateCatalog).
+77.  I folderen View/Domain, opret og implementer CharacterView.xaml
+78.  Tilføj case for det nye view i SelectedMenuItem i MainPageViewModel.cs
+79.  Tilføj et NavigationViewItem for det nye view i MainPage.xaml
+80.  Kør applikationen, og konstater at man nu også har funktionalitet for Character.
+
+PÅ DETTE TIDSPUNKT ER YDERLIGERE TILFØJET
+  Data/Domain/CharacterLogic.cs
+  Model/Catalog/CharacterCatalog.cs
+  ViewModel/Page/CharacterPageViewModel.cs
+  ViewModel/Data/CharacterDataViewModel.cs
+  View/Domain/CharacterView.xaml
+DER ER DESUDEN RETTET I
+  ViewModel/App/MainPageViewModel.cs
+  MainPage.xaml
+
+
+
+
+
+
+
+
+
