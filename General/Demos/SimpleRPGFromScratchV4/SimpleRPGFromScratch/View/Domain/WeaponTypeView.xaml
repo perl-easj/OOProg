@@ -1,0 +1,85 @@
+﻿<Page
+    x:Class="SimpleRPGFromScratch.View.Domain.WeaponTypeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SimpleRPGFromScratch.ViewModel.Page"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <local:WeaponTypePageViewModel/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../App/AppResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Column="0" Grid.Row="0"
+                  ItemsSource="{Binding ItemCollection}"
+                  SelectedItem="{Binding ItemSelected, Mode=TwoWay}"
+                  IsEnabled="{Binding EnabledStateCollection}">
+        </ListView>
+
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="0" Grid.Row="0" BorderThickness="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical">
+                    <TextBlock Text="Description" Style="{StaticResource TextBlockDetailsStyle}"/>
+                    <TextBlock Text="One- or Two-handed" Style="{StaticResource TextBlockDetailsStyle}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
+                    <TextBox Text="{Binding ItemDetails.Description, Mode=TwoWay}"
+                             IsHitTestVisible="{Binding EnabledStateDetails}"
+                             Background="{Binding BackgroundColorDetails}"
+                             Style="{StaticResource TextBoxDetailsStyle}"/>
+                    <ToggleSwitch OffContent="One" OnContent="Two"
+                                  IsOn="{Binding ItemDetails.IsTwoHanded, Mode=TwoWay}"
+                                  IsEnabled="{Binding EnabledStateDetails}"
+                                  Style="{StaticResource ToggleSwitchStyle}"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="0" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+                    <Button Command="{Binding ViewCommandsObj[0]}" Content="{Binding ViewCommandsDesc[0]}"
+                            Style="{StaticResource ButtonStyle}" />
+                    <Button Command="{Binding ViewCommandsObj[1]}" Content="{Binding ViewCommandsDesc[1]}"
+                            Style="{StaticResource ButtonStyle}" />
+                    <Button Command="{Binding ViewCommandsObj[2]}" Content="{Binding ViewCommandsDesc[2]}"
+                            Style="{StaticResource ButtonStyle}" />
+                </StackPanel>
+
+                <TextBlock Grid.Column="1" Grid.Row="0" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Text="{Binding ViewStateDesc}" Style="{StaticResource TextBlockStateStyle}" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
