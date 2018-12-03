@@ -1,8 +1,4 @@
-﻿// HISTORIK:
-// v.1.0 : Oprettet, minimalt interface for PageViewModel-klasser
-//
-
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace SimpleRPGFromScratch.ViewModel.Base
 {

@@ -1,8 +1,4 @@
-﻿// HISTORIK:
-// v.1.0 : Oprettet, override af ToString.
-//
-
-using System.Linq;
+﻿using System.Linq;
 using SimpleRPGFromScratch.Data.Base;
 
 namespace SimpleRPGFromScratch
@@ -27,17 +23,17 @@ namespace SimpleRPGFromScratch
 
         public double MinDamage
         {
-            get { return WeaponModel.MinDamage + JewelDamage; }
+            get { return WeaponModel != null ? WeaponModel.MinDamage + JewelDamage : 0; }
         }
 
         public double MaxDamage
         {
-            get { return WeaponModel.MaxDamage + JewelDamage; }
+            get { return WeaponModel != null ? WeaponModel.MaxDamage + JewelDamage : 0; }
         }
 
         public int Sockets
         {
-            get { return WeaponModel.JewelSockets; }
+            get { return WeaponModel?.JewelSockets ?? 0; }
         }
 
         public int SocketsUsed

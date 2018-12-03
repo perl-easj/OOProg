@@ -76,6 +76,38 @@
                                  IsEnabled="{Binding EnabledStateDetails}"
                                  Value="{Binding ItemDetails.LevelIndex, Mode=TwoWay}"/>
                     </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Row="0" Grid.Column="0">
+                            <TextBlock Text="Weapons Owned" Style="{StaticResource TextBlockDetailsStyle}"/>
+                            <ListBox Style="{StaticResource ListBoxDetailsStyle}"
+                                     IsEnabled="{Binding EnabledStateReferenceChange}"
+                                     ItemsSource="{Binding ItemDetails.OwnedWeaponCollection}"
+                                     SelectedItem="{Binding ItemDetails.OwnedWeaponSelected, Mode=TwoWay}">
+                            </ListBox>
+                            <Button Style="{StaticResource ButtonStyle}"
+                                    IsEnabled="{Binding EnabledStateReferenceChange}"
+                                    Content="{Binding ItemDetails.DropWeaponCommandText}"
+                                    Command="{Binding ItemDetails.DropWeaponCommandObj}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="0" Grid.Column="1">
+                            <TextBlock Text="Weapons Available" Style="{StaticResource TextBlockDetailsStyle}"/>
+                            <ListBox Style="{StaticResource ListBoxDetailsStyle}"
+                                     IsEnabled="{Binding EnabledStateReferenceChange}"
+                                     ItemsSource="{Binding ItemDetails.FreeWeaponCollection}"
+                                     SelectedItem="{Binding ItemDetails.FreeWeaponSelected, Mode=TwoWay}">
+                            </ListBox>
+                            <Button Style="{StaticResource ButtonStyle}"
+                                    IsEnabled="{Binding EnabledStateReferenceChange}"
+                                    Content="{Binding ItemDetails.AddWeaponCommandText}"
+                                    Command="{Binding ItemDetails.AddWeaponCommandObj}"/>
+                        </StackPanel>
+                    </Grid>
                 </StackPanel>
             </Grid>
 

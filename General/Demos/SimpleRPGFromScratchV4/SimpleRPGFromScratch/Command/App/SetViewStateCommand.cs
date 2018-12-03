@@ -1,4 +1,5 @@
-﻿using SimpleRPGFromScratch.ViewModel.Base;
+﻿using SimpleRPGFromScratch.Command.Base;
+using SimpleRPGFromScratch.ViewModel.Base;
 
 namespace SimpleRPGFromScratch.Command.App
 {

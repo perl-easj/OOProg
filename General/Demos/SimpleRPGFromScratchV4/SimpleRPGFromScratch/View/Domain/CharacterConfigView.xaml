@@ -46,8 +46,7 @@
 
                 <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical">
                     <TextBlock Text="Character" Style="{StaticResource TextBlockDetailsStyle}"/>
-                    <TextBlock Text="Left Weapon" Style="{StaticResource TextBlockDetailsStyle}"/>
-                    <TextBlock Text="Right Weapon" Style="{StaticResource TextBlockDetailsStyle}"/>
+                    <TextBlock Text="Left/Right Weapon" Style="{StaticResource TextBlockDetailsStyle}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
@@ -56,16 +55,26 @@
                               Background="{Binding BackgroundColorDetails}"
                               IsHitTestVisible="{Binding EnabledStateDetails}"
                               Style="{StaticResource ComboBoxDetailsStyle}"/>
-                    <ComboBox ItemsSource="{Binding ItemDetails.LeftWeaponCollection}"
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <ComboBox ItemsSource="{Binding ItemDetails.LeftWeaponCollection}"
                               SelectedItem="{Binding ItemDetails.LeftWeaponSelected, Mode=TwoWay}"
                               Background="{Binding BackgroundColorDetails}"
                               IsHitTestVisible="{Binding EnabledStateDetails}"
                               Style="{StaticResource ComboBoxDetailsStyle}"/>
-                    <ComboBox ItemsSource="{Binding ItemDetails.RightWeaponCollection}"
-                              SelectedItem="{Binding ItemDetails.RightWeaponSelected, Mode=TwoWay}"
-                              Background="{Binding BackgroundColorDetails}"
-                              IsHitTestVisible="{Binding EnabledStateDetails}"
-                              Style="{StaticResource ComboBoxDetailsStyle}"/>
+                            <Button Command="{Binding ItemDetails.DropLeftWeaponCommandObj}" Content="Drop Left Weapon" 
+                                IsEnabled="{Binding EnabledStateDetails}" Style="{StaticResource ButtonStyle}" />
+                        </StackPanel>
+                        <StackPanel>
+                            <ComboBox ItemsSource="{Binding ItemDetails.RightWeaponCollection}"
+                                  SelectedItem="{Binding ItemDetails.RightWeaponSelected, Mode=TwoWay}"
+                                  Background="{Binding BackgroundColorDetails}"
+                                  IsHitTestVisible="{Binding EnabledStateDetails}"
+                                  Style="{StaticResource ComboBoxDetailsStyle}"/>
+                            <Button Command="{Binding ItemDetails.DropRightWeaponCommandObj}" Content="Drop Right Weapon" 
+                                IsEnabled="{Binding EnabledStateDetails}" Style="{StaticResource ButtonStyle}" />
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
 

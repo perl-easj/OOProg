@@ -3,15 +3,19 @@ using SimpleRPGFromScratch.Helpers;
 
 namespace SimpleRPGFromScratch.ViewModel.Control
 {
+    // TODO - Kommentarer
     public class SliderDataViewModel<TValue>
     {
+        #region Instance fields
         private Scaler<TValue> _valueScaler;
         private int _sliderScaleMax;
         private Func<TValue> _callBackGetValue;
         private Action<TValue> _callBackSetValue;
+        #endregion
 
+        #region Constructor
         public SliderDataViewModel(
-            Scaler<TValue> valueScaler, 
+            Scaler<TValue> valueScaler,
             int sliderScaleMax,
             Func<TValue> callBackGetValue,
             Action<TValue> callBackSetValue)
@@ -21,7 +25,9 @@ namespace SimpleRPGFromScratch.ViewModel.Control
             _callBackSetValue = callBackSetValue;
             _callBackGetValue = callBackGetValue;
         }
+        #endregion
 
+        #region Properties til (indirekte) Data Binding
         public int SliderIndex
         {
             get { return _valueScaler.ValueToScale(_callBackGetValue()); }
@@ -39,6 +45,7 @@ namespace SimpleRPGFromScratch.ViewModel.Control
         public int SliderScaleMax
         {
             get { return _sliderScaleMax; }
-        }
+        } 
+        #endregion
     }
 }

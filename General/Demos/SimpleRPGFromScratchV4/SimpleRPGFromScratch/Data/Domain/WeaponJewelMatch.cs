@@ -3,7 +3,12 @@
     public partial class WeaponJewelMatch
     {
         public int Id { get; set; }
-        public int JewelModelId { get; set; }
+
+        public int JewelModelId
+        {
+            get;
+            set;
+        }
         public int WeaponModelId { get; set; }
         public double Factor { get; set; }
 

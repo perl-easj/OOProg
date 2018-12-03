@@ -1,8 +1,9 @@
-﻿using SimpleRPGFromScratch.Data.Base;
+﻿using SimpleRPGFromScratch.Command.Base;
+using SimpleRPGFromScratch.Data.Base;
 using SimpleRPGFromScratch.Model.Base;
 using SimpleRPGFromScratch.ViewModel.Base;
 
-namespace SimpleRPGFromScratch.Command
+namespace SimpleRPGFromScratch.Command.App
 {
     /// <summary>
     /// Specifik implementation af Create-logik.

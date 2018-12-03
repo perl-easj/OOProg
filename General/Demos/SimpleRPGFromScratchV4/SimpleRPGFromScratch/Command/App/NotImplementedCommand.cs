@@ -1,6 +1,7 @@
 ﻿using System;
+using SimpleRPGFromScratch.Command.Base;
 
-namespace SimpleRPGFromScratch.Command
+namespace SimpleRPGFromScratch.Command.App
 {
     public class NotImplementedCommand : CommandBase
     {

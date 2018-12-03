@@ -2,8 +2,8 @@
 using System.Linq;
 using Windows.UI;
 using Windows.UI.Xaml.Media;
-using SimpleRPGFromScratch.Command;
 using SimpleRPGFromScratch.Command.App;
+using SimpleRPGFromScratch.Command.Base;
 using SimpleRPGFromScratch.Data.Base;
 using SimpleRPGFromScratch.Model.App;
 using SimpleRPGFromScratch.Model.Base;

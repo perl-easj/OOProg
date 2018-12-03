@@ -3,6 +3,7 @@ using SimpleRPGFromScratch.Helpers;
 
 namespace SimpleRPGFromScratch.ViewModel.Control
 {
+    // TODO - Kommentarer
     public class IntSliderDataViewModel : SliderDataViewModel<int>
     {
         public IntSliderDataViewModel(

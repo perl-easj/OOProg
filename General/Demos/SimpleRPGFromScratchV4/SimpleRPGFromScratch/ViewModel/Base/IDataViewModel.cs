@@ -1,8 +1,4 @@
-﻿// HISTORIK:
-// v.1.0 : Oprettet, minimalt interface for DataViewModel-klasser
-//
-
-using SimpleRPGFromScratch.Data.Base;
+﻿using SimpleRPGFromScratch.Data.Base;
 
 namespace SimpleRPGFromScratch.ViewModel.Base
 {

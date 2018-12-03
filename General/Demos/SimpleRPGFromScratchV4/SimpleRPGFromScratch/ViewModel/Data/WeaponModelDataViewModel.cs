@@ -1,25 +1,23 @@
 ﻿using System.Collections.ObjectModel;
-using System.Linq;
+using SimpleRPGFromScratch.Data.Base;
 using SimpleRPGFromScratch.Helpers;
 using SimpleRPGFromScratch.ViewModel.Base;
 using SimpleRPGFromScratch.ViewModel.Control;
-using SimpleRPGFromScratch.ViewModel.Page;
 
 namespace SimpleRPGFromScratch.ViewModel.Data
 {
     public class WeaponModelDataViewModel : DataViewModelAppBase<WeaponModel>
     {
+        #region Instance fields
         private SliderDataViewModel<int> _minDamageSliderDVM;
         private SliderDataViewModel<int> _maxDamageSliderDVM;
         private IntSliderDataViewModel _jewelSocketsSliderDVM;
-        private ComboBoxDataViewModel<RarityTier, RarityTierDataViewModel, RarityTierPageViewModel> _rarityTierCBDVM;
-        private ComboBoxDataViewModel<WeaponType, WeaponTypeDataViewModel, WeaponTypePageViewModel> _weaponTypeCBDVM;
+        private SelectionControlDVM<RarityTier, RarityTierDataViewModel> _rarityTierSCDVM;
+        private SelectionControlDVM<WeaponType, WeaponTypeDataViewModel> _weaponTypeSCDVM;
+        #endregion
 
-        public WeaponModelDataViewModel() : this(null)
-        {
-        }
-
-        public WeaponModelDataViewModel(WeaponModel weaponModel) : base(weaponModel)
+        #region Constructor
+        public WeaponModelDataViewModel()
         {
             _minDamageSliderDVM = new SliderDataViewModel<int>(
                 new Scaler<int>(WeaponModel.LegalDamageValues, (a, b) => a < b),
@@ -53,23 +51,25 @@ namespace SimpleRPGFromScratch.ViewModel.Data
                     OnPropertyChanged(nameof(JewelSockets));
                 });
 
-            _rarityTierCBDVM = new ComboBoxDataViewModel<RarityTier, RarityTierDataViewModel, RarityTierPageViewModel>(
+            _rarityTierSCDVM = new SelectionControlDVM<RarityTier, RarityTierDataViewModel>(
                 () => DataObject().RarityTierId,
                 val =>
                 {
-                    DataObject().RarityTierId = val;
+                    DataObject().RarityTierId = DomainClassBase<RarityTier>.IdOrNullId(val);
                     OnPropertyChanged(nameof(RaritySelected));
                 });
 
-            _weaponTypeCBDVM = new ComboBoxDataViewModel<WeaponType, WeaponTypeDataViewModel, WeaponTypePageViewModel>(
+            _weaponTypeSCDVM = new SelectionControlDVM<WeaponType, WeaponTypeDataViewModel>(
                 () => DataObject().WeaponTypeId,
                 val =>
                 {
-                    DataObject().WeaponTypeId = val;
+                    DataObject().WeaponTypeId = DomainClassBase<WeaponType>.IdOrNullId(val);
                     OnPropertyChanged(nameof(WeaponTypeSelected));
                 });
         }
+        #endregion
 
+        #region Simple properties
         public string Description
         {
             get { return DataObject().Description; }
@@ -80,36 +80,45 @@ namespace SimpleRPGFromScratch.ViewModel.Data
             }
         }
 
+        protected override string ItemDescription
+        {
+            get { return $"{Description}  ({WeaponTypeSelected?.Description}) [{RaritySelected?.Description}]"; }
+        }
+        #endregion
+
+        #region Properties til understøttelse af Collection-kontroller
         public ObservableCollection<RarityTierDataViewModel> RarityCollection
         {
-            get { return _rarityTierCBDVM.ItemCollection; }
+            get { return _rarityTierSCDVM.ItemCollection; }
         }
 
         public RarityTierDataViewModel RaritySelected
         {
-            get { return _rarityTierCBDVM.ItemSelected; }
+            get { return _rarityTierSCDVM.ItemSelected; }
             set
             {
-                _rarityTierCBDVM.ItemSelected = value;
+                _rarityTierSCDVM.ItemSelected = value;
                 OnPropertyChanged();
             }
         }
 
         public ObservableCollection<WeaponTypeDataViewModel> WeaponTypeCollection
         {
-            get { return _weaponTypeCBDVM.ItemCollection; }
+            get { return _weaponTypeSCDVM.ItemCollection; }
         }
 
         public WeaponTypeDataViewModel WeaponTypeSelected
         {
-            get { return _weaponTypeCBDVM.ItemSelected; }
+            get { return _weaponTypeSCDVM.ItemSelected; }
             set
             {
-                _weaponTypeCBDVM.ItemSelected = value;
+                _weaponTypeSCDVM.ItemSelected = value;
                 OnPropertyChanged();
             }
         }
+        #endregion
 
+        #region Properties til understøttelse af Slider-kontroller
         public int MinDamageIndex
         {
             get { return _minDamageSliderDVM.SliderIndex; }
@@ -156,11 +165,7 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         public string JewelSockets
         {
             get { return _jewelSocketsSliderDVM.SliderText; }
-        }
-
-        protected override string ItemDescription
-        {
-            get { return $"{Description}  ({WeaponTypeSelected?.Description}) [{RaritySelected?.Description}]"; }
-        }
+        } 
+        #endregion
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace SimpleRPGFromScratch.Helpers
 {
+    // TODO - Kommentarer
     public class IdentityScaler : Scaler<int>
     {
         public IdentityScaler() : base(null, (a, b) => a < b)

@@ -1,9 +1,4 @@
-﻿// HISTORIK:
-// v.1.0 : Oprettet, skal agere base-klasse for alle kataloger
-//         i denne applikation (fast DBContext-klasse)
-//
-
-using SimpleRPGFromScratch.Data.Base;
+﻿using SimpleRPGFromScratch.Data.Base;
 
 namespace SimpleRPGFromScratch.Model.Base
 {

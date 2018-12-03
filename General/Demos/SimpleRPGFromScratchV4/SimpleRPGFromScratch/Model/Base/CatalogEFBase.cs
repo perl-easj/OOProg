@@ -42,7 +42,7 @@ namespace SimpleRPGFromScratch.Model.Base
         }
 
         /// <summary>
-        /// AllFromSource laver først en simpel query: _dbContext.Set<T>().
+        /// AllFromSource laver først en simpel query på _dbContext.
         /// Dette returnerer alle objekter af typen T, men UDEN eventuelle
         /// referencer til objekter af andre typen. Disse skal hægtes på i
         /// de nedarvede Catalog-klassen, som netop netop vil være specifikke
@@ -103,9 +103,6 @@ namespace SimpleRPGFromScratch.Model.Base
         // domæne-specifikke klasser. Skal rumme de
         // nødvendige kald af Include/ThenInclude, afsluttet
         // med kald af ToList.
-        public virtual List<T> BuildObjects(DbSet<T> objects)
-        {
-            return objects.ToList();
-        }
+        public abstract List<T> BuildObjects(DbSet<T> objects);
     }
 }

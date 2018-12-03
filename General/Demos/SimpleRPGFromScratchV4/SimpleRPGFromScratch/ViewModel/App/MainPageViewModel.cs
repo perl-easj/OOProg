@@ -1,13 +1,7 @@
-﻿// HISTORIK:
-// v.1.0 : Oprettet, kun entry for Weapon View
-// v.1.1 : Tilføjet entry for WeaponModel View
-// v.1.2 : Tilføjet entry for Character View
-//
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
-using SimpleRPGFromScratch.Command;
+using SimpleRPGFromScratch.Command.App;
 using SimpleRPGFromScratch.View.Domain;
 
 namespace SimpleRPGFromScratch.ViewModel.App

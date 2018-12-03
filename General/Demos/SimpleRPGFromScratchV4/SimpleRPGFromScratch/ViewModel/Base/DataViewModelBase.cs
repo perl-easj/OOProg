@@ -1,9 +1,4 @@
-﻿// HISTORIK:
-// v.1.0 : Oprettet, implementerer relevante interfaces for
-//         DataViewModel-klasser
-//
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using SimpleRPGFromScratch.Data.Base;
 
@@ -15,21 +10,17 @@ namespace SimpleRPGFromScratch.ViewModel.Base
     /// 1) Implementere IDataViewModel.
     /// 2) Implementere INotifyPropertyChanged.
     /// 3) Have en reference til et domæne-objekt af typen T.
-    /// 4) Have constructors uden hhv. med et domæne-objekt som parameter.
+    /// 4) Have en parameterløs constructor.
     /// </summary>
     /// <typeparam name="T">Typen for det domæne-objekt, der refereres til.</typeparam>
-    public abstract class DataViewModelBase<T> : IDataViewModel<T>, INotifyPropertyChanged where T : IDomainClass
+    public abstract class DataViewModelBase<T> : IDataViewModel<T>, INotifyPropertyChanged 
+        where T : class, IDomainClass
     {
         private T _obj { get; set; }
 
-        protected DataViewModelBase(T obj)
-        {
-            _obj = obj;
-        }
-
         protected DataViewModelBase()
         {
-            _obj = default(T);
+            _obj = null;
         }
 
         public T DataObject()

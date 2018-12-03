@@ -10,10 +10,11 @@ namespace SimpleRPGFromScratch.ViewModel.Base
     /// implementation af Tostring.
     /// </summary>
     /// <typeparam name="T">Typen for det domæne-objekt, der refereres til.</typeparam>
-    public abstract class DataViewModelAppBase<T> : DataViewModelBase<T>, IComparable<DataViewModelAppBase<T>> where T : IDomainClass
+    public abstract class DataViewModelAppBase<T> : DataViewModelBase<T>, IComparable<DataViewModelAppBase<T>> 
+        where T : class, IDomainClass
     {
-        protected DataViewModelAppBase() {}
-        protected DataViewModelAppBase(T obj) : base(obj) {}
+        // protected DataViewModelAppBase() {}
+        // protected DataViewModelAppBase(T obj) : base(obj) {}
 
         public virtual int CompareTo(DataViewModelAppBase<T> other)
         {

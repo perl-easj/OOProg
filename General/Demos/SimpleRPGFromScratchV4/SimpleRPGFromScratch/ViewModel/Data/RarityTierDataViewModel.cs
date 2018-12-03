@@ -4,12 +4,7 @@ namespace SimpleRPGFromScratch.ViewModel.Data
 {
     public class RarityTierDataViewModel : DataViewModelAppBase<RarityTier>
     {
-        public RarityTierDataViewModel() { }
-
-        public RarityTierDataViewModel(RarityTier dataObject) : base(dataObject)
-        {
-        }
-
+        #region Simple properties
         public string Description
         {
             get { return DataObject().Description; }
@@ -23,6 +18,7 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         protected override string ItemDescription
         {
             get { return Description; }
-        }
+        } 
+        #endregion
     }
 }

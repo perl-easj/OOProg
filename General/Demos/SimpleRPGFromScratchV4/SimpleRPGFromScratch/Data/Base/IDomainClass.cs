@@ -25,7 +25,7 @@
         /// <summary>
         /// Alle domæne-objekter skal kunne kopiere sig selv.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Kopi af objektet</returns>
         IDomainClass Copy();
 
         void CopyValuesFrom(IDomainClass obj);

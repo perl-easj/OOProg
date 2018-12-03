@@ -1,5 +1,6 @@
 ﻿namespace SimpleRPGFromScratch.Helpers
 {
+    // TODO - Kommentarer
     public class FactorScaler : Scaler<int>
     {
         private int _factor;

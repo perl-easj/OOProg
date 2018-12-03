@@ -27,6 +27,112 @@
         </Grid.ColumnDefinitions>
 
         <ListView Grid.Column="0" Grid.Row="0"
+                  ItemsSource="{Binding ItemCollection}"
+                  SelectedItem="{Binding ItemSelected, Mode=TwoWay}"
+                  IsEnabled="{Binding EnabledStateCollection}">
+        </ListView>
+
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="0" Grid.Row="0" BorderThickness="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical">
+                    <TextBlock Text="Description" Style="{StaticResource TextBlockDetailsStyle}"/>
+                    <TextBlock Text="Model" Style="{StaticResource TextBlockDetailsStyle}"/>
+                    <TextBlock Text="Type" Style="{StaticResource TextBlockDetailsStyle}"/>
+                    <!--<TextBlock Text="Jewel Sockets" Style="{StaticResource TextBlockDetailsStyle}"/>
+                    <TextBlock Text="Damage Range" Style="{StaticResource TextBlockDetailsStyle}"/>-->
+                    <TextBlock Text="Owned By" Style="{StaticResource TextBlockDetailsStyle}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
+                    <TextBlock Text="{Binding ItemDetails.Description}"
+                             Style="{StaticResource TextBlockDetailsStyle}"/>
+                    <ComboBox ItemsSource="{Binding ItemDetails.WeaponModelCollection}"
+                              SelectedItem="{Binding ItemDetails.WeaponModelSelected, Mode=TwoWay}"
+                              IsHitTestVisible="{Binding EnabledStateDetails}"
+                              Background="{Binding BackgroundColorDetails}"
+                              Style="{StaticResource ComboBoxDetailsStyle}"/>
+                    <TextBlock Text="{Binding ItemDetails.TypeDescription}"
+                               Style="{StaticResource TextBlockDetailsStyle}"/>
+                    <!--<TextBlock Text="{Binding ItemDetails.SocketsDescription}"
+                               Style="{StaticResource TextBlockDetailsStyle}"/>
+                    <TextBlock Text="{Binding ItemDetails.DamageDescription}"
+                               Style="{StaticResource TextBlockDetailsStyle}"/>-->
+                    <TextBlock Text="{Binding ItemDetails.OwnerDescription}"
+                               Style="{StaticResource TextBlockDetailsStyle}"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Row="0" Grid.Column="0">
+                            <TextBlock Text="Jewels Socketed" Style="{StaticResource TextBlockDetailsStyle}"/>
+                            <ListBox Style="{StaticResource ListBoxDetailsStyle}"
+                                     IsEnabled="{Binding EnabledStateReferenceChange}"
+                                     ItemsSource="{Binding ItemDetails.SocketedJewelCollection}"
+                                     SelectedItem="{Binding ItemDetails.SocketedJewelSelected, Mode=TwoWay}">
+                            </ListBox>
+                            <Button Style="{StaticResource ButtonStyle}"
+                                    IsEnabled="{Binding EnabledStateReferenceChange}"
+                                    Content="{Binding ItemDetails.DropJewelCommandText}"
+                                    Command="{Binding ItemDetails.DropJewelCommandObj}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="0" Grid.Column="1">
+                            <TextBlock Text="Jewels Available" Style="{StaticResource TextBlockDetailsStyle}"/>
+                            <ListBox Style="{StaticResource ListBoxDetailsStyle}"
+                                     IsEnabled="{Binding EnabledStateReferenceChange}"
+                                     ItemsSource="{Binding ItemDetails.FreeJewelCollection}"
+                                     SelectedItem="{Binding ItemDetails.FreeJewelSelected, Mode=TwoWay}">
+                            </ListBox>
+                            <Button Style="{StaticResource ButtonStyle}"
+                                    IsEnabled="{Binding EnabledStateReferenceChange}"
+                                    Content="{Binding ItemDetails.AddJewelCommandText}"
+                                    Command="{Binding ItemDetails.AddJewelCommandObj}"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="0" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+                    <Button Command="{Binding ViewCommandsObj[0]}" Content="{Binding ViewCommandsDesc[0]}"
+                            Style="{StaticResource ButtonStyle}" />
+                    <Button Command="{Binding ViewCommandsObj[1]}" Content="{Binding ViewCommandsDesc[1]}"
+                            Style="{StaticResource ButtonStyle}" />
+                    <Button Command="{Binding ViewCommandsObj[2]}" Content="{Binding ViewCommandsDesc[2]}"
+                            Style="{StaticResource ButtonStyle}" />
+                </StackPanel>
+
+                <TextBlock Grid.Column="1" Grid.Row="0" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Text="{Binding ViewStateDesc}" Style="{StaticResource TextBlockStateStyle}" />
+            </Grid>
+        </Grid>
+    </Grid>
+    <!--<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Column="0" Grid.Row="0"
             ItemsSource="{Binding ItemCollection}"
             SelectedItem="{Binding ItemSelected, Mode=TwoWay}">
         </ListView>
@@ -38,5 +144,5 @@
             <TextBlock Text="{Binding ItemSelected.WeaponDamageDesc}" Style="{StaticResource TextBlockDetailsStyle}"/>
             <TextBlock Text="{Binding ItemSelected.WeaponOwner}" Style="{StaticResource TextBlockDetailsStyle}"/>
         </StackPanel>
-    </Grid>
+    </Grid>-->
 </Page>

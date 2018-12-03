@@ -1,8 +1,6 @@
 ﻿namespace SimpleRPGFromScratch.Data.Base
 {
-    /// <summary>
-    /// Denne klasse rummer blot en standard-implementation af Copy().
-    /// </summary>
+    // TODO - Kommentarer
     public abstract class DomainClassBase<T> : IDomainClass 
         where T : class
     {
@@ -16,10 +14,6 @@
             SetInitialValues();
         }
 
-        /// <summary>
-        /// Implementation af Copy(), som en "shallow" kopiering.
-        /// </summary>
-        /// <returns></returns>
         public IDomainClass Copy()
         {
             return (MemberwiseClone() as IDomainClass);
@@ -33,6 +27,11 @@
 
         public virtual void SetInitialValues()
         {
+        }
+
+        public static int IdOrNullId(int? id)
+        {
+            return id ?? NullId;
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System;
 using Windows.UI.Xaml.Controls;
+using SimpleRPGFromScratch.Command.Base;
 
-namespace SimpleRPGFromScratch.Command
+namespace SimpleRPGFromScratch.Command.App
 {
     /// <summary>
     /// En Command-klasse specifikt til at udføre navigation.

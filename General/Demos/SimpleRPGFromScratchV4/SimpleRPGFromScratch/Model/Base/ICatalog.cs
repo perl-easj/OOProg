@@ -1,8 +1,4 @@
-﻿// HISTORIK:
-// v.1.0 : Oprettet, definerer simpelt Catalog-interface
-//
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace SimpleRPGFromScratch.Model.Base
@@ -10,7 +6,7 @@ namespace SimpleRPGFromScratch.Model.Base
     /// <summary>
     /// Denne klasse definerer et generelt interface for et Catalog:
     /// 1) En All-property, som returnerer alle objekter af typen T
-    /// 2) CRUD-metoden (uden Update indtil videre)
+    /// 2) CRUD-metoder
     /// 3) En event, som bliver aktiveret når indholdet af kataloget ændres.
     /// </summary>
     /// <typeparam name="T">Typen af objekter i kataloget (typisk domæne-klasser)</typeparam>

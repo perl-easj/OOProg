@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace SimpleRPGFromScratch.Command
+namespace SimpleRPGFromScratch.Command.Base
 {
     /// <summary>
     /// Dette interface tilføjer blot den typiske RaiseCanExecuteChanged

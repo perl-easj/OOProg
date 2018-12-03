@@ -1,9 +1,4 @@
-﻿// HISTORIK:
-// v.1.0 : Oprettet, implementerer relevante interfaces for
-//         PageViewModel-klasser
-//
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -30,13 +25,16 @@ namespace SimpleRPGFromScratch.ViewModel.Base
         where TDataViewModel : class, IDataViewModel<T>, new() 
         where T : IDomainClass, new()
     {
+        #region Instance fields
         protected ICatalog<T> _catalog;
         protected PageViewModelState _state;
         protected event Action<PageViewModelState> _viewStateChanged;
 
         private TDataViewModel _itemSelected;
         private TDataViewModel _itemDetails;
+        #endregion
 
+        #region Constructor
         /// <summary>
         /// I constructoren sker to ting:
         /// 1) Vi sætter _catalog til at referere til et Catalog-objekt, ved hjælp
@@ -49,7 +47,9 @@ namespace SimpleRPGFromScratch.ViewModel.Base
             _catalog = GetCatalog();
             _catalog.CatalogChanged += OnCatalogHasChanged;
         }
+        #endregion
 
+        #region Implementation af IPageViewModel
         /// <summary>
         /// Denne property vil producere en ny collection af DVM-objekter, ved først
         /// at bede Catalog-objektet om at få en collection af alle domæne-objekter,
@@ -122,7 +122,9 @@ namespace SimpleRPGFromScratch.ViewModel.Base
         {
             get { return _itemDetails; }
         }
+        #endregion
 
+        #region Properties til styring af Enabled-tilstand
         /// <summary>
         /// Returnerer hvorvidt den kontrol, som rummer en collection af objekter,
         /// skal være enablet eller disablet.
@@ -144,6 +146,18 @@ namespace SimpleRPGFromScratch.ViewModel.Base
         }
 
         /// <summary>
+        /// Returnerer hvorvidt de kontroller, som kan bruges til at ændre
+        /// referencer til andre objekter, skal være enablet eller disablet.
+        /// P.t. kun enablet i Update-tilstand.
+        /// </summary>
+        public bool EnabledStateReferenceChange
+        {
+            get { return _state == PageViewModelState.Update; }
+        }
+        #endregion
+
+        #region Hjælpe-metoder
+        /// <summary>
         /// Tilstanden for et view kan ændres ved at kalde denne metode.
         /// Dette vil typisk ske fra et Command-objekt.
         /// </summary>
@@ -155,6 +169,7 @@ namespace SimpleRPGFromScratch.ViewModel.Base
 
             OnPropertyChanged(nameof(EnabledStateDetails));
             OnPropertyChanged(nameof(EnabledStateCollection));
+            OnPropertyChanged(nameof(EnabledStateReferenceChange));
 
             // Orientér andre interessenter om ændringen.
             OnViewStateChanged(newState);
@@ -173,16 +188,6 @@ namespace SimpleRPGFromScratch.ViewModel.Base
             return dvmObj;
         }
 
-        // Denne metode skal implementeres i nedarvede, domæne-specifikke klasser.
-        // Skal ikke nødvendigvis skabe et nyt Catalog-objekt, men blot tilvejebringe
-        // en reference til et sådant objekt.
-        protected abstract ICatalog<T> GetCatalog();
-
-        /// <summary>
-        /// Denne metode skal overrides i nedarvede klasser, hvor man
-        /// implementerer konkrete Commands for viewet.
-        /// </summary>
-        protected abstract void NotifyCommands();
 
         /// <summary>
         /// Denne metode bliver kaldt, når noget ændrer sig i det
@@ -198,6 +203,20 @@ namespace SimpleRPGFromScratch.ViewModel.Base
         {
             _viewStateChanged?.Invoke(obj);
         }
+        #endregion
+
+        #region Abstrakte metoder
+        // Denne metode skal implementeres i nedarvede, domæne-specifikke klasser.
+        // Skal ikke nødvendigvis skabe et nyt Catalog-objekt, men blot tilvejebringe
+        // en reference til et sådant objekt.
+        protected abstract ICatalog<T> GetCatalog();
+
+        /// <summary>
+        /// Denne metode skal overrides i nedarvede klasser, hvor man
+        /// implementerer konkrete Commands for viewet.
+        /// </summary>
+        protected abstract void NotifyCommands(); 
+        #endregion
 
         #region Kode for INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

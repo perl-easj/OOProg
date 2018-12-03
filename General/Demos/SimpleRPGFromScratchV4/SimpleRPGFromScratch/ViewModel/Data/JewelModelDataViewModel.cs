@@ -1,28 +1,27 @@
 ﻿using System.Collections.ObjectModel;
+using SimpleRPGFromScratch.Data.Base;
 using SimpleRPGFromScratch.ViewModel.Base;
 using SimpleRPGFromScratch.ViewModel.Control;
-using SimpleRPGFromScratch.ViewModel.Page;
 
 namespace SimpleRPGFromScratch.ViewModel.Data
 {
     public class JewelModelDataViewModel : DataViewModelAppBase<JewelModel>
     {
+        #region Instance fields
         private const int BaseDamageScaleFactor = 5;
 
         private IntSliderDataViewModel _baseDamageSliderDVM;
-        private ComboBoxDataViewModel<RarityTier, RarityTierDataViewModel, RarityTierPageViewModel> _rarityTierCBDVM;
+        private SelectionControlDVM<RarityTier, RarityTierDataViewModel> _rarityTierSCDVM;
+        #endregion
 
-        public JewelModelDataViewModel() : this(null)
+        #region Constructor
+        public JewelModelDataViewModel()
         {
-        }
-
-        public JewelModelDataViewModel(JewelModel dataObject) : base(dataObject)
-        {
-            _rarityTierCBDVM = new ComboBoxDataViewModel<RarityTier, RarityTierDataViewModel, RarityTierPageViewModel>(
+            _rarityTierSCDVM = new SelectionControlDVM<RarityTier, RarityTierDataViewModel>(
                 () => DataObject().RarityTierId,
                 val =>
                 {
-                    DataObject().RarityTierId = val;
+                    DataObject().RarityTierId = DomainClassBase<RarityTier>.IdOrNullId(val);
                     OnPropertyChanged(nameof(RaritySelected));
                 });
 
@@ -37,7 +36,9 @@ namespace SimpleRPGFromScratch.ViewModel.Data
                     OnPropertyChanged(nameof(BaseDamage));
                 });
         }
+        #endregion
 
+        #region Simple properties
         public string Description
         {
             get { return DataObject().Description; }
@@ -48,21 +49,30 @@ namespace SimpleRPGFromScratch.ViewModel.Data
             }
         }
 
+        protected override string ItemDescription
+        {
+            get { return $"{Description} [{DataObject().RarityTier?.Description}]"; }
+        }
+        #endregion
+
+        #region Properties til understøttelse af Collection-kontroller
         public ObservableCollection<RarityTierDataViewModel> RarityCollection
         {
-            get { return _rarityTierCBDVM.ItemCollection; }
+            get { return _rarityTierSCDVM.ItemCollection; }
         }
 
         public RarityTierDataViewModel RaritySelected
         {
-            get { return _rarityTierCBDVM.ItemSelected; }
+            get { return _rarityTierSCDVM.ItemSelected; }
             set
             {
-                _rarityTierCBDVM.ItemSelected = value;
+                _rarityTierSCDVM.ItemSelected = value;
                 OnPropertyChanged();
             }
-        }
+        } 
+        #endregion
 
+        #region Properties til understøttelse af Slider-kontroller
         public int BaseDamageIndex
         {
             get { return _baseDamageSliderDVM.SliderIndex; }
@@ -77,11 +87,7 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         public int BaseDamageScaleMax
         {
             get { return _baseDamageSliderDVM.SliderScaleMax; }
-        }
-
-        protected override string ItemDescription
-        {
-            get { return $"{Description} [{DataObject().RarityTier?.Description}]" ; }
-        }
+        } 
+        #endregion
     }
 }

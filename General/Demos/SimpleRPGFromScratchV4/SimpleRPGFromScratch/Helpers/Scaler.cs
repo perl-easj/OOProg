@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace SimpleRPGFromScratch.Helpers
 {
+    // TODO - Kommentarer
     public class Scaler<T>
     {
         private List<T> _scale;

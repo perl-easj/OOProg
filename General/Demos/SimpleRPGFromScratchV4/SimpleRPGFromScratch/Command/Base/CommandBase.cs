@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimpleRPGFromScratch.Command
+namespace SimpleRPGFromScratch.Command.Base
 {
     /// <summary>
     /// Basis-implementation af simple Command-klasser. Fjerner brugen af

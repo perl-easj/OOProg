@@ -128,6 +128,7 @@
     <Compile Include="Command\Base\INotifiableCommand.cs" />
     <Compile Include="Command\App\NavigationCommand.cs" />
     <Compile Include="Command\App\SetViewStateCommand.cs" />
+    <Compile Include="Command\App\ReferenceChangeCommand.cs" />
     <Compile Include="Data\Base\DomainClassBase.cs" />
     <Compile Include="Data\Base\IDomainClass.cs" />
     <Compile Include="Data\Domain\Character.cs" />
@@ -174,7 +175,6 @@
     <Compile Include="Data\Domain\WeaponModel.cs" />
     <Compile Include="Data\Domain\WeaponType.cs" />
     <Compile Include="ViewModel\App\MainPageViewModel.cs" />
-    <Compile Include="ViewModel\Control\ComboBoxDataViewModel.cs" />
     <Compile Include="ViewModel\Base\DataViewModelAppBase.cs" />
     <Compile Include="ViewModel\Base\DataViewModelBase.cs" />
     <Compile Include="ViewModel\Base\IDataViewModel.cs" />
@@ -183,6 +183,7 @@
     <Compile Include="ViewModel\Base\PageViewModelAppBase.cs" />
     <Compile Include="ViewModel\Base\PageViewModelBase.cs" />
     <Compile Include="ViewModel\Base\PageViewModelState.cs" />
+    <Compile Include="ViewModel\Control\SelectionControlDVM.cs" />
     <Compile Include="ViewModel\Control\SliderDataViewModel.cs" />
     <Compile Include="ViewModel\Data\CharacterConfigDataViewModel.cs" />
     <Compile Include="ViewModel\Data\CharacterDataViewModel.cs" />

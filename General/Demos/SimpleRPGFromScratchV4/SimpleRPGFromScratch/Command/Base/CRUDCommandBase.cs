@@ -2,7 +2,7 @@
 using SimpleRPGFromScratch.Model.Base;
 using SimpleRPGFromScratch.ViewModel.Base;
 
-namespace SimpleRPGFromScratch.Command
+namespace SimpleRPGFromScratch.Command.Base
 {
     /// <summary>
     /// Basis-implementation af Command-klasse for CRUD-operationer.

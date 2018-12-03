@@ -1,36 +1,35 @@
 ﻿using System.Collections.ObjectModel;
+using SimpleRPGFromScratch.Data.Base;
 using SimpleRPGFromScratch.Helpers;
 using SimpleRPGFromScratch.ViewModel.Base;
 using SimpleRPGFromScratch.ViewModel.Control;
-using SimpleRPGFromScratch.ViewModel.Page;
 
 namespace SimpleRPGFromScratch.ViewModel.Data
 {
     public class WeaponJewelMatchDataViewModel : DataViewModelAppBase<WeaponJewelMatch>
     {
+        #region Instance fields
         private SliderDataViewModel<double> _factorSliderDVM;
-        private ComboBoxDataViewModel<JewelModel, JewelModelDataViewModel, JewelModelPageViewModel> _jewelModelCBDVM;
-        private ComboBoxDataViewModel<WeaponModel, WeaponModelDataViewModel, WeaponModelPageViewModel> _weaponModelCBDVM;
+        private SelectionControlDVM<JewelModel, JewelModelDataViewModel> _jewelModelSCDVM;
+        private SelectionControlDVM<WeaponModel, WeaponModelDataViewModel> _weaponModelSCDVM;
+        #endregion
 
-        public WeaponJewelMatchDataViewModel() : this(null)
+        #region Constructor
+        public WeaponJewelMatchDataViewModel()
         {
-        }
-
-        public WeaponJewelMatchDataViewModel(WeaponJewelMatch dataObject) 
-        {
-            _jewelModelCBDVM = new ComboBoxDataViewModel<JewelModel, JewelModelDataViewModel, JewelModelPageViewModel>(
+            _jewelModelSCDVM = new SelectionControlDVM<JewelModel, JewelModelDataViewModel>(
                 () => DataObject().JewelModelId,
                 val =>
                 {
-                    DataObject().JewelModelId = val;
+                    DataObject().JewelModelId = DomainClassBase<JewelModel>.IdOrNullId(val);
                     OnPropertyChanged(nameof(JewelModelSelected));
                 });
 
-            _weaponModelCBDVM = new ComboBoxDataViewModel<WeaponModel, WeaponModelDataViewModel, WeaponModelPageViewModel> (
+            _weaponModelSCDVM = new SelectionControlDVM<WeaponModel, WeaponModelDataViewModel>(
                 () => DataObject().WeaponModelId,
                 val =>
                 {
-                    DataObject().WeaponModelId = val;
+                    DataObject().WeaponModelId = DomainClassBase<WeaponModel>.IdOrNullId(val);
                     OnPropertyChanged(nameof(WeaponModelSelected));
                 });
 
@@ -45,37 +44,48 @@ namespace SimpleRPGFromScratch.ViewModel.Data
                     OnPropertyChanged(nameof(Factor));
                 });
         }
+        #endregion
 
+        #region Simple properties
+        protected override string ItemDescription
+        {
+            get { return $"{DataObject().WeaponModel?.Description} / {DataObject().JewelModel?.Description}"; }
+        }
+        #endregion
+
+        #region Properties til understøttelse af Collection-kontroller
         public ObservableCollection<WeaponModelDataViewModel> WeaponModelCollection
         {
-            get { return _weaponModelCBDVM.ItemCollection; }
+            get { return _weaponModelSCDVM.ItemCollection; }
         }
 
         public WeaponModelDataViewModel WeaponModelSelected
         {
-            get { return _weaponModelCBDVM.ItemSelected; }
+            get { return _weaponModelSCDVM.ItemSelected; }
             set
             {
-                _weaponModelCBDVM.ItemSelected = value;
+                _weaponModelSCDVM.ItemSelected = value;
                 OnPropertyChanged();
             }
         }
 
         public ObservableCollection<JewelModelDataViewModel> JewelModelCollection
         {
-            get { return _jewelModelCBDVM.ItemCollection; }
+            get { return _jewelModelSCDVM.ItemCollection; }
         }
 
         public JewelModelDataViewModel JewelModelSelected
         {
-            get { return _jewelModelCBDVM.ItemSelected; }
+            get { return _jewelModelSCDVM.ItemSelected; }
             set
             {
-                _jewelModelCBDVM.ItemSelected = value;
+                _jewelModelSCDVM.ItemSelected = value;
                 OnPropertyChanged();
             }
         }
+        #endregion
 
+        #region Properties til understøttelse af Slider-kontroller
         public int FactorIndex
         {
             get { return _factorSliderDVM.SliderIndex; }
@@ -91,10 +101,6 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         {
             get { return _factorSliderDVM.SliderScaleMax; }
         }
-
-        protected override string ItemDescription
-        {
-            get { return $"{DataObject().WeaponModel?.Description} / {DataObject().JewelModel?.Description}"; }
-        }
+        #endregion
     }
 }

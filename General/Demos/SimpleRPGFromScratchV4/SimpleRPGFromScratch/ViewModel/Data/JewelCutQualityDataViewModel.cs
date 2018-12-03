@@ -6,13 +6,12 @@ namespace SimpleRPGFromScratch.ViewModel.Data
 {
     public class JewelCutQualityDataViewModel : DataViewModelAppBase<JewelCutQuality>
     {
-        private SliderDataViewModel<double> _factorSliderDVM;
+        #region Instance fields
+        private SliderDataViewModel<double> _factorSliderDVM; 
+        #endregion
 
-        public JewelCutQualityDataViewModel() : this(null)
-        {
-        }
-
-        public JewelCutQualityDataViewModel(JewelCutQuality dataObject) : base(dataObject)
+        #region Constructor
+        public JewelCutQualityDataViewModel()
         {
             _factorSliderDVM = new SliderDataViewModel<double>(
                 new Scaler<double>(JewelCutQuality.LegalCutQualityValues, (a, b) => a < b),
@@ -24,8 +23,10 @@ namespace SimpleRPGFromScratch.ViewModel.Data
                     OnPropertyChanged(nameof(FactorIndex));
                     OnPropertyChanged(nameof(Factor));
                 });
-        }
+        } 
+        #endregion
 
+        #region Simple properties
         public string Description
         {
             get { return DataObject().Description; }
@@ -36,6 +37,13 @@ namespace SimpleRPGFromScratch.ViewModel.Data
             }
         }
 
+        protected override string ItemDescription
+        {
+            get { return $"{Description} ({Factor})"; }
+        }
+        #endregion
+
+        #region Properties til understøttelse af Slider-kontroller
         public int FactorIndex
         {
             get { return _factorSliderDVM.SliderIndex; }
@@ -50,11 +58,7 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         public int FactorScaleMax
         {
             get { return _factorSliderDVM.SliderScaleMax; }
-        }
-
-        protected override string ItemDescription
-        {
-            get  { return $"{Description} ({Factor})";}
-        }
+        } 
+        #endregion
     }
 }

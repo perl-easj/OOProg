@@ -4,12 +4,7 @@ namespace SimpleRPGFromScratch.ViewModel.Data
 {
     public class WeaponTypeDataViewModel : DataViewModelAppBase<WeaponType>
     {
-        public WeaponTypeDataViewModel() { }
-
-        public WeaponTypeDataViewModel(WeaponType dataObject) : base(dataObject)
-        {
-        }
-
+        #region Simple properties
         public string Description
         {
             get { return DataObject().Description; }
@@ -33,6 +28,7 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         protected override string ItemDescription
         {
             get { return $"{Description} ({(IsTwoHanded ? "Two" : "One")}-handed)"; }
-        }
+        } 
+        #endregion
     }
 }

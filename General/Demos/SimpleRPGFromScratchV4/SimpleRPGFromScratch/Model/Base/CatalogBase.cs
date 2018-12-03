@@ -14,7 +14,7 @@ namespace SimpleRPGFromScratch.Model.Base
     /// </summary>
     /// <typeparam name="T">Typen på de domæne-objekter, som opbevares i kataloget</typeparam>
     public abstract class CatalogBase<T> : ICatalog<T> 
-        where T : IDomainClass
+        where T : class, IDomainClass
     {
         private bool _hasChanged;
         private List<T> _cachedData;
@@ -26,7 +26,7 @@ namespace SimpleRPGFromScratch.Model.Base
             _cachedData = null;
         }
 
-        // Disse fire metoder kan vi ikke implementere generelt, derfor må
+        // Disse fem metoder kan vi ikke implementere generelt, derfor må
         // vi erklære dem abstract, og implementere dem i nedarvede klasser
         // 
         public abstract T Read(int id);
@@ -35,7 +35,7 @@ namespace SimpleRPGFromScratch.Model.Base
         protected abstract void Remove(int id);
         protected abstract void Revise(int id, T obj);
 
-
+        // TODO - Kommentarer
         public List<T> All
         {
             get
