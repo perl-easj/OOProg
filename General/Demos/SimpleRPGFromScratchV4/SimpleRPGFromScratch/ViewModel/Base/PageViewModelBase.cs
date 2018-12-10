@@ -22,11 +22,12 @@ namespace SimpleRPGFromScratch.ViewModel.Base
     /// <typeparam name="T">Typen for de domæne-objekter, der findes i det Catalog-objekt, der refereres til.</typeparam>
     /// <typeparam name="TDataViewModel">DVM-klasse svarende til klassen T.</typeparam>
     public abstract class PageViewModelBase<T, TDataViewModel> : IPageViewModel<TDataViewModel>, INotifyPropertyChanged 
-        where TDataViewModel : class, IDataViewModel<T>, new() 
+        where TDataViewModel : class, IDataViewModel<T>, new()
         where T : IDomainClass, new()
     {
         #region Instance fields
         protected ICatalog<T> _catalog;
+        protected DataViewModelFactory<T, TDataViewModel> _dvmFactory;
         protected PageViewModelState _state;
         protected event Action<PageViewModelState> _viewStateChanged;
 
@@ -44,6 +45,7 @@ namespace SimpleRPGFromScratch.ViewModel.Base
         /// </summary>
         protected PageViewModelBase()
         {
+            _dvmFactory = new DataViewModelFactory<T, TDataViewModel>();
             _catalog = GetCatalog();
             _catalog.CatalogChanged += OnCatalogHasChanged;
         }
@@ -60,7 +62,7 @@ namespace SimpleRPGFromScratch.ViewModel.Base
         {
             get
             {
-                List<TDataViewModel> collection = _catalog.All.Select(CreateDataViewModel).ToList();
+                List<TDataViewModel> collection = _catalog.All.Select(_dvmFactory.CreateDataViewModel).ToList();
                 collection.Sort();
                 return new ObservableCollection<TDataViewModel>(collection);
             }
@@ -96,7 +98,7 @@ namespace SimpleRPGFromScratch.ViewModel.Base
                 if (_state == PageViewModelState.Create)
                 {
                     _itemSelected = null;
-                    _itemDetails = CreateDataViewModel(new T());
+                    _itemDetails = _dvmFactory.CreateDataViewModel(new T());
                 }
 
                 // I Update-tilstand skal Details sættes til en kopi af det objekt,
@@ -104,7 +106,7 @@ namespace SimpleRPGFromScratch.ViewModel.Base
                 if (_state == PageViewModelState.Update)
                 {
                     _itemSelected = value;
-                    _itemDetails = _itemSelected != null ? CreateDataViewModel((T)_itemSelected.DataObject().Copy()) : null;
+                    _itemDetails = _itemSelected != null ? _dvmFactory.CreateDataViewModel((T)_itemSelected.DataObject().Copy()) : null;
                 }
 
                 OnPropertyChanged();
@@ -174,20 +176,6 @@ namespace SimpleRPGFromScratch.ViewModel.Base
             // Orientér andre interessenter om ændringen.
             OnViewStateChanged(newState);
         }
-
-        /// <summary>
-        /// Denne metode Laver et nyt Data View Model (DVM) - objekt,
-        /// ved brug af den parameterløse constructor + kald af SetDataObject.
-        /// </summary>
-        /// <param name="obj">Det domæne-objekt, som det nye DVM-objekt skal referere til</param>
-        /// <returns></returns>
-        private TDataViewModel CreateDataViewModel(T obj)
-        {
-            TDataViewModel dvmObj = new TDataViewModel();
-            dvmObj.SetDataObject(obj);
-            return dvmObj;
-        }
-
 
         /// <summary>
         /// Denne metode bliver kaldt, når noget ændrer sig i det

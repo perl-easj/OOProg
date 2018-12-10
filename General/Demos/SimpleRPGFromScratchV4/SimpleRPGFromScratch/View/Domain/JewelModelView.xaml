@@ -22,14 +22,38 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition MinWidth="600"/>
         </Grid.ColumnDefinitions>
 
         <ListView Grid.Column="0" Grid.Row="0"
                   ItemsSource="{Binding ItemCollection}"
                   SelectedItem="{Binding ItemSelected, Mode=TwoWay}"
                   IsEnabled="{Binding EnabledStateCollection}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="{Binding ItemBackgroundColorBrush}" 
+                          Margin="0,5,0,5" MinWidth="200">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding ImageSource}" Grid.Row="0" Grid.Column="0"
+                               Style="{StaticResource ImageItemStyle}"/>
+
+                        <Grid Grid.Row="0" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource TextBlockItemSubStyle}"
+                                       Text="{Binding Description}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource TextBlockItemMainStyle}"
+                                       Text="{Binding BaseDamage}"/>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
 
         <Grid Grid.Column="1" Grid.Row="0">
@@ -70,6 +94,8 @@
                               IsHitTestVisible="{Binding EnabledStateDetails}"
                               Background="{Binding BackgroundColorDetails}"
                               Style="{StaticResource ComboBoxDetailsStyle}"/>
+                    <Image Source="{Binding ItemDetails.ImageSource}"
+                           Style="{StaticResource ImageDetailsStyle}"/>
                 </StackPanel>
             </Grid>
 

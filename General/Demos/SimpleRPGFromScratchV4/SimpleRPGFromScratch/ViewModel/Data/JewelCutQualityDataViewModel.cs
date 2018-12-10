@@ -7,11 +7,11 @@ namespace SimpleRPGFromScratch.ViewModel.Data
     public class JewelCutQualityDataViewModel : DataViewModelAppBase<JewelCutQuality>
     {
         #region Instance fields
-        private SliderDataViewModel<double> _factorSliderDVM; 
+        private SliderDataViewModel<double> _factorSliderDVM;
         #endregion
 
-        #region Constructor
-        public JewelCutQualityDataViewModel()
+        #region Initialise
+        public override void Initialise()
         {
             _factorSliderDVM = new SliderDataViewModel<double>(
                 new Scaler<double>(JewelCutQuality.LegalCutQualityValues, (a, b) => a < b),

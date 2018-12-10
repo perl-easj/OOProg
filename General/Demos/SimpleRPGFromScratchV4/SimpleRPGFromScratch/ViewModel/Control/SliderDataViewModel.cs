@@ -11,6 +11,7 @@ namespace SimpleRPGFromScratch.ViewModel.Control
         private int _sliderScaleMax;
         private Func<TValue> _callBackGetValue;
         private Action<TValue> _callBackSetValue;
+        private Func<TValue, bool> _callBackCheckValue;
         #endregion
 
         #region Constructor
@@ -19,11 +20,26 @@ namespace SimpleRPGFromScratch.ViewModel.Control
             int sliderScaleMax,
             Func<TValue> callBackGetValue,
             Action<TValue> callBackSetValue)
+        : this (valueScaler, 
+                sliderScaleMax, 
+                callBackGetValue, 
+                callBackSetValue,
+                v => true)
+        {
+        }
+
+        public SliderDataViewModel(
+            Scaler<TValue> valueScaler,
+            int sliderScaleMax,
+            Func<TValue> callBackGetValue,
+            Action<TValue> callBackSetValue,
+            Func<TValue, bool> callBackCheckValue)
         {
             _valueScaler = valueScaler;
             _sliderScaleMax = sliderScaleMax;
             _callBackSetValue = callBackSetValue;
             _callBackGetValue = callBackGetValue;
+            _callBackCheckValue = callBackCheckValue;
         }
         #endregion
 
@@ -33,7 +49,10 @@ namespace SimpleRPGFromScratch.ViewModel.Control
             get { return _valueScaler.ValueToScale(_callBackGetValue()); }
             set
             {
-                _callBackSetValue(_valueScaler.ScaleToValue(value));
+                if (_callBackCheckValue(_valueScaler.ScaleToValue(value)))
+                {
+                    _callBackSetValue(_valueScaler.ScaleToValue(value));
+                }
             }
         }
 

@@ -1,4 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using Windows.UI;
+using Windows.UI.Xaml.Media;
 using SimpleRPGFromScratch.Data.Base;
 using SimpleRPGFromScratch.Model.App;
 using SimpleRPGFromScratch.ViewModel.Base;
@@ -13,8 +16,8 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         private SelectionControlDVM<JewelCutQuality, JewelCutQualityDataViewModel> _jewelCutQualitySCDVM;
         #endregion
 
-        #region Constructor
-        public JewelDataViewModel()
+        #region Initialise
+        public override void Initialise()
         {
             _jewelModelSCDVM = new SelectionControlDVM<JewelModel, JewelModelDataViewModel>(
                 () => DataObject().JewelModelId,
@@ -41,12 +44,42 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         #region Simple properties
         public string DamageDesc
         {
-            get { return $"{DataObject().BaseDamage:F2} ({DataObject().JewelModel?.BaseDamage})"; }
+            get { return $"{DataObject().BaseDamage:F0} ({DataObject().JewelModel?.BaseDamage})"; }
+        }
+
+        public string Description
+        {
+            get { return ItemDescription; }
+        }
+
+        public string ImageSource
+        {
+            get { return DataObject().JewelModel.ImageSource; }
+        }
+
+        public Color ItemBackgroundColor
+        {
+            get { return RarityTier.RarityColorMapper.ValueToColor(DataObject().JewelModel.RarityTier.Id); }
+        }
+
+        public SolidColorBrush ItemBackgroundColorBrush
+        {
+            get { return new SolidColorBrush(ItemBackgroundColor); }
+        }
+
+        public Color CircleStrokeColor
+        {
+            get { return JewelCutQuality.CutQualityColorMapper.ValueToColor(DataObject().CutQuality.Factor); }
+        }
+
+        public SolidColorBrush CircleStrokeColorBrush
+        {
+            get { return new SolidColorBrush(CircleStrokeColor); }
         }
 
         protected override string ItemDescription
         {
-            get { return $"{DataObject().JewelModel?.Description} [{DataObject().CutQuality?.Description} cut], damage {DamageDesc}"; }
+            get { return $"{DataObject().JewelModel?.Description} [{DataObject().CutQuality?.Description} cut]"; }
         } 
         #endregion
 
@@ -79,7 +112,14 @@ namespace SimpleRPGFromScratch.ViewModel.Data
                 _jewelCutQualitySCDVM.ItemSelected = value;
                 OnPropertyChanged();
             }
-        } 
+        }
         #endregion
+
+        public override int CompareTo(DataViewModelAppBase<Jewel> other)
+        {
+            int? idDiff = String.Compare(DataObject().JewelModel?.Description, other.DataObject().JewelModel?.Description, StringComparison.Ordinal);
+
+            return (idDiff != null && idDiff.Value != 0) ? idDiff.Value : ((DataObject().BaseDamage - other.DataObject().BaseDamage) > 0 ? 1 : -1);
+        }
     }
 }

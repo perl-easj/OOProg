@@ -1,5 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Windows.UI;
+using Windows.UI.Xaml.Media;
 using SimpleRPGFromScratch.Data.Base;
+using SimpleRPGFromScratch.Helpers;
+using SimpleRPGFromScratch.Model.App;
 using SimpleRPGFromScratch.ViewModel.Base;
 using SimpleRPGFromScratch.ViewModel.Control;
 
@@ -14,8 +19,8 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         private SelectionControlDVM<RarityTier, RarityTierDataViewModel> _rarityTierSCDVM;
         #endregion
 
-        #region Constructor
-        public JewelModelDataViewModel()
+        #region Initialise
+        public override void Initialise()
         {
             _rarityTierSCDVM = new SelectionControlDVM<RarityTier, RarityTierDataViewModel>(
                 () => DataObject().RarityTierId,
@@ -47,6 +52,21 @@ namespace SimpleRPGFromScratch.ViewModel.Data
                 DataObject().Description = value;
                 OnPropertyChanged();
             }
+        }
+
+        public string ImageSource
+        {
+            get { return DataObject().ImageSource; }
+        }
+
+        public Color ItemBackgroundColor
+        {
+            get { return RarityTier.RarityColorMapper.ValueToColor(DataObject().RarityTierId);}
+        }
+
+        public SolidColorBrush ItemBackgroundColorBrush
+        {
+            get { return new SolidColorBrush(ItemBackgroundColor); }
         }
 
         protected override string ItemDescription
@@ -87,7 +107,14 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         public int BaseDamageScaleMax
         {
             get { return _baseDamageSliderDVM.SliderScaleMax; }
-        } 
+        }
         #endregion
+
+        public override int CompareTo(DataViewModelAppBase<JewelModel> other)
+        {
+            int idDiff = DataObject().RarityTierId - other.DataObject().RarityTierId;
+
+            return idDiff != 0 ? idDiff : (DataObject().BaseDamage - other.DataObject().BaseDamage);
+        }
     }
 }

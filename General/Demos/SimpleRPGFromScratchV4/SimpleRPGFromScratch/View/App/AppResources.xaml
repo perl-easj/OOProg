@@ -10,7 +10,19 @@
     <Style x:Key="TextBlockDetailsStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Margin" Value="10,10,10,10"/>
+        <Setter Property="Margin" Value="5,5,5,5"/>
+    </Style>
+    <Style x:Key="TextBlockItemMainStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="CornflowerBlue"/>
+        <Setter Property="Margin" Value="5,5,5,5"/>
+    </Style>
+    <Style x:Key="TextBlockItemSubStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Margin" Value="5,5,5,5"/>
     </Style>
     <Style x:Key="TextBoxDetailsStyle" TargetType="TextBox">
         <Setter Property="FontSize" Value="24"/>
@@ -32,6 +44,11 @@
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Margin" Value="10,10,10,10"/>
     </Style>
+    <Style x:Key="ListViewMasterStyle" TargetType="ListView">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="10,10,10,10"/>
+    </Style>
     <Style x:Key="SliderStyle" TargetType="Slider">
         <Setter Property="Margin" Value="10,10,10,10"/>
     </Style>
@@ -39,5 +56,25 @@
         <Setter Property="Margin" Value="10,10,10,10"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontSize" Value="16"/>
+    </Style>
+    <Style x:Key="ImageDetailsStyle" TargetType="Image">
+        <Setter Property="Margin" Value="20,20,20,20"/>
+        <Setter Property="Width" Value="160"/>
+    </Style>
+    <Style x:Key="ImageItemStyle" TargetType="Image">
+        <Setter Property="Margin" Value="10,0,20,0"/>
+        <Setter Property="Width" Value="40"/>
+    </Style>
+    <Style x:Key="CircleDetailsStyle" TargetType="Ellipse">
+        <Setter Property="Margin" Value="20,20,20,20"/>
+        <Setter Property="Width" Value="240"/>
+        <Setter Property="Height" Value="240"/>
+        <Setter Property="StrokeThickness" Value="20"/>
+    </Style>
+    <Style x:Key="CircleItemStyle" TargetType="Ellipse">
+        <Setter Property="Margin" Value="10,0,20,0"/>
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="StrokeThickness" Value="5"/>
     </Style>
 </ResourceDictionary>

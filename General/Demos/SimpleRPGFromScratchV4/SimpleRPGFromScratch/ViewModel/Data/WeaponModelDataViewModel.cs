@@ -16,8 +16,8 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         private SelectionControlDVM<WeaponType, WeaponTypeDataViewModel> _weaponTypeSCDVM;
         #endregion
 
-        #region Constructor
-        public WeaponModelDataViewModel()
+        #region Initialise
+        public override void Initialise()
         {
             _minDamageSliderDVM = new SliderDataViewModel<int>(
                 new Scaler<int>(WeaponModel.LegalDamageValues, (a, b) => a < b),
@@ -28,7 +28,8 @@ namespace SimpleRPGFromScratch.ViewModel.Data
                     DataObject().MinDamage = val;
                     OnPropertyChanged(nameof(MinDamageIndex));
                     OnPropertyChanged(nameof(MinDamage));
-                });
+                },
+                CheckRulesMinDamage);
 
             _maxDamageSliderDVM = new SliderDataViewModel<int>(
                 new Scaler<int>(WeaponModel.LegalDamageValues, (a, b) => a < b),
@@ -39,7 +40,8 @@ namespace SimpleRPGFromScratch.ViewModel.Data
                     DataObject().MaxDamage = val;
                     OnPropertyChanged(nameof(MaxDamageIndex));
                     OnPropertyChanged(nameof(MaxDamage));
-                });
+                },
+                CheckRulesMaxDamage);
 
             _jewelSocketsSliderDVM = new IntSliderDataViewModel(
                 WeaponModel.MaxNoOfJewelSockets,
@@ -167,5 +169,15 @@ namespace SimpleRPGFromScratch.ViewModel.Data
             get { return _jewelSocketsSliderDVM.SliderText; }
         } 
         #endregion
+
+        private bool CheckRulesMinDamage(int newVal)
+        {
+            return DataObject().CheckMinDamage(newVal);
+        }
+
+        private bool CheckRulesMaxDamage(int newVal)
+        {
+            return DataObject().CheckMaxDamage(newVal);
+        }
     }
 }

@@ -4,6 +4,12 @@ namespace SimpleRPGFromScratch.ViewModel.Data
 {
     public class WeaponTypeDataViewModel : DataViewModelAppBase<WeaponType>
     {
+        #region Initialise
+        public override void Initialise()
+        {
+        }
+        #endregion
+
         #region Simple properties
         public string Description
         {

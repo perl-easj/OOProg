@@ -13,11 +13,12 @@ namespace SimpleRPGFromScratch
 
         public static List<int> LegalDamageValues = new List<int>
         {
-            1, 2, 3, 5, 7, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 80, 90,
-            100, 200, 300, 500, 700, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 5000, 6000, 7000, 8000, 9000, 10000
+            1, 2, 3, 5, 7,
+            10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 80, 90,
+            100, 150, 200, 250, 300, 350, 400, 500, 600, 700, 800, 900,
+            1000, 1500, 2000, 2500, 3000, 3500, 4000, 5000, 6000, 7000, 8000, 9000,
+            10000
         };
-
-
 
         public override int GetId()
         {
@@ -37,6 +38,16 @@ namespace SimpleRPGFromScratch
             JewelSockets = obj.JewelSockets;
             MinDamage = obj.MinDamage;
             MaxDamage = obj.MaxDamage;
+        }
+
+        public bool CheckMaxDamage(int valMaxDamage)
+        {
+            return valMaxDamage >= MinDamage;
+        }
+
+        public bool CheckMinDamage(int valMinDamage)
+        {
+            return valMinDamage <= MaxDamage;
         }
     }
 }

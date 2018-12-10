@@ -1,14 +1,17 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System.Linq;
 using SimpleRPGFromScratch.Command.App;
+using SimpleRPGFromScratch.Command.Domain;
 using SimpleRPGFromScratch.Data.Base;
 using SimpleRPGFromScratch.Model.App;
 using SimpleRPGFromScratch.ViewModel.Base;
 using SimpleRPGFromScratch.ViewModel.Control;
+using SimpleRPGFromScratch.ViewModel.Page;
 
 namespace SimpleRPGFromScratch.ViewModel.Data
 {
-    public class WeaponDataViewModel : DataViewModelAppBase<Weapon>
+    public class WeaponDataViewModel : DataViewModelAppBaseRef<Weapon, WeaponPageViewModel>
     {
         #region Instance fields
         private SelectionControlDVM<WeaponModel, WeaponModelDataViewModel> _weaponModelSCDVM;
@@ -22,8 +25,8 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         private ReferenceChangeCommand<Jewel> _addJewelCommand;
         #endregion
 
-        #region Constructor
-        public WeaponDataViewModel()
+        #region Initialise
+        public override void Initialise()
         {
             _weaponModelSCDVM = new SelectionControlDVM<WeaponModel, WeaponModelDataViewModel>(
                 () => DataObject().WeaponModelId,
@@ -47,7 +50,7 @@ namespace SimpleRPGFromScratch.ViewModel.Data
 
             // Command-objekter til hhv. at droppe eller tilføje en Jewel
             _dropJewelCommand = new ReferenceChangeCommand<Jewel>(j => j.WeaponId = null);
-            _addJewelCommand = new ReferenceChangeCommand<Jewel>(j => j.WeaponId = DataObject().Id);
+            _addJewelCommand = new AddJewelToWeaponCommand(j => j.WeaponId = DataObject().Id, DataObject(), this);
 
             SocketedJewelSelectedId = null;
             FreeJewelSelectedId = null;
@@ -76,7 +79,7 @@ namespace SimpleRPGFromScratch.ViewModel.Data
 
         public string SocketsDescription
         {
-            get { return $"{DataObject().Sockets} ({DataObject().SocketsUsed} used)"; }
+            get { return $"{DataObject().Sockets}"; }
         }
 
         public string DamageDescription
@@ -130,6 +133,11 @@ namespace SimpleRPGFromScratch.ViewModel.Data
             }
         }
 
+        public bool SocketedJewelCollectionEnabled
+        {
+            get { return (SocketsUsed > 0) /*&& _pvm.EnabledStateCollection*/; }
+        }
+
         public ObservableCollection<JewelDataViewModel> FreeJewelCollection
         {
             get { return _freeJewelSCDVM.ItemCollection; }
@@ -142,6 +150,11 @@ namespace SimpleRPGFromScratch.ViewModel.Data
             {
                 _freeJewelSCDVM.ItemSelected = value;
             }
+        }
+
+        public bool FreeJewelCollectionEnabled
+        {
+            get { return (SocketsUsed < DataObject().Sockets) /*&& _pvm.EnabledStateCollection*/; }
         }
         #endregion
 
@@ -200,11 +213,16 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         #region Hjælpe-metoder/properties
         private void JewelCatalogChanged(int id)
         {
-            SocketedJewelSelected = null;
-            FreeJewelSelected = null;
+            SocketedJewelSelectedId = null;
+            FreeJewelSelectedId = null;
 
             OnPropertyChanged(nameof(SocketedJewelCollection));
             OnPropertyChanged(nameof(FreeJewelCollection));
+        }
+
+        private int SocketsUsed
+        {
+            get { return DomainModel.GetCatalog<Jewel>().All.Count(jw => jw.WeaponId == DataObject().Id); }
         }
         #endregion
     }

@@ -54,6 +54,20 @@
                              IsHitTestVisible="{Binding EnabledStateDetails}"
                              Background="{Binding BackgroundColorDetails}"
                              Style="{StaticResource TextBoxDetailsStyle}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Height="50" Width="50" Margin="10,10,10,10"
+                                   Stroke="Black" StrokeThickness="2">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="{Binding ItemDetails.RarityColor}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <ColorPicker ColorSpectrumShape="Ring"
+                                     IsColorPreviewVisible="False"
+                                     IsColorChannelTextInputVisible="False"
+                                     IsHexInputVisible="False"
+                                     Width="200" Margin="10,10,10,10"
+                                     Color="{Binding ItemDetails.RarityColor, Mode=TwoWay}"/>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
 

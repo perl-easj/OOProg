@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Command\Domain\AddJewelToWeaponCommand.cs" />
     <Compile Include="Command\App\CreateCommand.cs" />
     <Compile Include="Command\App\NotImplementedCommand.cs" />
     <Compile Include="Command\App\UpdateCommand.cs" />
@@ -146,7 +147,11 @@
     <Compile Include="Data\Logic\WeaponLogic.cs" />
     <Compile Include="Data\Logic\WeaponModelLogic.cs" />
     <Compile Include="Data\Logic\WeaponTypeLogic.cs" />
+    <Compile Include="Helpers\ColorMapperFunction.cs" />
+    <Compile Include="Helpers\ColorMapperIntervals.cs" />
+    <Compile Include="Helpers\ColorMapperValues.cs" />
     <Compile Include="Helpers\FactorScaler.cs" />
+    <Compile Include="Helpers\IColorMapper.cs" />
     <Compile Include="Helpers\IdentityScaler.cs" />
     <Compile Include="Helpers\Scaler.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -176,8 +181,13 @@
     <Compile Include="Data\Domain\WeaponType.cs" />
     <Compile Include="ViewModel\App\MainPageViewModel.cs" />
     <Compile Include="ViewModel\Base\DataViewModelAppBase.cs" />
+    <Compile Include="ViewModel\Base\DataViewModelAppBaseRef.cs" />
     <Compile Include="ViewModel\Base\DataViewModelBase.cs" />
+    <Compile Include="ViewModel\Base\DataViewModelFactory.cs" />
+    <Compile Include="ViewModel\Base\DataViewModelRefFactory.cs" />
     <Compile Include="ViewModel\Base\IDataViewModel.cs" />
+    <Compile Include="ViewModel\Base\IDataViewModelFactory.cs" />
+    <Compile Include="ViewModel\Base\IDataViewModelRef.cs" />
     <Compile Include="ViewModel\Control\IntSliderDataViewModel.cs" />
     <Compile Include="ViewModel\Base\IPageViewModel.cs" />
     <Compile Include="ViewModel\Base\PageViewModelAppBase.cs" />
@@ -244,6 +254,16 @@
     <None Include="SimpleRPGFromScratch_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Brownite.png" />
+    <Content Include="Assets\Diamond.png" />
+    <Content Include="Assets\Granite.png" />
+    <Content Include="Assets\Jade.png" />
+    <Content Include="Assets\Oceanica.png" />
+    <Content Include="Assets\Orine.png" />
+    <Content Include="Assets\Rosita.png" />
+    <Content Include="Assets\Ruby.png" />
+    <Content Include="Assets\Sapphire.png" />
+    <Content Include="Assets\Sunstone.png" />
     <Content Include="FaseBeskrivelse.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

@@ -17,8 +17,8 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         private DequipWeaponCommand _dropRightWeaponCommand;
         #endregion
 
-        #region Constructor
-        public CharacterConfigDataViewModel()
+        #region Initialise
+        public override void Initialise()
         {
             _characterSCDVM = new SelectionControlDVM<Character, CharacterDataViewModel>(
                 () => DataObject().CharacterId,
@@ -34,7 +34,8 @@ namespace SimpleRPGFromScratch.ViewModel.Data
                 {
                     DataObject().WeaponIdLeft = val;
                     OnPropertyChanged(nameof(LeftWeaponSelected));
-                });
+                },
+                w => w.CharacterId == DataObject().CharacterId);
 
             _rightWeaponSCDVM = new SelectionControlDVM<Weapon, WeaponDataViewModel>(
                 () => DataObject().WeaponIdRight,
@@ -42,7 +43,8 @@ namespace SimpleRPGFromScratch.ViewModel.Data
                 {
                     DataObject().WeaponIdRight = val;
                     OnPropertyChanged(nameof(RightWeaponSelected));
-                });
+                },
+                w => w.CharacterId == DataObject().CharacterId);
 
             _dropLeftWeaponCommand = new DequipWeaponCommand(_leftWeaponSCDVM);
             _dropRightWeaponCommand = new DequipWeaponCommand(_rightWeaponSCDVM);

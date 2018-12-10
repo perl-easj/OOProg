@@ -48,7 +48,7 @@ namespace SimpleRPGFromScratch.ViewModel.App
                 string tag = _selectedMenuItem.Tag.ToString();
                 if (!_navigationCommands.ContainsKey(tag))
                 {
-                    throw new ArgumentException(NoNavigationCommandMessage(tag));
+                    throw new ArgumentException("Intet view knyttet til menu...");
                 }
 
                 // Udfør navigationen til det view, som passer med Tag.

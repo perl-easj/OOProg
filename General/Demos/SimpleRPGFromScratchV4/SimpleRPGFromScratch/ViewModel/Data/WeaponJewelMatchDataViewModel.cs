@@ -14,8 +14,8 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         private SelectionControlDVM<WeaponModel, WeaponModelDataViewModel> _weaponModelSCDVM;
         #endregion
 
-        #region Constructor
-        public WeaponJewelMatchDataViewModel()
+        #region Initialise
+        public override void Initialise()
         {
             _jewelModelSCDVM = new SelectionControlDVM<JewelModel, JewelModelDataViewModel>(
                 () => DataObject().JewelModelId,

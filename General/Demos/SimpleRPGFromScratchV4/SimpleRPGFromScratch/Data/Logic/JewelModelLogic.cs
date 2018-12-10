@@ -6,6 +6,11 @@ namespace SimpleRPGFromScratch
     {
         public const int MaxBaseDamage = 200;
 
+        public string ImageSource
+        {
+            get { return $"../../Assets/{Description}.png"; }
+        }
+
         public override int GetId()
         {
             return Id;

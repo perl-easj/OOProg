@@ -39,12 +39,8 @@ namespace SimpleRPGFromScratch.ViewModel.Data
         private ReferenceChangeCommand<Weapon> _addWeaponCommand;
         #endregion
 
-        #region Constructors
-        /// <summary>
-        /// NB: Denne constructor er nødvendig for at kunne benytte klassen
-        /// som type-parameter, og må derfor ikke fjernes.
-        /// </summary>
-        public CharacterDataViewModel()
+        #region Initialise
+        public override void Initialise()
         {
             // Integer-slider DVM for at kunne se/rette Health Points
             _hpSliderDVM = new IntSliderDataViewModel(
@@ -256,5 +252,10 @@ namespace SimpleRPGFromScratch.ViewModel.Data
             OnPropertyChanged(nameof(FreeWeaponCollection));
         }
         #endregion
+
+        public override string ToString()
+        {
+            return $"{Name.PadRight(15)} {Level.ToString().PadRight(10)} {HealthPoints.ToString().PadRight(10)} HP";
+        }
     }
 }

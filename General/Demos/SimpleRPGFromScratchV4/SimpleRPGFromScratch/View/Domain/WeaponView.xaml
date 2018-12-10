@@ -48,8 +48,7 @@
                     <TextBlock Text="Description" Style="{StaticResource TextBlockDetailsStyle}"/>
                     <TextBlock Text="Model" Style="{StaticResource TextBlockDetailsStyle}"/>
                     <TextBlock Text="Type" Style="{StaticResource TextBlockDetailsStyle}"/>
-                    <!--<TextBlock Text="Jewel Sockets" Style="{StaticResource TextBlockDetailsStyle}"/>
-                    <TextBlock Text="Damage Range" Style="{StaticResource TextBlockDetailsStyle}"/>-->
+                    <TextBlock Text="Jewel Sockets" Style="{StaticResource TextBlockDetailsStyle}"/>
                     <TextBlock Text="Owned By" Style="{StaticResource TextBlockDetailsStyle}"/>
                 </StackPanel>
 
@@ -63,10 +62,8 @@
                               Style="{StaticResource ComboBoxDetailsStyle}"/>
                     <TextBlock Text="{Binding ItemDetails.TypeDescription}"
                                Style="{StaticResource TextBlockDetailsStyle}"/>
-                    <!--<TextBlock Text="{Binding ItemDetails.SocketsDescription}"
+                    <TextBlock Text="{Binding ItemDetails.SocketsDescription}"
                                Style="{StaticResource TextBlockDetailsStyle}"/>
-                    <TextBlock Text="{Binding ItemDetails.DamageDescription}"
-                               Style="{StaticResource TextBlockDetailsStyle}"/>-->
                     <TextBlock Text="{Binding ItemDetails.OwnerDescription}"
                                Style="{StaticResource TextBlockDetailsStyle}"/>
 

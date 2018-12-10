@@ -33,7 +33,7 @@ namespace SimpleRPGFromScratch.ViewModel.Base
         /// 2) Vi sikrer os at blive orienteret, npr viewet skifter tilstand.
         /// 3) Vi sætter viewet til at starte i Read/Delete-tilstanden.
         /// </summary>
-        public PageViewModelAppBase()
+        protected PageViewModelAppBase()
         {
             // Command-objekter for Delete, Create og Update
             CommandBase deleteCmd = new DeleteCommand<T, TDataViewModel>(_catalog, this);

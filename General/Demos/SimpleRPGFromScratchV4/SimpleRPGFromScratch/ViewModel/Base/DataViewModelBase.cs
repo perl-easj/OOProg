@@ -14,7 +14,7 @@ namespace SimpleRPGFromScratch.ViewModel.Base
     /// </summary>
     /// <typeparam name="T">Typen for det domæne-objekt, der refereres til.</typeparam>
     public abstract class DataViewModelBase<T> : IDataViewModel<T>, INotifyPropertyChanged 
-        where T : class, IDomainClass
+        where T : class, IDomainClass, new()
     {
         private T _obj { get; set; }
 
@@ -31,7 +31,10 @@ namespace SimpleRPGFromScratch.ViewModel.Base
         public void SetDataObject(T obj)
         {
             _obj = obj;
+            Initialise();
         }
+
+        public abstract void Initialise();
 
         #region Kode for INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
