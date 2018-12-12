@@ -61,7 +61,8 @@ namespace SimpleRPGFromScratch.Model.Base
         /// <param name="obj">Objekt som ønskes indsat i databasen</param>
         protected override void Insert(T obj)
         {
-            int id = All.Select(o => o.GetId()).Max() + 1;
+            var ids = All.Select(o => o.GetId());
+            int id =  !ids.Any() ? 1 :  All.Select(o => o.GetId()).Max() + 1;
             obj.SetId(id);
 
             _dbContext.Set<T>().Add(obj);
