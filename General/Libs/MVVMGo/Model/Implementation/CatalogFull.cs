@@ -121,18 +121,15 @@ namespace Model.Implementation
         /// <inheritdoc />
         public void Update(TViewData vdObj, int key)
         {
-            Delete(key);
-            vdObj.Key = key;
+            T obj = CreateDomainObjectFromViewDataObject(vdObj);
 
-            // Save original key management strategy
-            KeyManagementStrategyType keyManagementStrategy = _keyManagementStrategy;
-            _keyManagementStrategy = KeyManagementStrategyType.CallerDecides;
+            _collection.Replace(key, obj);
+            if (_supportedOperations.Contains(PersistencyOperations.Update))
+            {
+                _source.Update(key, CreatePersistentDataObject(obj));
+            }
 
-            // Call Create, but preserve key
-            Create(vdObj);
-
-            // Restore original key management strategy
-            _keyManagementStrategy = keyManagementStrategy;
+            CatalogChanged?.Invoke(key);
         }
 
         /// <inheritdoc />

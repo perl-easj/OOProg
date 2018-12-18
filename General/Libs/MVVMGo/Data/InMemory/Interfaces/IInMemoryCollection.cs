@@ -48,6 +48,11 @@ namespace Data.InMemory.Interfaces
         void Remove(int key);
 
         /// <summary>
+        /// Replaces the existing object with the given key with the new object
+        /// </summary>
+        void Replace(int key, T obj);
+
+        /// <summary>
         /// Inserts all the given objects into the collection.
         /// The "replaceKey" parameter controls if the
         /// collection should replace the keys with

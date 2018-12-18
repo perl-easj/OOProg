@@ -58,6 +58,13 @@ namespace Data.InMemory.Implementation
         }
 
         /// <inheritdoc />
+        public void Replace(int key, T obj)
+        {
+            obj.Key = key;
+            _collection[key] = obj;
+        }
+
+        /// <inheritdoc />
         public void InsertAll(List<T> objects, KeyManagementStrategyType keyManagement = KeyManagementStrategyType.CollectionDecides)
         {
             foreach (var obj in objects)
