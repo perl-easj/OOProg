@@ -164,6 +164,7 @@
     <None Include="_DataSample\SaleModel.dat" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MVVMGoLibs\AddOns.dll" />
     <Content Include="Assets\App\Cloud.png" />
     <Content Include="Assets\App\CloudLoad.png" />
     <Content Include="Assets\App\CloudSave.png" />
@@ -248,14 +249,12 @@
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.jpg" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
-    <Content Include="Libs\AddOns.dll" />
-    <Content Include="Libs\Commands.dll" />
-    <Content Include="Libs\Controllers.dll" />
-    <Content Include="Libs\Data.dll" />
-    <Content Include="Libs\DataSources.dll" />
-    <Content Include="Libs\Extensions.dll" />
-    <Content Include="Libs\Model.dll" />
-    <Content Include="Libs\ViewModel.dll" />
+    <Content Include="MVVMGoLibs\Commands.dll" />
+    <Content Include="MVVMGoLibs\Controllers.dll" />
+    <Content Include="MVVMGoLibs\Data.dll" />
+    <Content Include="MVVMGoLibs\DataSources.dll" />
+    <Content Include="MVVMGoLibs\Extensions.dll" />
+    <Content Include="MVVMGoLibs\Model.dll" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -264,6 +263,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="MVVMGoLibs\ViewModel.dll" />
     <Content Include="_DataSample\README.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -327,35 +327,35 @@
   <ItemGroup>
     <Reference Include="AddOns, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\AddOns.dll</HintPath>
+      <HintPath>MVVMGoLibs\AddOns.dll</HintPath>
     </Reference>
     <Reference Include="Commands, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\Commands.dll</HintPath>
+      <HintPath>MVVMGoLibs\Commands.dll</HintPath>
     </Reference>
     <Reference Include="Controllers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\Controllers.dll</HintPath>
+      <HintPath>MVVMGoLibs\Controllers.dll</HintPath>
     </Reference>
     <Reference Include="Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\Data.dll</HintPath>
+      <HintPath>MVVMGoLibs\Data.dll</HintPath>
     </Reference>
     <Reference Include="DataSources, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\DataSources.dll</HintPath>
+      <HintPath>MVVMGoLibs\DataSources.dll</HintPath>
     </Reference>
     <Reference Include="Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\Extensions.dll</HintPath>
+      <HintPath>MVVMGoLibs\Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\Model.dll</HintPath>
+      <HintPath>MVVMGoLibs\Model.dll</HintPath>
     </Reference>
     <Reference Include="ViewModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\ViewModel.dll</HintPath>
+      <HintPath>MVVMGoLibs\ViewModel.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
