@@ -28,5 +28,18 @@ namespace SimpleRPGFromScratch
             HealthPoints = obj.HealthPoints;
             Level = obj.Level;
         }
+
+        public override bool IsValid
+        {
+            get
+            {
+                return 
+                    (Name != null) &&
+                    (Name.Length > 2) && 
+                    (HealthPoints > 0) && 
+                    (Level > 0) &&
+                    (Level < 100);
+            }
+        }
     }
 }

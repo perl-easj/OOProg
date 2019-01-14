@@ -31,5 +31,7 @@
         void CopyValuesFrom(IDomainClass obj);
 
         void SetInitialValues();
+
+        bool IsValid { get; }
     }
 }

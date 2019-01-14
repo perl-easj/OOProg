@@ -4,7 +4,7 @@ using Windows.UI;
 
 namespace SimpleRPGFromScratch.Helpers
 {
-    public class ColorMapperValues<TValue> : IColorMapper<TValue>
+    public class ColorMapperValues<TValue> : ColorMapperBase<TValue>
     {
         private Dictionary<TValue, Color> _colorMap;
         private Color DefaultColor = Colors.White;
@@ -23,7 +23,7 @@ namespace SimpleRPGFromScratch.Helpers
             }
         }
 
-        public Color ValueToColor(TValue val)
+        public override Color ValueToColor(TValue val)
         {
             return _colorMap.ContainsKey(val) ? _colorMap[val] : DefaultColor;
         }

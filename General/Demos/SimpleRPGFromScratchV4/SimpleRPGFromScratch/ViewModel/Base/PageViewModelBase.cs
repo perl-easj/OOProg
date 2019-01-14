@@ -58,7 +58,7 @@ namespace SimpleRPGFromScratch.ViewModel.Base
         /// og derefter "transformere" hvert domæne-objekt til det tilsvarende DVM-objekt,
         /// ved brug af metoden CreateDataViewModel.
         /// </summary>
-        public ObservableCollection<TDataViewModel> ItemCollection
+        public virtual ObservableCollection<TDataViewModel> ItemCollection
         {
             get
             {

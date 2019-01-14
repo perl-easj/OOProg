@@ -29,9 +29,16 @@
         {
         }
 
+        public virtual bool IsValid
+        {
+            get { return true; }
+        }
+
         public static int IdOrNullId(int? id)
         {
             return id ?? NullId;
         }
+
+
     }
 }

@@ -36,6 +36,11 @@ namespace SimpleRPGFromScratch.ViewModel.Base
 
         public abstract void Initialise();
 
+        public bool IsDataObjectValid
+        {
+            get { return DataObject().IsValid; }
+        }
+
         #region Kode for INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

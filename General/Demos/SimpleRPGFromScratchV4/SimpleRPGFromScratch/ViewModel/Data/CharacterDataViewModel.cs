@@ -98,6 +98,7 @@ namespace SimpleRPGFromScratch.ViewModel.Data
             {
                 DataObject().Name = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(IsDataObjectValid));
             }
         }
 

@@ -3,7 +3,7 @@ using Windows.UI;
 
 namespace SimpleRPGFromScratch.Helpers
 {
-    public class ColorMapperFunction<TValue> : IColorMapper<TValue>
+    public class ColorMapperFunction<TValue> : ColorMapperBase<TValue>
     {
         private Func<TValue, byte> _aMapFunc;
         private Func<TValue, byte> _rMapFunc;
@@ -22,7 +22,7 @@ namespace SimpleRPGFromScratch.Helpers
             _bMapFunc = bMapFunc;
         }
 
-        public Color ValueToColor(TValue val)
+        public override Color ValueToColor(TValue val)
         {
             return Color.FromArgb(_aMapFunc(val),_rMapFunc(val), _gMapFunc(val), _bMapFunc(val));
         }

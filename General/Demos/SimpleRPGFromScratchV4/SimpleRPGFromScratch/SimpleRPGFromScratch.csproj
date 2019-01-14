@@ -147,7 +147,9 @@
     <Compile Include="Data\Logic\WeaponLogic.cs" />
     <Compile Include="Data\Logic\WeaponModelLogic.cs" />
     <Compile Include="Data\Logic\WeaponTypeLogic.cs" />
+    <Compile Include="Helpers\ColorMapperBase.cs" />
     <Compile Include="Helpers\ColorMapperFunction.cs" />
+    <Compile Include="Helpers\ColorMapperInt.cs" />
     <Compile Include="Helpers\ColorMapperIntervals.cs" />
     <Compile Include="Helpers\ColorMapperValues.cs" />
     <Compile Include="Helpers\FactorScaler.cs" />

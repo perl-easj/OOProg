@@ -4,7 +4,7 @@ using Windows.UI;
 
 namespace SimpleRPGFromScratch.Helpers
 {
-    public class ColorMapperIntervals<TValue> : IColorMapper<TValue>
+    public class ColorMapperIntervals<TValue> : ColorMapperBase<TValue>
     {
         private List<TValue> _intervalEnds;
         private List<Color> _colors;
@@ -22,7 +22,7 @@ namespace SimpleRPGFromScratch.Helpers
             _lessFunc = lessFunc;
         }
 
-        public Color ValueToColor(TValue val)
+        public override Color ValueToColor(TValue val)
         {
             int index = 0;
 
