@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FateV10", "FateV10\FateV10.csproj", "{E4C88861-7114-4336-812F-23C8F49C3647}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4C88861-7114-4336-812F-23C8F49C3647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4C88861-7114-4336-812F-23C8F49C3647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4C88861-7114-4336-812F-23C8F49C3647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4C88861-7114-4336-812F-23C8F49C3647}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B3FA47B-8B8F-440C-B4A9-D7AE9DA1C008}
+	EndGlobalSection
+EndGlobal
