@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Part3
@@ -6,6 +7,7 @@ namespace Part3
     public class WizardRepository
     {
         private Dictionary<string, Wizard> _wizards;
+        public event Action<string, string> RepositoryChanged;
 
         public WizardRepository()
         {
@@ -22,6 +24,7 @@ namespace Part3
             if (!_wizards.ContainsKey(aWizard.Name))
             {
                 _wizards.Add(aWizard.Name, aWizard);
+                OnRepositoryChanged("Insert", aWizard.Name);
             }
         }
 
@@ -30,9 +33,20 @@ namespace Part3
             return _wizards.ContainsKey(name) ? _wizards[name] : null;
         }
 
+        public List<Wizard> ReadWhere()
+        {
+            return AllWizards; // TODO - this is wrong...
+        }
+
         public void Remove(Wizard aWizard)
         {
             _wizards.Remove(aWizard.Name);
+            OnRepositoryChanged("Remove", aWizard.Name);
+        }
+
+        protected virtual void OnRepositoryChanged(string operation, string name)
+        {
+            RepositoryChanged?.Invoke(operation, name);
         }
     }
 }
