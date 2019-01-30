@@ -8,7 +8,7 @@ namespace RpgV0
         public string Name { get; }
         public RoleType Role { get; }
         public List<Spell> AvailableSpells { get; }
-        private List<Spell> CastedSpells { get; set; }
+        public List<Spell> CastedSpells { get; set; }
 
         public Player(string name, RoleType role, List<Spell> availableSpells)
         {
