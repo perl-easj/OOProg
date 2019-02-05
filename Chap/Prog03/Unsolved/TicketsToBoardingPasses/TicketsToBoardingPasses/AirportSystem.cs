@@ -24,7 +24,7 @@ namespace TicketsToBoardingPasses
                 throw new ArgumentException("GenerateBoardingPasses called with null or zero tickets");
             }
 
-            // Find cutoff and gate, simple by calling helper methods
+            // Find cutoff and gate, simply by calling helper methods
             double cutOff = CalculateUpgradeCutoff(tickets);
             string gate = LookupGateForFlight(tickets.First().FlightNo);
 

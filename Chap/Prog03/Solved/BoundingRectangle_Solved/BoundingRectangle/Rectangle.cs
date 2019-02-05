@@ -8,7 +8,7 @@ namespace BoundingRectangle
     /// the X- and Y-axes in a standard coordinate system.
     /// With this assumption, a rectangle is then fully defined by two points:
     /// The Top-Left corner of the rectangle.
-    /// The Bottom-Right corner of teh rectangle.
+    /// The Bottom-Right corner of the rectangle.
     /// </summary>
     public class Rectangle
     {
