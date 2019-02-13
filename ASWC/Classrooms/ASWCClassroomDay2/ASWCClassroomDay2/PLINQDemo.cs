@@ -15,7 +15,10 @@ namespace ASWCClassroomDay2
             Stopwatch watch = new Stopwatch();
 
             watch.Restart();
-            IEnumerable<int> primes = Enumerable.Range(2, 1000000).AsParallel().Where(IsPrime);
+            IEnumerable<int> primes = Enumerable
+                .Range(2, 100000)
+                .AsParallel()
+                .Where(IsPrime);
             int primesCount = primes.Count();
             watch.Stop();
 
