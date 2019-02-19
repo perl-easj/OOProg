@@ -19,9 +19,6 @@ namespace ImprovedCatalog.CatalogBaseClasses.Catalogs
         {
         }
 
-        /// <summary>
-        /// Enumeration is simply done by enumerating the All property.
-        /// </summary>
         public virtual IEnumerator<V> GetEnumerator()
         {
             // TODO - Implement correctly
