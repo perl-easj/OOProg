@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WildLife", "WildLife\WildLife.csproj", "{09830AEF-6EEB-46E6-B74F-581A9694534A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09830AEF-6EEB-46E6-B74F-581A9694534A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09830AEF-6EEB-46E6-B74F-581A9694534A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09830AEF-6EEB-46E6-B74F-581A9694534A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09830AEF-6EEB-46E6-B74F-581A9694534A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E402F0B6-6F29-4205-953C-375F91B14F6D}
+	EndGlobalSection
+EndGlobal

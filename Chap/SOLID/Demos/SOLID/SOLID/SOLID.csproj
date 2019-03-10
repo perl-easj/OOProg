@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1D2123D1-D3A7-445A-A541-02E0E515925F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SOLID</RootNamespace>
+    <AssemblyName>SOLID</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DI\Cat.cs" />
+    <Compile Include="DI\IAnimal.cs" />
+    <Compile Include="IntSeg\Catalogs\CatalogV1.cs" />
+    <Compile Include="IntSeg\Catalogs\CatalogV2.cs" />
+    <Compile Include="IntSeg\Catalogs\AdaptedCatalog.cs" />
+    <Compile Include="IntSeg\Clients\ClientV1.cs" />
+    <Compile Include="IntSeg\Clients\ClientV2.cs" />
+    <Compile Include="IntSeg\Catalogs\DecoratedCatalog.cs" />
+    <Compile Include="IntSeg\Decorators\DeleteWithConfirm.cs" />
+    <Compile Include="IntSeg\Decorators\DeleteWithConfirmImpl.cs" />
+    <Compile Include="IntSeg\DepInjector.cs" />
+    <Compile Include="IntSeg\Interfaces\ICreateReadUpdateDelete.cs" />
+    <Compile Include="IntSeg\Interfaces\ICreate.cs" />
+    <Compile Include="IntSeg\Interfaces\IDelete.cs" />
+    <Compile Include="IntSeg\Interfaces\IRead.cs" />
+    <Compile Include="IntSeg\Interfaces\IUpdate.cs" />
+    <Compile Include="IoC\Animal.cs" />
+    <Compile Include="DI\Animal.cs" />
+    <Compile Include="IoC\Cat.cs" />
+    <Compile Include="IoC\IAnimal.cs" />
+    <Compile Include="DI\IWorld.cs" />
+    <Compile Include="DI\WorldFewAnimals.cs" />
+    <Compile Include="DI\WorldManyAnimals.cs" />
+    <Compile Include="NoDI\Animal.cs" />
+    <Compile Include="NoDI\IAnimal.cs" />
+    <Compile Include="NoDI\IWorld.cs" />
+    <Compile Include="NoDI\WorldFewAnimals.cs" />
+    <Compile Include="NoDI\WorldManyAnimals.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NoIoC\Animal.cs" />
+    <Compile Include="NoIoC\Cat.cs" />
+    <Compile Include="NoIoC\IAnimal.cs" />
+    <Compile Include="SingleResp\AnimalBehavior.cs" />
+    <Compile Include="SingleResp\AnimalLibrary.cs" />
+    <Compile Include="SingleResp\Cat.cs" />
+    <Compile Include="SingleResp\IAnimalBehavior.cs" />
+    <Compile Include="SingleResp\IAnimalLibrary.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
