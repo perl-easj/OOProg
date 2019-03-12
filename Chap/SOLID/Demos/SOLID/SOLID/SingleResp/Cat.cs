@@ -1,9 +1,11 @@
-﻿namespace SOLID.SingleResp
+﻿using SOLID.DI;
+
+namespace SOLID.SingleResp
 {
     public class Cat : AnimalBehavior
     {
-        public Cat(IAnimalLibrary anAnimalLib)
-            : base(anAnimalLib)
+        public Cat(IWorld aWorld, IAnimalLibrary anAnimalLib)
+            : base(aWorld, anAnimalLib)
         {
         }
 

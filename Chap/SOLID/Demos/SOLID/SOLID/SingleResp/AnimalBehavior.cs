@@ -1,11 +1,15 @@
-﻿namespace SOLID.SingleResp
+﻿using SOLID.DI;
+
+namespace SOLID.SingleResp
 {
     public abstract class AnimalBehavior : IAnimalBehavior
     {
+        private IWorld TheWorld { get; }
         protected IAnimalLibrary AnimalLib { get; set; }
 
-        protected AnimalBehavior(IAnimalLibrary anAnimalLib)
+        protected AnimalBehavior(IWorld theWorld, IAnimalLibrary anAnimalLib)
         {
+            TheWorld = theWorld;
             AnimalLib = anAnimalLib;
         }
 

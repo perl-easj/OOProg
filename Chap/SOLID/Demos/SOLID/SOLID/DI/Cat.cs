@@ -8,7 +8,7 @@
 
         protected override string PreferredFood()
         {
-            return null;
+            return "Mouse";
         }
 
         protected override void GetFood()

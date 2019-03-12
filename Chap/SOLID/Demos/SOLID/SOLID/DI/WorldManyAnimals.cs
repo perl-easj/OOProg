@@ -5,7 +5,7 @@
         public bool IsAnimalClose(string animalDesc)
         {
             // High probability
-            return false;
+            return true;
         }
     }
 }

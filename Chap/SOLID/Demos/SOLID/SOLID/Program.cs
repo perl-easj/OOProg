@@ -1,6 +1,5 @@
 ﻿using SOLID.DI;
 using SOLID.SingleResp;
-using Cat = SOLID.DI.Cat;
 
 namespace SOLID
 {
@@ -9,10 +8,10 @@ namespace SOLID
         static void Main(string[] args)
         {
             IWorld aWorld = new WorldManyAnimals();
-            Cat aCat = new Cat(aWorld);
-
             IAnimalLibrary aLib = new AnimalLibrary();
-            SingleResp.Cat bCat = new SingleResp.Cat(aLib);
+
+            DI.Cat diCat = new DI.Cat(aWorld);
+            SingleResp.Cat srCat = new SingleResp.Cat(aLib);
         }
     }
 }
