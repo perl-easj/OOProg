@@ -11,7 +11,7 @@ namespace SOLID
             IAnimalLibrary aLib = new AnimalLibrary();
 
             DI.Cat diCat = new DI.Cat(aWorld);
-            SingleResp.Cat srCat = new SingleResp.Cat(aLib);
+            SingleResp.Cat srCat = new SingleResp.Cat(aWorld, aLib);
         }
     }
 }
