@@ -24,7 +24,7 @@ namespace WildLife.Original
             }
 
             // 3.priority: Fleeing (from same-gender Tigers)
-            else if (TheWorld.NearBy(AnimalKind.tiger) && TheWorld.GenderOfNearBy(AnimalKind.fox) == Gender)
+            else if (TheWorld.NearBy(AnimalKind.tiger) && TheWorld.GenderOfNearBy(AnimalKind.tiger) == Gender)
             {
                 Flee();
             }

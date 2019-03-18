@@ -1,21 +1,17 @@
-﻿using SOLID.DI.Yes;
-
-namespace SOLID.SingleResp
+﻿namespace SOLID.DI.Yes
 {
-    public abstract class AnimalBehavior : IAnimalBehavior
+    public abstract class Animal : IAnimal
     {
         private IWorld TheWorld { get; }
-        protected IAnimalLibrary AnimalLib { get; set; }
 
-        protected AnimalBehavior(IWorld theWorld, IAnimalLibrary anAnimalLib)
+        protected Animal(IWorld theWorld)
         {
             TheWorld = theWorld;
-            AnimalLib = anAnimalLib;
         }
 
         public void Act()
         {
-            if (AnimalLib.FoodAround(PreferredFood()))
+            if (FoodAround(PreferredFood()))
             {
                 GetFood();
             }
@@ -23,6 +19,11 @@ namespace SOLID.SingleResp
             {
                 Idle();
             }
+        }
+
+        private bool FoodAround(string preferredFood)
+        {
+            return TheWorld.IsAnimalClose(preferredFood);
         }
 
         protected abstract string PreferredFood();

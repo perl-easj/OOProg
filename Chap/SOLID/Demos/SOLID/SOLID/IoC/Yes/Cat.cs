@@ -1,14 +1,7 @@
-﻿using SOLID.DI.Yes;
-
-namespace SOLID.SingleResp
+﻿namespace SOLID.IoC.Yes
 {
-    public class Cat : AnimalBehavior
+    public class Cat : Animal
     {
-        public Cat(IWorld aWorld, IAnimalLibrary anAnimalLib)
-            : base(aWorld, anAnimalLib)
-        {
-        }
-
         protected override string PreferredFood()
         {
             return "Mouse";
@@ -21,9 +14,11 @@ namespace SOLID.SingleResp
 
         protected override void Idle()
         {
-            AnimalLib.Sleep();
+            Sleep();
         }
 
         private void HuntMice() { }
+
+        private void Sleep() { }
     }
 }
