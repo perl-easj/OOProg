@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SOLID.Liskov
+namespace SOLID.Liskov.Greeting
 {
     public class Client
     {

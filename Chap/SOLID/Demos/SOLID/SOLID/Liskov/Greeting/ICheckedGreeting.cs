@@ -1,4 +1,4 @@
-﻿namespace SOLID.Liskov
+﻿namespace SOLID.Liskov.Greeting
 {
     public interface ICheckedGreeting
     {

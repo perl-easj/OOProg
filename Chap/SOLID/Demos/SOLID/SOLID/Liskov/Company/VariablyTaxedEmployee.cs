@@ -1,6 +1,4 @@
-﻿using SOLID.Liskov.Yes;
-
-namespace SOLID.Liskov
+﻿namespace SOLID.Liskov.Company
 {
     public class VariablyTaxedEmployee : TaxedEmployee
     {

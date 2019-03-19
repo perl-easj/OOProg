@@ -1,4 +1,4 @@
-﻿namespace SOLID.Liskov.Yes
+﻿namespace SOLID.Liskov.Company
 {
     public interface IEmployee2
     {

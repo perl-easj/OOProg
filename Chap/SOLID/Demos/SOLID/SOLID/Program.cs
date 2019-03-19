@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SOLID.Liskov;
+using SOLID.Liskov.Company;
 using SOLID.Liskov.Composition;
 using SOLID.Liskov.Yes;
 
@@ -28,7 +29,7 @@ namespace SOLID
             //Liskov.Composition.Tiger aTiger = new Liskov.Composition.Tiger(200);
             //Console.WriteLine(aTiger);
 
-            Liskov.Client2 aClient = new Client2();
+            Client2 aClient = new Client2();
             aClient.Run();
 
             Console.ReadKey();

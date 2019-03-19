@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SOLID.Liskov
+namespace SOLID.Liskov.Greeting
 {
     public class Name
     {

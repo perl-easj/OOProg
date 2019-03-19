@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 // ReSharper disable CollectionNeverUpdated.Local
 
-namespace SOLID.Liskov
+namespace SOLID.Liskov.Company
 {
     public class Client2
     {
