@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1D2123D1-D3A7-445A-A541-02E0E515925F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SOLID</RootNamespace>
+    <AssemblyName>SOLID</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DI\Yes\Cat.cs" />
+    <Compile Include="DI\Yes\IAnimal.cs" />
+    <Compile Include="DI\Yes\IWorldFactory.cs" />
+    <Compile Include="DI\Yes\WorldFactoryDefault.cs" />
+    <Compile Include="IntSeg\Catalogs\CatalogV1.cs" />
+    <Compile Include="IntSeg\Catalogs\CatalogV2.cs" />
+    <Compile Include="IntSeg\Catalogs\AdaptedCatalog.cs" />
+    <Compile Include="IntSeg\Clients\ClientV1.cs" />
+    <Compile Include="IntSeg\Clients\ClientV2.cs" />
+    <Compile Include="IntSeg\Catalogs\DecoratedCatalog.cs" />
+    <Compile Include="IntSeg\Decorators\DeleteWithConfirm.cs" />
+    <Compile Include="IntSeg\Decorators\DeleteWithConfirmImpl.cs" />
+    <Compile Include="IntSeg\DepInjector.cs" />
+    <Compile Include="IntSeg\Interfaces\ICreateReadUpdateDelete.cs" />
+    <Compile Include="IntSeg\Interfaces\ICreate.cs" />
+    <Compile Include="IntSeg\Interfaces\IDelete.cs" />
+    <Compile Include="IntSeg\Interfaces\IRead.cs" />
+    <Compile Include="IntSeg\Interfaces\IUpdate.cs" />
+    <Compile Include="IoC\Yes\Animal.cs" />
+    <Compile Include="DI\Yes\Animal.cs" />
+    <Compile Include="IoC\Yes\Cat.cs" />
+    <Compile Include="IoC\Yes\IAnimal.cs" />
+    <Compile Include="DI\Yes\IWorld.cs" />
+    <Compile Include="DI\Yes\WorldFewAnimals.cs" />
+    <Compile Include="DI\Yes\WorldManyAnimals.cs" />
+    <Compile Include="DI\No\Animal.cs" />
+    <Compile Include="DI\No\IAnimal.cs" />
+    <Compile Include="DI\No\IWorld.cs" />
+    <Compile Include="DI\No\WorldFewAnimals.cs" />
+    <Compile Include="DI\No\WorldManyAnimals.cs" />
+    <Compile Include="Liskov\Company\AltruisticCEO.cs" />
+    <Compile Include="Liskov\Greeting\CheckedGreeting.cs" />
+    <Compile Include="Liskov\Greeting\Client.cs" />
+    <Compile Include="Liskov\Company\Client2.cs" />
+    <Compile Include="Liskov\Composition\Animal.cs" />
+    <Compile Include="Liskov\Composition\AnimalDescriptionImpl.cs" />
+    <Compile Include="Liskov\Composition\AnimalHuntedByExceptionImpl.cs" />
+    <Compile Include="Liskov\Composition\AnimalWeightBase.cs" />
+    <Compile Include="Liskov\Composition\AnimalWeightLargeImpl.cs" />
+    <Compile Include="Liskov\Composition\AnimalWeightNormalImpl.cs" />
+    <Compile Include="Liskov\Composition\AnimalHuntedByImpl.cs" />
+    <Compile Include="Liskov\Composition\Cat.cs" />
+    <Compile Include="Liskov\Composition\Dog.cs" />
+    <Compile Include="Liskov\Composition\IAnimalHuntedBy.cs" />
+    <Compile Include="Liskov\Composition\IAnimalWeight.cs" />
+    <Compile Include="Liskov\Composition\IAnimal.cs" />
+    <Compile Include="Liskov\Composition\IAnimalDescription.cs" />
+    <Compile Include="Liskov\Composition\Tiger.cs" />
+    <Compile Include="Liskov\Company\Employee.cs" />
+    <Compile Include="Liskov\Greeting\Greeting.cs" />
+    <Compile Include="Liskov\Greeting\GreetingBase.cs" />
+    <Compile Include="Liskov\Greeting\GreetingRelaxed.cs" />
+    <Compile Include="Liskov\Greeting\GreetingStrict.cs" />
+    <Compile Include="Liskov\Greeting\ICheckedGreeting.cs" />
+    <Compile Include="Liskov\Company\IEmployee.cs" />
+    <Compile Include="Liskov\Greeting\IGreeting.cs" />
+    <Compile Include="Liskov\Greeting\IT.cs" />
+    <Compile Include="Liskov\Greeting\Name.cs" />
+    <Compile Include="Liskov\No\Animal.cs" />
+    <Compile Include="Liskov\No\AnimalFactory.cs" />
+    <Compile Include="Liskov\No\AnimalType.cs" />
+    <Compile Include="Liskov\No\Cat.cs" />
+    <Compile Include="Liskov\No\Dog.cs" />
+    <Compile Include="Liskov\No\Tester.cs" />
+    <Compile Include="Liskov\No\Tiger.cs" />
+    <Compile Include="Liskov\Greeting\S.cs" />
+    <Compile Include="Liskov\Greeting\T.cs" />
+    <Compile Include="Liskov\Company\VariablyTaxedEmployee.cs" />
+    <Compile Include="Liskov\Yes\AnimalBase.cs" />
+    <Compile Include="Liskov\Yes\AnimalFactory.cs" />
+    <Compile Include="Liskov\Yes\AnimalSizeLarge.cs" />
+    <Compile Include="Liskov\Yes\AnimalSizeNormal.cs" />
+    <Compile Include="Liskov\Yes\AnimalType.cs" />
+    <Compile Include="Liskov\Company\IEmployee2.cs" />
+    <Compile Include="Liskov\Yes\Siamese.cs" />
+    <Compile Include="Liskov\Yes\Cat.cs" />
+    <Compile Include="Liskov\Yes\Dog.cs" />
+    <Compile Include="Liskov\Yes\IAnimal.cs" />
+    <Compile Include="Liskov\Yes\IHuntedAnimal.cs" />
+    <Compile Include="Liskov\Yes\ILargeSizeAnimal.cs" />
+    <Compile Include="Liskov\Yes\INormalSizeAnimal.cs" />
+    <Compile Include="Liskov\Company\TaxedEmployee.cs" />
+    <Compile Include="Liskov\Yes\Tester.cs" />
+    <Compile Include="Liskov\Yes\Tiger.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IoC\No\Animal.cs" />
+    <Compile Include="IoC\No\Cat.cs" />
+    <Compile Include="IoC\No\IAnimal.cs" />
+    <Compile Include="SingleResp\AnimalBehavior.cs" />
+    <Compile Include="SingleResp\AnimalLibrary.cs" />
+    <Compile Include="SingleResp\Cat.cs" />
+    <Compile Include="SingleResp\IAnimalBehavior.cs" />
+    <Compile Include="SingleResp\IAnimalLibrary.cs" />
+    <Compile Include="SingleResp\IWorld.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
