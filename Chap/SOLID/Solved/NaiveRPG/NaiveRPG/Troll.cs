@@ -17,7 +17,7 @@
             Name = name;
             HealthPoints = 23;
             GoldOwned = 35;
-            SwordToLoot = new Sword();
+            SwordToLoot = new Sword("A plain", 25);
             ShieldToLoot = null;
         }
 

@@ -14,7 +14,7 @@
         {
             HealthPoints = 12;
             GoldOwned = 17;
-            BootsToLoot = new Boots();
+            BootsToLoot = new Boots("A pair of plain, brown", 28);
         }
 
         public void ReceiveDamage(int damagePoints)

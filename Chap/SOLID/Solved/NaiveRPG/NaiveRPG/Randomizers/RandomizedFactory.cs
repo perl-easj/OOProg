@@ -6,6 +6,9 @@ namespace NaiveRPG.Factories
 {
     public class RandomizedFactory<T> : IFactory<T>
     {
+        // Each Tuple contains a (percentage, factory) pair
+        // The percentage defines the probability for using
+        // the corresponding factory.
         private List<Tuple<int, Func<T>>> _factories;
 
         public RandomizedFactory()
@@ -18,6 +21,10 @@ namespace NaiveRPG.Factories
             _factories.Add(new Tuple<int, Func<T>>(prob, fac));
         }
 
+        /// <summary>
+        /// Checks that the available factories have percentages
+        /// summing up to exactly 100.
+        /// </summary>
         private bool ConsistencyCheck()
         {
             return _factories.Select(e => e.Item1).Sum() == 100;

@@ -43,12 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoR\AnimalBaseCoR.cs" />
+    <Compile Include="CoR\AnimalBehavior.cs" />
     <Compile Include="Common\AnimalBase.cs" />
     <Compile Include="Common\AnimalGender.cs" />
     <Compile Include="Common\Randomizer.cs" />
     <Compile Include="Extended\AnimalBaseExtended.cs" />
     <Compile Include="Extended\AnimalBehavior.cs" />
     <Compile Include="Extended\Mouse.cs" />
+    <Compile Include="CoR\IAnimalBehavior.cs" />
     <Compile Include="IoC\AnimalBaseIoC.cs" />
     <Compile Include="IoC\Fox.cs" />
     <Compile Include="IoC\LargeAnimalBaseIoC.cs" />
@@ -66,6 +69,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\World.cs" />
+    <Compile Include="CoR\Rabbit.cs" />
     <Compile Include="Tester.cs" />
   </ItemGroup>
   <ItemGroup>

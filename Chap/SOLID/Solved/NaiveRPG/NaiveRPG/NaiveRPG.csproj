@@ -55,17 +55,15 @@
     <Compile Include="Items\Base\ItemCategory.cs" />
     <Compile Include="Items\Base\WeaponBase.cs" />
     <Compile Include="Items\Chest.cs" />
-    <Compile Include="Items\Factories\ArmorFactoryRandomized.cs" />
-    <Compile Include="Items\Factories\ColorFactoryRandomized.cs" />
-    <Compile Include="Items\Factories\IArmorFactory.cs" />
-    <Compile Include="Items\Factories\IFactory.cs" />
-    <Compile Include="Items\Factories\IItemFactoryLibrary.cs" />
-    <Compile Include="Items\Factories\ItemFactoryLibraryEN.cs" />
-    <Compile Include="Items\Factories\QualityFactorRandomizedHeroic.cs" />
-    <Compile Include="Items\Factories\QualityFactoryRandomized.cs" />
-    <Compile Include="Items\Factories\QualityFactoryRandomizedNormal.cs" />
-    <Compile Include="Items\Factories\RandomizedFactory.cs" />
-    <Compile Include="Items\Factories\RandomUtil.cs" />
+    <Compile Include="Randomizers\ArmorFactoryRandomized.cs" />
+    <Compile Include="Randomizers\ColorFactoryRandomized.cs" />
+    <Compile Include="Interfaces\IFactory.cs" />
+    <Compile Include="Randomizers\DescriptionFactoryRandomized.cs" />
+    <Compile Include="Randomizers\GoldValueFactoryRandomized.cs" />
+    <Compile Include="Randomizers\QualityFactorRandomizedHeroic.cs" />
+    <Compile Include="Randomizers\QualityFactoryRandomizedNormal.cs" />
+    <Compile Include="Randomizers\RandomizedFactory.cs" />
+    <Compile Include="Randomizers\RandomUtil.cs" />
     <Compile Include="Items\Quality.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,5 +74,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,6 @@
 ﻿namespace NaiveRPG.Factories
 {
-    public interface IFactory<T>
+    public interface IFactory<out T>
     {
         T Create();
     }
