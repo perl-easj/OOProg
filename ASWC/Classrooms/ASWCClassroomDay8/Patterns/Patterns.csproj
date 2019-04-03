@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9B6FF917-845D-47FB-A7EE-0E29F3587C48}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Patterns</RootNamespace>
+    <AssemblyName>Patterns</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CompositeVisitor\Interfaces\ICompositable.cs" />
+    <Compile Include="CompositeVisitor\Items\Beer.cs" />
+    <Compile Include="CompositeVisitor\Items\Cheese.cs" />
+    <Compile Include="CompositeVisitor\Items\Goods.cs" />
+    <Compile Include="CompositeVisitor\Items\Shirt.cs" />
+    <Compile Include="CompositeVisitor\Items\SimpleItemBase.cs" />
+    <Compile Include="CompositeVisitor\Interfaces\IVisitable.cs" />
+    <Compile Include="CompositeVisitor\Interfaces\IVisitor.cs" />
+    <Compile Include="CompositeVisitor\Visitors\IsHeavyVisitor.cs" />
+    <Compile Include="CompositeVisitor\Visitors\TaxVisitor.cs" />
+    <Compile Include="Composite\Simple\Client.cs" />
+    <Compile Include="Composite\Simple\ILegoBlock.cs" />
+    <Compile Include="Composite\Simple\ILegoStructure.cs" />
+    <Compile Include="Composite\Interface\ICompositable.cs" />
+    <Compile Include="Composite\Items\Beer.cs" />
+    <Compile Include="Composite\Items\Cheese.cs" />
+    <Compile Include="Composite\Items\Goods.cs" />
+    <Compile Include="Composite\Items\Goods2.cs" />
+    <Compile Include="Composite\Items\Shirt.cs" />
+    <Compile Include="Composite\Items\SimpleItemBase.cs" />
+    <Compile Include="Composite\Simple\LegoBlock.cs" />
+    <Compile Include="Composite\Simple\LegoStructure.cs" />
+    <Compile Include="Flyweight\ImageDB.cs" />
+    <Compile Include="Flyweight\IProfile.cs" />
+    <Compile Include="Flyweight\Profile.cs" />
+    <Compile Include="Flyweight\ProfileExtrinsic.cs" />
+    <Compile Include="Flyweight\ProfileFactory.cs" />
+    <Compile Include="Flyweight\ProfileIntrinsic.cs" />
+    <Compile Include="Flyweight\ProfileInEx.cs" />
+    <Compile Include="Flyweight\Simple\C.cs" />
+    <Compile Include="Flyweight\Simple\CFactory.cs" />
+    <Compile Include="Flyweight\Simple\Context.cs" />
+    <Compile Include="Flyweight\Simple\ExState.cs" />
+    <Compile Include="Flyweight\Simple\IC.cs" />
+    <Compile Include="Flyweight\Simple\InState.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategy\No\Interfaces\IFight.cs" />
+    <Compile Include="Strategy\No\Interfaces\IPlayer.cs" />
+    <Compile Include="Strategy\No\Player.cs" />
+    <Compile Include="Strategy\No\Player2.cs" />
+    <Compile Include="Strategy\No\Player3.cs" />
+    <Compile Include="Strategy\No\Strategies\FightStratsImpls.cs" />
+    <Compile Include="Strategy\No\Types\Affinity.cs" />
+    <Compile Include="Strategy\No\Types\FightTactic.cs" />
+    <Compile Include="Strategy\Yes\Types\Affinity.cs" />
+    <Compile Include="Strategy\Yes\FightFactoryImpl.cs" />
+    <Compile Include="Strategy\Yes\Strategies\FightStratsImpls.cs" />
+    <Compile Include="Strategy\Yes\Types\FightTactic.cs" />
+    <Compile Include="Strategy\Yes\Interfaces\IFight.cs" />
+    <Compile Include="Strategy\Yes\Interfaces\IFightFactory.cs" />
+    <Compile Include="Strategy\Yes\Interfaces\IPlayer.cs" />
+    <Compile Include="Strategy\Yes\Player.cs" />
+    <Compile Include="Visitor\Interfaces\IVisitableCollection.cs" />
+    <Compile Include="Visitor\Items\Beer.cs" />
+    <Compile Include="Visitor\Items\Cheese.cs" />
+    <Compile Include="Visitor\Collections\Goods.cs" />
+    <Compile Include="Visitor\Items\ItemBase.cs" />
+    <Compile Include="Visitor\Interfaces\IVisitable.cs" />
+    <Compile Include="Visitor\Interfaces\IVisitor.cs" />
+    <Compile Include="Visitor\Items\Shirt.cs" />
+    <Compile Include="Visitor\Collections\VisitableCollectionBase.cs" />
+    <Compile Include="Visitor\Visitors\IsHeavyVisitor.cs" />
+    <Compile Include="Visitor\Visitors\TaxVisitor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
