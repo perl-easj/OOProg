@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReFac", "ReFac\ReFac.csproj", "{E109E795-FE4C-4F99-9416-5350C9CEFB56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReFacTest", "ReFacTest\ReFacTest.csproj", "{26355A85-A7CE-4C35-9CB6-63E6E57AA534}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E109E795-FE4C-4F99-9416-5350C9CEFB56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E109E795-FE4C-4F99-9416-5350C9CEFB56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E109E795-FE4C-4F99-9416-5350C9CEFB56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E109E795-FE4C-4F99-9416-5350C9CEFB56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26355A85-A7CE-4C35-9CB6-63E6E57AA534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26355A85-A7CE-4C35-9CB6-63E6E57AA534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26355A85-A7CE-4C35-9CB6-63E6E57AA534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26355A85-A7CE-4C35-9CB6-63E6E57AA534}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4AEC5939-8674-47F3-82C2-609FA0A0BA53}
+	EndGlobalSection
+EndGlobal

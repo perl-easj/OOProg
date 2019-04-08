@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E109E795-FE4C-4F99-9416-5350C9CEFB56}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ReFac</RootNamespace>
+    <AssemblyName>ReFac</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simple\ExtractClass\After\Person.cs" />
+    <Compile Include="Simple\ExtractClass\After\PhoneNo.cs" />
+    <Compile Include="Simple\ExtractClass\After\PhoneNoEx.cs" />
+    <Compile Include="Simple\ExtractClass\Before\Person.cs" />
+    <Compile Include="Simple\ExtractMethod\After\Transform.cs" />
+    <Compile Include="Simple\ExtractMethod\Before\Transform.cs" />
+    <Compile Include="Simple\MoveField\After\AccountType.cs" />
+    <Compile Include="Simple\MoveField\After\BankAccount.cs" />
+    <Compile Include="Simple\MoveField\Before\AccountType.cs" />
+    <Compile Include="Simple\MoveField\Before\BankAccount.cs" />
+    <Compile Include="TowardsAdapter\After\DrawLibXAdapter.cs" />
+    <Compile Include="TowardsAdapter\After\DrawLibYAdapter.cs" />
+    <Compile Include="TowardsAdapter\After\DrawTool.cs" />
+    <Compile Include="TowardsAdapter\After\IShapeDraw.cs" />
+    <Compile Include="TowardsAdapter\Before\DrawTool.cs" />
+    <Compile Include="TowardsAdapter\Shared\Drawing\DrawLibY.cs" />
+    <Compile Include="TowardsAdapter\Shared\Figures\Car.cs" />
+    <Compile Include="TowardsAdapter\Shared\Figures\House.cs" />
+    <Compile Include="TowardsAdapter\Shared\Figures\Train.cs" />
+    <Compile Include="TowardsAdapter\Shared\Interfaces\IFigure.cs" />
+    <Compile Include="TowardsAdapter\Shared\Shapes\Circle.cs" />
+    <Compile Include="TowardsAdapter\Shared\Drawing\DrawLibX.cs" />
+    <Compile Include="TowardsAdapter\Shared\Interfaces\IDrawTool.cs" />
+    <Compile Include="TowardsAdapter\Shared\Interfaces\IShape.cs" />
+    <Compile Include="TowardsAdapter\Shared\Shapes\Line.cs" />
+    <Compile Include="TowardsAdapter\Shared\Shapes\Point.cs" />
+    <Compile Include="TowardsAdapter\Shared\Shapes\Rectangle.cs" />
+    <Compile Include="TowardsAdapter\Shared\Shapes\Triangle.cs" />
+    <Compile Include="TowardsStrategy\After\Animal.cs" />
+    <Compile Include="TowardsStrategy\After\AnimalBehaviorLib.cs" />
+    <Compile Include="TowardsStrategy\After\AnimalManager.cs" />
+    <Compile Include="TowardsStrategy\After\Behaviors\AggressiveBehavior.cs" />
+    <Compile Include="TowardsStrategy\After\Behaviors\AnimalBehaviorBase.cs" />
+    <Compile Include="TowardsStrategy\After\Behaviors\FearfulBehavior.cs" />
+    <Compile Include="TowardsStrategy\After\Behaviors\IdleBehavior.cs" />
+    <Compile Include="TowardsStrategy\Shared\IAnimalBehavior.cs" />
+    <Compile Include="TowardsStrategy\Before\Animal.cs" />
+    <Compile Include="TowardsStrategy\Shared\AnimalState.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
