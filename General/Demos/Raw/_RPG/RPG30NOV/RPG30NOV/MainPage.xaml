@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="RPG30NOV.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RPG30NOV"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <local:CharacterPageViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <ListView Grid.Row="0" Grid.Column="0" 
+                  ItemsSource="{Binding CharacterCollection}"
+                  SelectedItem="{Binding CharacterSelected, Mode=TwoWay}"/>
+            <TextBox Text="{Binding SearchText, Mode=TwoWay, 
+                            UpdateSourceTrigger=PropertyChanged}"
+                     PlaceholderText="(enter search text)"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <TextBlock Text="{Binding CharacterSelected.NameText}"/>
+            <TextBlock Text="{Binding CharacterSelected.WeaponText}"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="RPGDemo19NOV.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RPGDemo19NOV.ViewModel.App"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <local:MainPageViewModel/>
+    </Page.DataContext>
+
+    <NavigationView SelectedItem ="{Binding SelectedMenuItem, Mode=TwoWay}">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Content="Weapons" Tag="OpenWeaponView"/>
+        </NavigationView.MenuItems>
+        <Frame x:Name="AppFrame"/>
+    </NavigationView>
+</Page>

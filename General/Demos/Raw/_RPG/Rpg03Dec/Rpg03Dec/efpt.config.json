@@ -1,0 +1,1 @@
+﻿{"ContextClassName":"RpgDBContext","DefaultDacpacSchema":null,"IdReplace":false,"IncludeConnectionString":true,"OutputPath":"","ProjectRootNamespace":"Rpg03Dec","SelectedToBeGenerated":0,"Tables":["dbo.Character"],"UseDatabaseNames":false,"UseFluentApiOnly":true,"UseHandleBars":false,"UseInflector":true}

@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="EFCore20Demo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EFCore20Demo.ModelClasses"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Page.DataContext>
+        <local:ViewModel/>
+    </Page.DataContext>
+    
+    <Page.Resources>
+        <Style x:Key="ListViewStyle" TargetType="ListView">
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="RoyalBlue"/>
+            <Setter Property="Margin" Value="20,5,5,20"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="Cars"/>
+                <ListView Style="{StaticResource ListViewStyle}" ItemsSource="{Binding CarList}"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="Customers"/>
+                <ListView Style="{StaticResource ListViewStyle}" ItemsSource="{Binding CustomerList}"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="Employees"/>
+                <ListView Style="{StaticResource ListViewStyle}" ItemsSource="{Binding EmployeeList}"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="Sales"/>
+                <ListView Style="{StaticResource ListViewStyle}" ItemsSource="{Binding SaleList}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
