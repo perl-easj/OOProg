@@ -48,6 +48,8 @@
     <Compile Include="ObserverWithState.cs" />
     <Compile Include="ObsInt.cs" />
     <Compile Include="ObsIntExt.cs" />
+    <Compile Include="PSL_ObsInt.cs" />
+    <Compile Include="PSL_ObsIntExt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
